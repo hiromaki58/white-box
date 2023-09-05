@@ -1,0 +1,6 @@
+source 'https://rubygems.org'
+
+gem 'rbs'
+gem 'steep'
+
+gem "typeprof", "~> 0.21.8"

@@ -1,0 +1,11 @@
+# TypeProf 0.21.8
+
+# Classes
+class WorkingDayCalculator
+  attr_accessor period_start: bot
+  attr_accessor period_end: bot
+  attr_reader days_off: Array[untyped]
+  def initialize: -> void
+  def add_day_off: (untyped date) -> Array[untyped]
+  def calculate_working_days: -> untyped
+end
