@@ -1,0 +1,25 @@
+module Steep
+  class Project
+    class Pattern
+      attr_reader patterns: Array[String]
+
+      attr_reader ignores: Array[String]
+
+      attr_reader prefixes: Array[String]
+
+      attr_reader ignore_prefixes: Array[String]
+
+      attr_reader ext: String
+
+      def initialize: (patterns: Array[String], ext: String, ?ignores: Array[String]) -> void
+
+      def =~: (Pathname | String path) -> bool
+
+      def match?: (Pathname path) -> bool
+
+      def ignore?: (Pathname path) -> bool
+
+      def test_string: (Pathname path, Array[String] patterns, Array[String] prefixes) -> bool
+    end
+  end
+end

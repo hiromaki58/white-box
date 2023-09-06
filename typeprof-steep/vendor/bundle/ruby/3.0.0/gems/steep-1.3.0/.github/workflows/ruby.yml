@@ -1,0 +1,39 @@
+name: Run test on container
+
+on:
+  push:
+    branches:
+      - master
+  pull_request: {}
+
+jobs:
+  test:
+    strategy:
+      matrix:
+        container_tag:
+        - "2.6"
+        - "2.7"
+        - "3.0"
+        - "3.1"
+        - "master-nightly-focal"
+        task:
+        - test
+        - test:output
+        - build
+    runs-on: ubuntu-latest
+    container:
+      image: rubylang/ruby:${{ matrix.container_tag }}
+    steps:
+    - uses: actions/checkout@v3
+    - name: Reset bundler
+      run: |
+        rm Gemfile.lock Gemfile.steep.lock
+      if: contains(matrix.container_tag, '2.6')
+    - name: Run test
+      run: |
+        git config --global --add safe.directory /__w/steep/steep
+        ruby -v
+        gem install bundler
+        bundle install --jobs 4 --retry 3
+        bin/setup
+        bundle exec rake ${{matrix.task}}

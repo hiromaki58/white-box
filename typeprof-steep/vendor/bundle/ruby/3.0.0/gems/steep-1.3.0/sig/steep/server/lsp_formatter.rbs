@@ -1,0 +1,36 @@
+module Steep
+  module Server
+    module LSPFormatter
+      include Services
+
+      class CommentBuilder
+        @array: Array[String]
+
+        def initialize: () -> void
+
+        def self.build: () { (CommentBuilder) -> void } -> String
+
+        def to_s: () -> String
+
+        def <<: (String? string) -> void
+
+        def push: () { (String) -> void } -> void
+      end
+
+      def self?.format_hover_content: (Services::HoverProvider::Ruby::content | Services::HoverProvider::RBS::content) -> untyped
+
+      def self?.to_list: [A < Object] (Enumerable[A] collection) ?{ (A) -> String } -> String
+
+      def self?.name_and_args: (untyped name, untyped args) -> ::String
+
+      def self?.name_and_params: (untyped name, untyped params) -> ::String
+
+      type summarizable_decl = ::RBS::AST::Declarations::Class
+                             | ::RBS::AST::Declarations::Module
+                             | ::RBS::AST::Declarations::Interface
+                             | ::RBS::AST::Declarations::Alias
+                             
+      def self?.declaration_summary: (summarizable_decl) -> String
+    end
+  end
+end
