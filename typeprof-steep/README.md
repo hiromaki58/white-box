@@ -37,7 +37,7 @@ Steep 1.5.3
 "rbenv global 3.1.2"  
 "rbenv local 3.1.2"  
 
-change path  
+- Change path  
 "nano ~/.bashrc"
 
 export PATH="$HOME/.rbenv/bin:$PATH  
@@ -45,6 +45,16 @@ eval "$(rbenv init -)
 
 "source ~/.bashrc"  
 "rbenv rehash"  
+
+## Task  
+- Correct the issue
+  
+Now  
+<img width="817" alt="Screenshot 2023-09-05 at 20 17 57" src="https://github.com/hiromaki58/white-box/assets/44350717/3d28a546-0c38-4274-bc0f-d5b82cce9679">  
+  
+Should be  
+<img width="618" alt="Screenshot 2023-09-05 at 20 17 10" src="https://github.com/hiromaki58/white-box/assets/44350717/a5571351-420f-4ee9-922a-dee12c447b4a">  
+  
   
 ## Reference  
 https://semaphoreci.com/blog/ruby-rbs-typeprof-steep  
