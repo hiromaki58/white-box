@@ -9,16 +9,16 @@ RBS 3.2.1
 Steep 1.5.3  
 
 ## Procedure   
-1, Type "rbenv install 3.0.0"  
-2, Type "mkdir my_ruby_project"  
-3, Type "cd my_ruby_project"  
-4, Create gemfile and add below.  
+1, Type "rbenv install 3.1.2"  
+2, Type "rbenv global 3.1.2"  
+3, Type "mkdir xxx"  
+4, Type "cd xxx"  
+5, Create gemfile and add below.  
   
   source 'https://rubygems.org'  
   gem 'rbs'  
   gem 'steep'  
 
-5, Type "bundle install"  
 6, Type "gem install rbs"  
 7, Type "bundle add typeprof"  
 8, Type "bundle add steep"  
@@ -28,6 +28,24 @@ Steep 1.5.3
 12, Type "steep check"  
 13, Error msg will be shown.  
 
+## FYI  
+- Check version  
+"ruby -v"  
+
+- Change version  
+"rbenv install 3.1.2"  
+"rbenv global 3.1.2"  
+"rbenv local 3.1.2"  
+
+change path  
+"nano ~/.bashrc"
+
+export PATH="$HOME/.rbenv/bin:$PATH  
+eval "$(rbenv init -)  
+
+"source ~/.bashrc"  
+"rbenv rehash"  
+  
 ## Reference  
 https://semaphoreci.com/blog/ruby-rbs-typeprof-steep  
 https://zenn.dev/yukyan/articles/4c62efd21ff4b2  
