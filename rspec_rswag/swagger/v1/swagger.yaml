@@ -3,9 +3,35 @@ openapi: 3.0.1
 info:
   title: API V1
   version: v1
-paths: {}
+paths:
+  "/api/v1/todos":
+    get:
+      summary: get todo list
+      security:
+      - Bearer: {}
+      responses:
+        '200':
+          description: todo list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    done:
+                      type: boolean
+                  required:
+                  - name
+                  - done
 servers:
-- url: https://{defaultHost}
-  variables:
-    defaultHost:
-      default: www.example.com
+- url: http://localhost:3000
+components:
+  securitySchemes:
+    Bearer:
+      description: token necessary to use API calls
+      type: apiKey
+      name: Authorization
+      in: header
