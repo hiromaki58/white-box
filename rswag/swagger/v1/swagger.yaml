@@ -4,30 +4,26 @@ info:
   title: API V1
   version: v1
 paths:
-  "/auth/login":
-    post:
-      summary: Login user
-      tags:
-      - Authentication
-      parameters: []
+  "/api/v1/todos":
+    get:
+      summary: get todo list
       responses:
         '200':
-          description: user logged in
-        '401':
-          description: invalid credentials
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                email:
-                  type: string
-                password:
-                  type: string
-              required:
-              - email
-              - password
+          description: todo list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    done:
+                      type: boolean
+                  required:
+                  - name
+                  - done
 servers:
 - url: https://{defaultHost}
   variables:
