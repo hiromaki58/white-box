@@ -1,4 +1,4 @@
-# RSpec, rswag and OpenAPI-TypeScript  
+# RSpec and rswag  
 ## Object　　
 To see the basic use of RSpec and rswag and show the api document on "http://localhost:3000/api-docs/index.html"  
 1, Create Swagger by rswag  
