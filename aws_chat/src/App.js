@@ -1,5 +1,6 @@
 import './App.css';
 import Amplify from 'aws-amplify';
+import Chat from './Chat'
 
 function App() {
   //Cognito, AppSync co-working setting
@@ -18,6 +19,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>Web chat</h1>
+        <Chat username="username" serviceid="serviceid" />
       </header>
     </div>
   );
