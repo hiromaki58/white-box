@@ -1,0 +1,38 @@
+schema {
+  query: Query
+  mutation: Mutation
+  subscription: Subscription
+}
+type aws_chat {
+  serviceid: String!
+  datetimeuser: String!
+  datetime: String!
+  message: String!
+  user: String!
+}
+type aws_chatConnection {
+  items: [aws_chat]
+  nextToken: String
+}
+type Mutation {
+  putAws_chat(input: PutAws_chatInput!): aws_chat
+}
+type Query {
+  getAws_chat(serviceid: String!): aws_chat
+  listAws_chats(
+    filter: TableAws_chatFilterInput
+    limit: Int
+    nextToken: String
+  ): aws_chatConnection
+}
+type Subscription {
+  onPutAws_chat(datetimeuser: String, serviceid: String!): aws_chat
+    @aws_subscribe(mutations: ["putAws_chat"])
+}
+input PutAws_chatInput {
+  serviceid: String!
+  datetimeuser: String!
+  datetime: String!
+  message: String!
+  user: String!
+}
