@@ -18,12 +18,16 @@ public class LinuxUpdatingApplication implements CommandLineRunner{
 
   @Override
   public void run(String... args) throws Exception {
-    if (args.length == 0) {
-      System.out.println("No path is set.");
-      return;
-    }
+    // if (args.length == 0) {
+    //   System.out.println("No path is set.");
+    //   return;
+    // }
+    // else {
+    //   System.out.println("Success to have the csv file");
+    // }
 
       String csvFile = "src/test/java/springframework/linuxUpdating/mockInput.csv"; // 実際のCSVファイルパスを指定
+      // List<String> ipAddrList = csvReader.getIpAddrList(args[0]);
       List<String> ipAddrList = csvReader.getIpAddrList(csvFile);
       System.out.println("Get IP address list");
     }

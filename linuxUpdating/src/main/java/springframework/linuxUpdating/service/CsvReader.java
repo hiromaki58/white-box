@@ -31,7 +31,6 @@ public class CsvReader {
     }
     catch(IOException e) {
         System.out.println("getIpAddrList error");
-        e.printStackTrace();
     }
 
     return ipAddrList;
