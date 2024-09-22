@@ -12,6 +12,7 @@ public class Accessor {
 
   private String globalIpAddr;
   private String localIpAddr;
+  private String hostName;
   private String loginId;
   private String passPhrase;
   private String rootPassword;
@@ -37,6 +38,12 @@ public class Accessor {
   }
   public void setLocalIpAddr(String localIpAddr) {
     this.localIpAddr = localIpAddr;
+  }
+  public String getHostName() {
+    return hostName;
+  }
+  public void setHostName(String hostName) {
+    this.hostName = hostName;
   }
   public String getLoginId() {
     return loginId;
