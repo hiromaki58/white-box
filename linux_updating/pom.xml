@@ -9,9 +9,9 @@
     <relativePath/>
 	</parent>
 	<groupId>springframework</groupId>
-	<artifactId>linuxUodating</artifactId>
+	<artifactId>linuxupdating</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>linuxUpdating</name>
+	<name>linuxupdating</name>
 	<description>linux updating</description>
 	<properties>
 		<java.version>1.8</java.version>

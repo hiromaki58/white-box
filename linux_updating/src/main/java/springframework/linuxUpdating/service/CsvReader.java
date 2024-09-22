@@ -1,4 +1,4 @@
-package springframework.linuxUpdating.service;
+package springframework.linuxupdating.service;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

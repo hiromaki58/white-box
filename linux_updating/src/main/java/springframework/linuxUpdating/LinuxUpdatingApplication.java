@@ -1,4 +1,4 @@
-package springframework.linuxUpdating;
+package springframework.linuxupdating;
 
 import java.util.List;
 
@@ -7,7 +7,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import springframework.linuxUpdating.service.CsvReader;
+import springframework.linuxupdating.service.CsvReader;
 
 @SpringBootApplication
 public class LinuxUpdatingApplication implements CommandLineRunner{
