@@ -40,14 +40,15 @@ public class SshAccessor {
 		client.start();
 
 		try (ClientSession session = client.connect(username, host, port).verify(10000).getSession()) {
-			// 公開鍵と秘密鍵の読み込み
+			// Read private and public keies
 			char[] passphrase = pass.toCharArray();
-			KeyPair keyPair = SSHKeyLoader.loadKeyPair(privateKeyPath, publicKeyPath, passphrase);
+			KeyPair keyPair = SshKeyCreater.loadKeyPair(privateKeyPath, publicKeyPath, passphrase);
 			session.addPublicKeyIdentity(keyPair);
 
-			// 認証の実行
+			// Authorization
 			session.auth().verify(5000);
 
+            // Senc linux command
 			try (ByteArrayOutputStream responseStream = new ByteArrayOutputStream();
 				ClientChannel channel = session.createExecChannel("hostname")) {
 

@@ -9,6 +9,11 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class CsvReader {
+    /**
+     * 
+     * @param filePath
+     * @return
+     */
   public List<String> getIpAddrList(String filePath) {
     final int csvColumnCount = 4;
     final int ipAddrPositionNum = 2;

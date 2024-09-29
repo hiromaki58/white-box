@@ -28,16 +28,17 @@ public class LinuxUpdatingApplication implements CommandLineRunner{
     //   System.out.println("Success to have the csv file");
     // }
 
-      String csvFile = "src/test/java/springframework/linuxUpdating/mockInput.csv"; // 実際のCSVファイルパスを指定
-      // List<String> ipAddrList = csvReader.getIpAddrList(args[0]);
-      List<String> ipAddrList = csvReader.getIpAddrList(csvFile);
-      System.out.println("Get IP address list");
+        // Set the path to the csv file
+        String csvFile = "src/test/java/springframework/linuxUpdating/mockInput.csv";
+        // List<String> ipAddrList = csvReader.getIpAddrList(args[0]);
+        List<String> ipAddrList = csvReader.getIpAddrList(csvFile);
+        System.out.println("Get IP address list");
 
-      sshAccessor.connect();
-      // sshAccessor.disconnect();
+        sshAccessor.connect();
+        // sshAccessor.disconnect();
     }
 
     public static void main(String[] args) {
-      SpringApplication.run(LinuxUpdatingApplication.class, args);
+        SpringApplication.run(LinuxUpdatingApplication.class, args);
     }
 }
