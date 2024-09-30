@@ -34,8 +34,9 @@ public class SshAccessor {
 	public SshAccessor() {
 	}
 
-	public void connect(List<String> hostList) {
-		String host = hostList.get(0);
+	public String connect(List<String> hostList) {
+		String responseString = "";
+        String host = hostList.get(0);
 		SshClient client = SshClient.setUpDefaultClient();
 		client.start();
 
@@ -56,8 +57,10 @@ public class SshAccessor {
 				channel.open().verify(5, TimeUnit.SECONDS);
 				channel.waitFor(EnumSet.of(ClientChannelEvent.CLOSED), TimeUnit.SECONDS.toMillis(5));
 
-				String responseString = new String(responseStream.toByteArray());
+				responseString = new String(responseStream.toByteArray());
 				System.out.println("Command output: " + responseString);
+
+                return responseString;
 			}
 		}
 		catch (Exception e) {
@@ -66,5 +69,6 @@ public class SshAccessor {
 		finally {
 			client.stop();
 		}
+        return responseString;
 	}
 }
