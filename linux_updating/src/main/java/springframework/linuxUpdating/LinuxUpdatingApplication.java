@@ -12,21 +12,21 @@ import springframework.linuxupdating.service.SshAccessor;
 
 @SpringBootApplication
 public class LinuxUpdatingApplication implements CommandLineRunner{
-  @Autowired
-  private CsvReader csvReader;
+    @Autowired
+    private CsvReader csvReader;
 
-  @Autowired
-  private SshAccessor sshAccessor;
+    @Autowired
+    private SshAccessor sshAccessor;
 
-  @Override
-  public void run(String... args) throws Exception {
-    // if (args.length == 0) {
-    //   System.out.println("No path is set.");
-    //   return;
-    // }
-    // else {
-    //   System.out.println("Success to have the csv file");
-    // }
+    @Override
+    public void run(String... args) throws Exception {
+        // if (args.length == 0) {
+        //   System.out.println("No path is set.");
+        //   return;
+        // }
+        // else {
+        //   System.out.println("Success to have the csv file");
+        // }
 
         // Set the path to the csv file
         String csvFile = "src/test/java/springframework/linuxUpdating/mockInput.csv";
@@ -34,7 +34,7 @@ public class LinuxUpdatingApplication implements CommandLineRunner{
         List<String> ipAddrList = csvReader.getIpAddrList(csvFile);
         System.out.println("Get IP address list");
 
-        sshAccessor.connect();
+        sshAccessor.connect(ipAddrList);
         // sshAccessor.disconnect();
     }
 

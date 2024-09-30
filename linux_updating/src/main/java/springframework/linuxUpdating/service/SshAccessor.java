@@ -1,5 +1,7 @@
 package springframework.linuxupdating.service;
 
+import java.util.List;
+
 import java.io.ByteArrayOutputStream;
 import java.security.KeyPair;
 import java.util.EnumSet;
@@ -14,9 +16,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class SshAccessor {
-    @Value("${ssh.host}")
-    private String host;
-
     @Value("${ssh.port}")
     private int port;
 
@@ -35,7 +34,8 @@ public class SshAccessor {
 	public SshAccessor() {
 	}
 
-	public void connect() {
+	public void connect(List<String> hostList) {
+		String host = hostList.get(0);
 		SshClient client = SshClient.setUpDefaultClient();
 		client.start();
 
