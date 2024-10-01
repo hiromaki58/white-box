@@ -8,7 +8,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import springframework.linuxupdating.service.CsvReader;
-import springframework.linuxupdating.service.LogCreater;
 import springframework.linuxupdating.service.SshAccessor;
 
 @SpringBootApplication
@@ -18,9 +17,6 @@ public class LinuxUpdatingApplication implements CommandLineRunner{
 
     @Autowired
     private SshAccessor sshAccessor;
-
-    @Autowired
-    private LogCreater logCreater;
 
     @Override
     public void run(String... args) throws Exception {
@@ -38,10 +34,7 @@ public class LinuxUpdatingApplication implements CommandLineRunner{
         List<String> ipAddrList = csvReader.getIpAddrList(csvFile);
         System.out.println("Get IP address list");
 
-        String result = sshAccessor.connect(ipAddrList);
-        // sshAccessor.disconnect();
-
-        logCreater.saveLog(ipAddrList.get(0), result);
+        sshAccessor.connect(ipAddrList);
     }
 
     public static void main(String[] args) {

@@ -3,7 +3,9 @@ package springframework.linuxupdating.service;
 import java.util.List;
 
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.security.KeyPair;
+import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.concurrent.TimeUnit;
 
@@ -11,6 +13,7 @@ import org.apache.sshd.client.SshClient;
 import org.apache.sshd.client.channel.ClientChannel;
 import org.apache.sshd.client.channel.ClientChannelEvent;
 import org.apache.sshd.client.session.ClientSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -31,12 +34,15 @@ public class SshAccessor {
     @Value("${ssh.pass}")
     private String pass;
 
+    @Autowired
+    private LogCreater logCreater;
+
 	public SshAccessor() {
 	}
 
-	public String connect(List<String> hostList) {
+	public void connect(List<String> hostList) {
 		String responseString = "";
-        String host = hostList.get(0);
+		String host = hostList.get(0);
 		SshClient client = SshClient.setUpDefaultClient();
 		client.start();
 
@@ -49,19 +55,28 @@ public class SshAccessor {
 			// Authorization
 			session.auth().verify(5000);
 
-            // Senc linux command
-			try (ByteArrayOutputStream responseStream = new ByteArrayOutputStream();
-				ClientChannel channel = session.createExecChannel("hostname")) {
+            List<String> commnadList = getCommandList();
 
-				channel.setOut(responseStream);
-				channel.open().verify(5, TimeUnit.SECONDS);
-				channel.waitFor(EnumSet.of(ClientChannelEvent.CLOSED), TimeUnit.SECONDS.toMillis(5));
+			// Senc linux command
+            for(String command : commnadList){
+                try (ByteArrayOutputStream responseStream = new ByteArrayOutputStream();
+                    ClientChannel channel = session.createExecChannel(command)) {
 
-				responseString = new String(responseStream.toByteArray());
-				System.out.println("Command output: " + responseString);
+                    channel.setOut(responseStream);
+                    channel.open().verify(5, TimeUnit.SECONDS);
+                    channel.waitFor(EnumSet.of(ClientChannelEvent.CLOSED), TimeUnit.SECONDS.toMillis(60));
 
-                return responseString;
-			}
+                    responseString = new String(responseStream.toByteArray());
+
+                    channel.close();
+
+                    logCreater.saveLog(host, responseString);
+                }
+                catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            session.close();
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -69,6 +84,17 @@ public class SshAccessor {
 		finally {
 			client.stop();
 		}
-        return responseString;
+	}
+
+    /**
+     * Make up the command list
+     * @return command list
+     */
+	private List<String> getCommandList(){
+        List<String> commandList = new ArrayList<>();
+        commandList.add("hostname");
+        commandList.add("ps aux | grep apache2 | grep -v grep");
+
+        return commandList;
 	}
 }
