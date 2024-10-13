@@ -15,6 +15,8 @@ import org.apache.sshd.client.channel.ClientChannelEvent;
 import org.apache.sshd.client.session.ClientSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.SpringApplication;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -36,6 +38,9 @@ public class SshAccessor {
 
     @Autowired
     private LogCreater logCreater;
+
+    @Autowired
+    private ConfigurableApplicationContext context;
 
 	public SshAccessor() {
 	}
@@ -84,6 +89,10 @@ public class SshAccessor {
 		finally {
 			client.stop();
 		}
+
+        // Shut down the applicatoin when command is completed.
+        int exitCode = SpringApplication.exit(context, () -> 0);
+        System.exit(exitCode);
 	}
 
     /**
