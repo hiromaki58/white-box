@@ -19,6 +19,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.stereotype.Service;
 
+import springframework.linuxupdating.model.CommandSet;
+
 @Service
 public class SshAccessor {
     @Value("${ssh.port}")
@@ -62,18 +64,23 @@ public class SshAccessor {
 			// Authorization
 			session.auth().verify(5000);
 
-            List<String> commnadList = getCommandList();
+            List<CommandSet> commnadList = getCommandList();
 
-			// Senc linux command
-            for(String command : commnadList){
+			// Send linux command
+            for(CommandSet commandSet : commnadList){
                 try (ByteArrayOutputStream responseStream = new ByteArrayOutputStream();
-                    ClientChannel channel = session.createExecChannel(command)) {
+                    ClientChannel channel = session.createExecChannel(commandSet.getCommand())) {
 
                     channel.setOut(responseStream);
                     channel.open().verify(5, TimeUnit.SECONDS);
                     channel.waitFor(EnumSet.of(ClientChannelEvent.CLOSED), TimeUnit.SECONDS.toMillis(60));
 
                     responseString = new String(responseStream.toByteArray());
+
+                    // Show the response in the terminal
+                    if(commandSet.getIsShownInTerminal()){
+                        System.out.println(responseString);
+                    }
 
                     channel.close();
 
@@ -101,10 +108,10 @@ public class SshAccessor {
      * Make up the command list
      * @return command list
      */
-	private List<String> getCommandList(){
-        List<String> commandList = new ArrayList<>();
-        commandList.add("hostname");
-        commandList.add("ps aux | grep apache2 | grep -v grep");
+	private List<CommandSet> getCommandList(){
+        List<CommandSet> commandList = new ArrayList<>();
+        commandList.add(new CommandSet("hostname", false));
+        commandList.add(new CommandSet("ps aux | grep apache2 | grep -v grep", true));
 
         return commandList;
 	}
