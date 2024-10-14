@@ -20,6 +20,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.stereotype.Service;
 
 import springframework.linuxupdating.model.CommandSet;
+import springframework.linuxupdating.utils.TerminalHandler;
 
 @Service
 public class SshAccessor {
@@ -80,6 +81,7 @@ public class SshAccessor {
                     // Show the response in the terminal
                     if(commandSet.getIsShownInTerminal()){
                         System.out.println(responseString);
+                        TerminalHandler.checkOutputAndWaitForEnterKey();
                     }
 
                     channel.close();
