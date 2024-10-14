@@ -45,13 +45,15 @@ public class SshAccessor {
 	public SshAccessor() {
 	}
 
-	public void connect(List<String> hostList) {
+	public void connect(List<String> ipAddrList, List<String>hostNameList) {
 		String responseString = "";
-		String host = hostList.get(0);
+		String ipAddr = ipAddrList.get(0);
+        String hostName = hostNameList.get(0);
+        System.out.println("host name is " + hostName);
 		SshClient client = SshClient.setUpDefaultClient();
 		client.start();
 
-		try (ClientSession session = client.connect(username, host, port).verify(10000).getSession()) {
+		try (ClientSession session = client.connect(username, ipAddr, port).verify(10000).getSession()) {
 			// Read private and public keies
 			char[] passphrase = pass.toCharArray();
 			KeyPair keyPair = SshKeyCreater.loadKeyPair(privateKeyPath, publicKeyPath, passphrase);
@@ -75,7 +77,7 @@ public class SshAccessor {
 
                     channel.close();
 
-                    logCreater.saveLog(host, responseString);
+                    logCreater.saveLog(hostName, responseString);
                 }
                 catch (IOException e) {
                     e.printStackTrace();

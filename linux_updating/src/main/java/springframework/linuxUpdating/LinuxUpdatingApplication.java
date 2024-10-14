@@ -32,9 +32,11 @@ public class LinuxUpdatingApplication implements CommandLineRunner{
         String csvFile = "src/test/java/springframework/linuxUpdating/mockInput.csv";
         // List<String> ipAddrList = csvReader.getIpAddrList(args[0]);
         List<String> ipAddrList = csvReader.getIpAddrList(csvFile);
+        List<String> hostNameList = csvReader.getHostNameList(csvFile);
+
         System.out.println("Get IP address list");
 
-        sshAccessor.connect(ipAddrList);
+        sshAccessor.connect(ipAddrList, hostNameList);
     }
 
     public static void main(String[] args) {

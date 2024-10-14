@@ -14,30 +14,61 @@ public class CsvReader {
      * @param filePath
      * @return
      */
-  public List<String> getIpAddrList(String filePath) {
-    final int csvColumnCount = 4;
-    final int ipAddrPositionNum = 2;
-    List<String> ipAddrList = new ArrayList<>();
+    public List<String> getIpAddrList(String filePath) {
+        final int csvColumnCount = 4;
+        final int ipAddrPositionNum = 2;
+        List<String> ipAddrList = new ArrayList<>();
 
-    try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
-        String line;
-        while ((line = br.readLine()) != null) {
-            String[] column = line.split(",");
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] column = line.split(",");
 
-            if (column.length > csvColumnCount - 1 && column[2].trim().isEmpty()) {
-                System.out.println("Warning: Missing the 3rd value (GIP)");
-            }
+                if (column.length > csvColumnCount - 1 && column[2].trim().isEmpty()) {
+                    System.out.println("Warning: Missing the 3rd value (GIP)");
+                }
 
-            if (column.length > csvColumnCount - 1) {
-                System.out.println("IP address is " + column[ipAddrPositionNum]);
-                ipAddrList.add(column[ipAddrPositionNum]);
+                if (column.length > csvColumnCount - 1) {
+                    System.out.println("IP address is " + column[ipAddrPositionNum]);
+                    ipAddrList.add(column[ipAddrPositionNum]);
+                }
             }
         }
-    }
-    catch(IOException e) {
-        System.out.println("getIpAddrList error");
+        catch(IOException e) {
+            System.out.println("getIpAddrList error");
+        }
+
+        return ipAddrList;
     }
 
-    return ipAddrList;
-  }
+    /**
+     * 
+     * @param filePath
+     * @return
+     */
+    public List<String> getHostNameList(String filePath) {
+        final int csvColumnCount = 4;
+        final int hostNamePositionNum = 1;
+        List<String> hostNameList = new ArrayList<>();
+
+        try(BufferedReader br = new BufferedReader(new FileReader(filePath))){
+            String line;
+            while((line = br.readLine()) != null){
+                String[] column = line.split(",");
+
+                if(column.length > csvColumnCount - 1 && column[1].trim().isEmpty()){
+                    System.out.println("Warning: Missing the 3rd value (Hostname)");
+                }
+                if(column.length > csvColumnCount - 1){
+                    System.out.println("Hostname is " + column[hostNamePositionNum]);
+                    hostNameList.add(column[hostNamePositionNum]);
+                }
+            }
+        }
+        catch(IOException e){
+            System.out.println("getHostNameList error");
+        }
+
+        return hostNameList;
+    }
 }
