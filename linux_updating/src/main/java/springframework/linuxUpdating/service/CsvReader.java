@@ -29,7 +29,6 @@ public class CsvReader {
                 }
 
                 if (column.length > csvColumnCount - 1) {
-                    System.out.println("IP address is " + column[ipAddrPositionNum]);
                     ipAddrList.add(column[ipAddrPositionNum]);
                 }
             }
@@ -60,7 +59,6 @@ public class CsvReader {
                     System.out.println("Warning: Missing the 3rd value (Hostname)");
                 }
                 if(column.length > csvColumnCount - 1){
-                    System.out.println("Hostname is " + column[hostNamePositionNum]);
                     hostNameList.add(column[hostNamePositionNum]);
                 }
             }

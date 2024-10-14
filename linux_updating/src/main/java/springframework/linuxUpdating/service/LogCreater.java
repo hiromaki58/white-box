@@ -41,7 +41,6 @@ public class LogCreater {
         try(BufferedWriter bw = new BufferedWriter(new FileWriter(logFileTitle, true))){
             bw.write(logContent);
             bw.newLine();
-            System.out.println("Save the log file of host name is " + hostName);
         }
         catch(IOException e){
             System.err.println("Fail to save the log for the host name is " + hostName);

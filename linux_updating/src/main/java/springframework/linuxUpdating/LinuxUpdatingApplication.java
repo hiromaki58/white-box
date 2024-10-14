@@ -34,8 +34,6 @@ public class LinuxUpdatingApplication implements CommandLineRunner{
         List<String> ipAddrList = csvReader.getIpAddrList(csvFile);
         List<String> hostNameList = csvReader.getHostNameList(csvFile);
 
-        System.out.println("Get IP address list");
-
         sshAccessor.connect(ipAddrList, hostNameList);
     }
 
