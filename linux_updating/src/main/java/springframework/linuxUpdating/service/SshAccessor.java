@@ -112,8 +112,8 @@ public class SshAccessor {
      */
 	private List<CommandSet> getCommandList(){
         List<CommandSet> commandList = new ArrayList<>();
-        commandList.add(new CommandSet("hostname", false));
-        commandList.add(new CommandSet("ps aux | grep apache2 | grep -v grep", true));
+        commandList.add(new CommandSet("hostname", false, false));
+        commandList.add(new CommandSet("ps aux | grep apache2 | grep -v grep", true, false));
 
         return commandList;
 	}
