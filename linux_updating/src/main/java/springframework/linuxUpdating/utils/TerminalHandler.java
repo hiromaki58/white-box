@@ -27,7 +27,6 @@ public class TerminalHandler {
 	public static String inputYesOrNo(CommandSet commandSet, String responseString, Scanner scan){
 		System.out.println("The command is " + commandSet.getCommand());
 		System.out.println(responseString);
-		System.out.print("Do you want to continue? [y/N]: ");
 
 		String input = scan.nextLine();
 		return input;

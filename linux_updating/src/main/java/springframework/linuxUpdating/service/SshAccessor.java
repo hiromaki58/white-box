@@ -91,12 +91,15 @@ public class SshAccessor {
 
                         out.write((userInput + "\\n").getBytes());
                         out.flush();
+
+                        channel.waitFor(EnumSet.of(ClientChannelEvent.CLOSED), TimeUnit.SECONDS.toMillis(60));
                     }
 
-                    // scan.close();
-                    channel.close();
-
                     logCreater.saveLog(hostName, responseString);
+                    if(!channel.isClosed()){
+                        channel.close();
+                    }
+
                 }
                 catch (IOException e) {
                     e.printStackTrace();
@@ -122,10 +125,9 @@ public class SshAccessor {
      */
 	private List<CommandSet> getCommandList(){
         List<CommandSet> commandList = new ArrayList<>();
-        // commandList.add(new CommandSet("sudo su -", false, false));
         commandList.add(new CommandSet("hostname", true, false));
-        commandList.add(new CommandSet("apt update", false, false));
-        commandList.add(new CommandSet("apt upgrade", false, true));
+        commandList.add(new CommandSet("sudo apt update", false, false));
+        commandList.add(new CommandSet("sudo apt upgrade", false, true));
         commandList.add(new CommandSet("ps aux | grep apache2 | grep -v grep", true, false));
 
         return commandList;
