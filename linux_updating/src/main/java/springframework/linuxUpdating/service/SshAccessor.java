@@ -1,9 +1,10 @@
 package springframework.linuxupdating.service;
 
 import java.util.List;
-
+import java.util.Scanner;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.security.KeyPair;
 import java.util.ArrayList;
 import java.util.EnumSet;
@@ -52,7 +53,6 @@ public class SshAccessor {
 		String responseString = "";
 		String ipAddr = ipAddrList.get(0);
         String hostName = hostNameList.get(0);
-        System.out.println("host name is " + hostName);
 		SshClient client = SshClient.setUpDefaultClient();
 		client.start();
 
@@ -78,12 +78,22 @@ public class SshAccessor {
 
                     responseString = new String(responseStream.toByteArray());
 
+                    Scanner scan = new Scanner(System.in);
+
                     // Show the response in the terminal
                     if(commandSet.getIsShownInTerminal()){
-                        System.out.println(responseString);
-                        TerminalHandler.checkOutputAndWaitForEnterKey();
+                        TerminalHandler.checkOutputAndWaitForEnterKey(commandSet, responseString, scan);
                     }
 
+                    if(commandSet.isAskedToSayYesOrNo()){
+                        String userInput = TerminalHandler.inputYesOrNo(commandSet, responseString, scan);
+                        OutputStream out = channel.getInvertedIn();
+
+                        out.write((userInput + "\\n").getBytes());
+                        out.flush();
+                    }
+
+                    // scan.close();
                     channel.close();
 
                     logCreater.saveLog(hostName, responseString);
@@ -112,7 +122,10 @@ public class SshAccessor {
      */
 	private List<CommandSet> getCommandList(){
         List<CommandSet> commandList = new ArrayList<>();
-        commandList.add(new CommandSet("hostname", false, false));
+        // commandList.add(new CommandSet("sudo su -", false, false));
+        commandList.add(new CommandSet("hostname", true, false));
+        commandList.add(new CommandSet("apt update", false, false));
+        commandList.add(new CommandSet("apt upgrade", false, true));
         commandList.add(new CommandSet("ps aux | grep apache2 | grep -v grep", true, false));
 
         return commandList;
