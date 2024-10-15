@@ -6,7 +6,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.security.KeyPair;
-import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.concurrent.TimeUnit;
 
@@ -21,6 +20,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.stereotype.Service;
 
 import springframework.linuxupdating.model.CommandSet;
+import springframework.linuxupdating.utils.CommandList;
 import springframework.linuxupdating.utils.TerminalHandler;
 
 @Service
@@ -65,7 +65,7 @@ public class SshAccessor {
 			// Authorization
 			session.auth().verify(5000);
 
-            List<CommandSet> commnadList = getCommandList();
+            List<CommandSet> commnadList = CommandList.getUbuntuCommandList();
 
 			// Send linux command
             for(CommandSet commandSet : commnadList){
@@ -117,19 +117,5 @@ public class SshAccessor {
         // Shut down the applicatoin when command is completed.
         int exitCode = SpringApplication.exit(context, () -> 0);
         System.exit(exitCode);
-	}
-
-    /**
-     * Make up the command list
-     * @return command list
-     */
-	private List<CommandSet> getCommandList(){
-        List<CommandSet> commandList = new ArrayList<>();
-        commandList.add(new CommandSet("hostname", true, false));
-        commandList.add(new CommandSet("sudo apt update", false, false));
-        commandList.add(new CommandSet("sudo apt upgrade", false, true));
-        commandList.add(new CommandSet("ps aux | grep apache2 | grep -v grep", true, false));
-
-        return commandList;
 	}
 }
