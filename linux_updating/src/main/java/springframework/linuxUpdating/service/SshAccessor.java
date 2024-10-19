@@ -81,7 +81,9 @@ public class SshAccessor {
                     // Show the response in the terminal
                     if(commandSet.getIsShownInTerminal()){
                         Scanner scan = new Scanner(System.in);
-                        TerminalHandler.checkOutputAndWaitForEnterKey(commandSet, responseString, scan);
+                        if(TerminalHandler.checkOutputAndWaitForEnterKey(commandSet, responseString, scan)){
+                            break;
+                        };
                     }
 
                     if(commandSet.isAskedToSayYesOrNo()){

@@ -5,25 +5,22 @@ import java.util.Scanner;
 import springframework.linuxupdating.model.CommandSet;
 
 public class TerminalHandler {
-	/**
-	 * 
-	 * @param commandSet
-	 * @param responseString
-	 */
-	public static void checkOutputAndWaitForEnterKey(CommandSet commandSet, String responseString, Scanner scan){
+	public static boolean checkOutputAndWaitForEnterKey(CommandSet commandSet, String responseString, Scanner scan){
 		System.out.println("The command is " + commandSet.getCommand());
 		System.out.println(responseString);
-		System.out.println("Check the output and press enter to continue");
+		System.out.println("Check the output and press enter to continue, or type 'q' to skip or press enter to continue.");
 
-		scan.nextLine();
+		String userInput =  scan.nextLine();
+		if(userInput.equalsIgnoreCase("q")){
+			System.out.println("Skipping to the next command...");
+			scan.close();
+			return true;
+		}
+		else{
+			return false;
+		}
 	}
 
-	/**
-	 * 
-	 * @param commandSet
-	 * @param responseString
-	 * @return
-	 */
 	public static String inputYesOrNo(CommandSet commandSet, String responseString, Scanner scan){
 		System.out.println("The command is " + commandSet.getCommand());
 		System.out.println(responseString);
