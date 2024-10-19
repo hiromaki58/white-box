@@ -91,8 +91,6 @@ public class SshAccessor {
 
                         out.write((userInput + "\\n").getBytes());
                         out.flush();
-
-                        channel.waitFor(EnumSet.of(ClientChannelEvent.CLOSED), TimeUnit.SECONDS.toMillis(60));
                     }
 
                     logCreater.saveLog(hostName, responseString);
