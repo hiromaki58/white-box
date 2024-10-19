@@ -78,14 +78,14 @@ public class SshAccessor {
 
                     responseString = new String(responseStream.toByteArray());
 
-                    Scanner scan = new Scanner(System.in);
-
                     // Show the response in the terminal
                     if(commandSet.getIsShownInTerminal()){
+                        Scanner scan = new Scanner(System.in);
                         TerminalHandler.checkOutputAndWaitForEnterKey(commandSet, responseString, scan);
                     }
 
                     if(commandSet.isAskedToSayYesOrNo()){
+                        Scanner scan = new Scanner(System.in);
                         String userInput = TerminalHandler.inputYesOrNo(commandSet, responseString, scan);
                         OutputStream out = channel.getInvertedIn();
 
