@@ -78,8 +78,8 @@ public class SshAccessor {
 
                     responseString = new String(responseStream.toByteArray());
 
-                    // Show the response in the terminal
-                    if(commandSet.getIsShownInTerminal()){
+                    // Show the response in the terminal and aks to keep going or not
+                    if(commandSet.getIsContinuedOrNo()){
                         Scanner scan = new Scanner(System.in);
                         if(TerminalHandler.checkOutputAndWaitForEnterKey(commandSet, responseString, scan)){
                             break;

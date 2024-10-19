@@ -5,10 +5,6 @@ import java.util.List;
 import springframework.linuxupdating.model.CommandSet;
 
 public class CommandList {
-    /**
-     * 
-     * @return
-     */
     public static List<CommandSet> getUbuntuCommandList(){
         List<CommandSet> commandList = new ArrayList<>();
         commandList.add(new CommandSet("hostname", true, false));
