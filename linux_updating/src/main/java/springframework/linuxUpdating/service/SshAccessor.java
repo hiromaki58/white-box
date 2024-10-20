@@ -49,71 +49,75 @@ public class SshAccessor {
 	public SshAccessor() {
 	}
 
-	public void connect(List<String> ipAddrList, List<String>hostNameList) {
+	public void connect(List<String> hostNameList, List<String> ipAddrList, List<String> distributionList) {
 		String responseString = "";
-		String ipAddr = ipAddrList.get(0);
-        String hostName = hostNameList.get(0);
 		SshClient client = SshClient.setUpDefaultClient();
 		client.start();
 
-		try (ClientSession session = client.connect(username, ipAddr, port).verify(10000).getSession()) {
-			// Read private and public keies
-			char[] passphrase = pass.toCharArray();
-			KeyPair keyPair = SshKeyCreater.loadKeyPair(privateKeyPath, publicKeyPath, passphrase);
-			session.addPublicKeyIdentity(keyPair);
+        for(int i = 0; i < hostNameList.size(); i++){
+            try (ClientSession session = client.connect(username, ipAddrList.get(i), port).verify(10000).getSession()) {
+                // Read private and public keies
+                char[] passphrase = pass.toCharArray();
+                KeyPair keyPair = SshKeyCreater.loadKeyPair(privateKeyPath, publicKeyPath, passphrase);
+                session.addPublicKeyIdentity(keyPair);
 
-			// Authorization
-			session.auth().verify(5000);
+                // Authorization
+                session.auth().verify(5000);
 
-            List<CommandSet> commnadList = CommandList.getUbuntuCommandList();
-
-			// Send linux command
-            for(CommandSet commandSet : commnadList){
-                try (ByteArrayOutputStream responseStream = new ByteArrayOutputStream();
-                    ClientChannel channel = session.createExecChannel(commandSet.getCommand())) {
-
-                    channel.setOut(responseStream);
-                    channel.open().verify(5, TimeUnit.SECONDS);
-                    channel.waitFor(EnumSet.of(ClientChannelEvent.CLOSED), TimeUnit.SECONDS.toMillis(60));
-
-                    responseString = new String(responseStream.toByteArray());
-
-                    // Show the response in the terminal and aks to keep going or not
-                    if(commandSet.getIsContinuedOrNo()){
-                        Scanner scan = new Scanner(System.in);
-                        if(TerminalHandler.checkOutputAndWaitForEnterKey(commandSet, responseString, scan)){
-                            break;
-                        };
-                    }
-
-                    if(commandSet.isAskedToSayYesOrNo()){
-                        Scanner scan = new Scanner(System.in);
-                        String userInput = TerminalHandler.inputYesOrNo(commandSet, responseString, scan);
-                        OutputStream out = channel.getInvertedIn();
-
-                        out.write((userInput + "\\n").getBytes());
-                        out.flush();
-                    }
-
-                    logCreater.saveLog(hostName, responseString);
-                    if(!channel.isClosed()){
-                        channel.close();
-                    }
-
+                List<CommandSet> commnadList;
+                if(distributionList.get(i).equalsIgnoreCase("Ubuntu")){
+                    commnadList = CommandList.getUbuntuCommandList();
                 }
-                catch (IOException e) {
-                    e.printStackTrace();
+                else{
+                    commnadList = CommandList.getRedHatCommandList();
                 }
+
+                // Send linux command
+                for(CommandSet commandSet : commnadList){
+                    try (ByteArrayOutputStream responseStream = new ByteArrayOutputStream();
+                        ClientChannel channel = session.createExecChannel(commandSet.getCommand())) {
+
+                        channel.setOut(responseStream);
+                        channel.open().verify(5, TimeUnit.SECONDS);
+                        channel.waitFor(EnumSet.of(ClientChannelEvent.CLOSED), TimeUnit.SECONDS.toMillis(60));
+
+                        responseString = new String(responseStream.toByteArray());
+
+                        // Show the response in the terminal and aks to keep going or not
+                        if(commandSet.getIsContinuedOrNo()){
+                            Scanner scan = new Scanner(System.in);
+                            if(TerminalHandler.checkOutputAndWaitForEnterKey(commandSet, responseString, scan)){
+                                break;
+                            };
+                        }
+
+                        if(commandSet.isAskedToSayYesOrNo()){
+                            Scanner scan = new Scanner(System.in);
+                            String userInput = TerminalHandler.inputYesOrNo(commandSet, responseString, scan);
+                            OutputStream out = channel.getInvertedIn();
+
+                            out.write((userInput + "\\n").getBytes());
+                            out.flush();
+                        }
+
+                        logCreater.saveLog(hostNameList.get(i), responseString);
+                        if(!channel.isClosed()){
+                            channel.close();
+                        }
+
+                    }
+                    catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+                session.close();
             }
-            session.close();
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-		}
-		finally {
-			client.stop();
-		}
+            catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
 
+        client.stop();
         // Shut down the applicatoin when command is completed.
         int exitCode = SpringApplication.exit(context, () -> 0);
         System.exit(exitCode);

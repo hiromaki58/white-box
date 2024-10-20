@@ -46,6 +46,17 @@ public class CsvReader {
      * @param filePath
      * @return
      */
+    public List<String> getHostNameList(String filePath) {
+        final int hostNamePositionNum = 1;
+        final String columnTitle = "Hostname";
+        return getColumnInfoList(filePath, hostNamePositionNum, columnTitle);
+    }
+
+    /**
+     * 
+     * @param filePath
+     * @return
+     */
     public List<String> getIpAddrList(String filePath) {
         final int ipAddrPositionNum = 2;
         final String columnTitle = "IpAddress";
@@ -57,9 +68,9 @@ public class CsvReader {
      * @param filePath
      * @return
      */
-    public List<String> getHostNameList(String filePath) {
-        final int hostNamePositionNum = 1;
-        final String columnTitle = "Hostname";
-        return getColumnInfoList(filePath, hostNamePositionNum, columnTitle);
+    public List<String> getDistributionList(String filePath){
+        final int distributionPositionNum = 3;
+        final String columnTitle = "Distribution";
+        return getColumnInfoList(filePath, distributionPositionNum, columnTitle);
     }
 }

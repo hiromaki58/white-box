@@ -31,10 +31,11 @@ public class LinuxUpdatingApplication implements CommandLineRunner{
         // Set the path to the csv file
         String csvFile = "src/test/java/springframework/linuxUpdating/mockInput.csv";
         // List<String> ipAddrList = csvReader.getIpAddrList(args[0]);
-        List<String> ipAddrList = csvReader.getIpAddrList(csvFile);
         List<String> hostNameList = csvReader.getHostNameList(csvFile);
+        List<String> ipAddrList = csvReader.getIpAddrList(csvFile);
+        List<String> distributionList = csvReader.getDistributionList(csvFile);
 
-        sshAccessor.connect(ipAddrList, hostNameList);
+        sshAccessor.connect(hostNameList, ipAddrList, distributionList);
     }
 
     public static void main(String[] args) {
