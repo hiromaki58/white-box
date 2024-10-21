@@ -9,9 +9,9 @@ public class CommandList {
         List<CommandSet> commandList = new ArrayList<>();
         commandList.add(new CommandSet("hostname", true, false));
         commandList.add(new CommandSet("cat /etc/issue", true, false));
-        // commandList.add(new CommandSet("sudo apt update", false, false));
-        // commandList.add(new CommandSet("sudo apt upgrade", false, true));
-        // commandList.add(new CommandSet("ps aux | grep apache2 | grep -v grep", true, false));
+        commandList.add(new CommandSet("sudo apt update", false, false));
+        commandList.add(new CommandSet("sudo apt upgrade", false, true));
+        commandList.add(new CommandSet("ps aux | grep apache2 | grep -v grep", true, false));
 
         return commandList;
 	}
