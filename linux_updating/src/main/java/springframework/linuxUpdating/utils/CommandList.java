@@ -20,14 +20,14 @@ public class CommandList {
         List<CommandSet> commandList = new ArrayList<>();
         commandList.add(new CommandSet("hostname", true, false));
         commandList.add(new CommandSet("cat /etc/redhat-release", true, false));
-        // commandList.add(new CommandSet("ps -afw | grep apache2 | grep -v grep", false, false));
-        // commandList.add(new CommandSet("netstat -apnt | grep apache2 | grep -v grep", false, false));
-        // commandList.add(new CommandSet("yum check-update", false, false));
-        // commandList.add(new CommandSet("yum update", false, true));
+        commandList.add(new CommandSet("ps -afw | grep apache2 | grep -v grep", false, false));
+        commandList.add(new CommandSet("netstat -apnt | grep apache2 | grep -v grep", false, false));
+        commandList.add(new CommandSet("sudo yum check-update", false, false));
+        commandList.add(new CommandSet("sudo yum update", false, true));
 
-        // commandList.add(new CommandSet("ps -afw | grep apache2 | grep -v grep", false, false));
-        // commandList.add(new CommandSet("netstat -apnt | grep apache2 | grep -v grep", false, false));
-        // commandList.add(new CommandSet("yum check-update", false, false));
+        commandList.add(new CommandSet("ps -afw | grep apache2 | grep -v grep", false, false));
+        commandList.add(new CommandSet("netstat -apnt | grep apache2 | grep -v grep", false, false));
+        commandList.add(new CommandSet("yum check-update", false, false));
 
         return commandList;
     }
