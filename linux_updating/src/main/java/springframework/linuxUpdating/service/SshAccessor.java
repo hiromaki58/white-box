@@ -28,8 +28,11 @@ public class SshAccessor {
     @Value("${ssh.port}")
     private int port;
 
-    @Value("${ssh.username}")
-    private String username;
+    @Value("${ssh.ubuntuUserName}")
+    private String ubuntUserName;
+
+    @Value("${ssh.redHatUserName}")
+    private String redHatUserName;
 
     @Value("${ssh.privateKeyPath}")
     private String privateKeyPath;
@@ -50,12 +53,19 @@ public class SshAccessor {
 	}
 
 	public void connect(List<String> hostNameList, List<String> ipAddrList, List<String> distributionList) {
-		String responseString = "";
+		String responseString;
 		SshClient client = SshClient.setUpDefaultClient();
 		client.start();
 
         for(int i = 0; i < hostNameList.size(); i++){
-            try (ClientSession session = client.connect(username, ipAddrList.get(i), port).verify(10000).getSession()) {
+            String userName= "";
+            if(distributionList.get(i).equalsIgnoreCase("ubuntu")){
+                userName = ubuntUserName;
+            }
+            else {
+                userName = redHatUserName;
+            }
+            try (ClientSession session = client.connect(userName, ipAddrList.get(i), port).verify(10000).getSession()) {
                 // Read private and public keies
                 char[] passphrase = pass.toCharArray();
                 KeyPair keyPair = SshKeyCreater.loadKeyPair(privateKeyPath, publicKeyPath, passphrase);
