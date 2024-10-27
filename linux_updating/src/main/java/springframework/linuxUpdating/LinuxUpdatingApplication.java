@@ -35,7 +35,7 @@ public class LinuxUpdatingApplication implements CommandLineRunner{
 
         // This part is for checking the function in IDE
         // Set the path to the csv file
-        String csvFile = "src/test/java/springframework/linuxUpdating/mockInpu?t.csv";
+        String csvFile = "src/test/java/springframework/linuxUpdating/mockInput.csv";
         List<String> hostNameList = csvReader.getHostNameList(csvFile);
         List<String> ipAddrList = csvReader.getIpAddrList(csvFile);
         List<String> distributionList = csvReader.getDistributionList(csvFile);

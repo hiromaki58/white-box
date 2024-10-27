@@ -93,6 +93,20 @@ public class SshAccessor {
 
                         responseString = new String(responseStream.toByteArray());
 
+                        if((responseString.contains("command not found") || responseString.contains("コマンドがありません")) && commandSet.getAlternativeCommand() != null){
+                            try(ByteArrayOutputStream alternativeResponseStream = new ByteArrayOutputStream();
+                                ClientChannel alternativeChannel = session.createExecChannel(commandSet.getAlternativeCommand())){
+                                    alternativeChannel.setOut(alternativeResponseStream);
+                                    alternativeChannel.open().verify(5, TimeUnit.SECONDS);
+                                    alternativeChannel.waitFor(EnumSet.of(ClientChannelEvent.CLOSED), TimeUnit.SECONDS.toMillis(60));
+
+                                    responseString = new String(alternativeResponseStream.toByteArray());
+                            }
+                            catch(IOException e){
+                                e.getStackTrace();
+                            }
+                        }
+
                         // Show the response in the terminal and aks to keep going or not
                         if(commandSet.getIsContinuedOrNo()){
                             Scanner scan = new Scanner(System.in);

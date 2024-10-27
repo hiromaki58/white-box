@@ -2,14 +2,16 @@ package springframework.linuxupdating.model;
 
 public class CommandSet {
   private String command;
+  private String alternativeCommand;
   private boolean isContinuedOrNo;
   private boolean isAskedToSayYesOrNo;
 
   public CommandSet(){
   }
 
-  public CommandSet(String command, boolean isContinuedOrNo, boolean isAskedToSayYesOrNo){
+  public CommandSet(String command, String alternativeCommand, boolean isContinuedOrNo, boolean isAskedToSayYesOrNo){
     this.command = command;
+    this.alternativeCommand = alternativeCommand;
     this.isContinuedOrNo = isContinuedOrNo;
     this.isAskedToSayYesOrNo = isAskedToSayYesOrNo;
   }
@@ -20,6 +22,14 @@ public class CommandSet {
 
   public void setCommand(String command) {
     this.command = command;
+  }
+
+  public String getAlternativeCommand() {
+    return alternativeCommand;
+  }
+
+  public void setAlternativeCommand(String alternativeCommand) {
+    this.alternativeCommand = alternativeCommand;
   }
 
   public boolean getIsContinuedOrNo() {
@@ -43,6 +53,7 @@ public class CommandSet {
     final int prime = 31;
     int result = 1;
     result = prime * result + ((command == null) ? 0 : command.hashCode());
+    result = prime * result + ((alternativeCommand == null) ? 0 : alternativeCommand.hashCode());
     result = prime * result + (isContinuedOrNo ? 1231 : 1237);
     result = prime * result + (isAskedToSayYesOrNo ? 1231 : 1237);
     return result;
@@ -61,6 +72,11 @@ public class CommandSet {
       if (other.command != null)
         return false;
     } else if (!command.equals(other.command))
+      return false;
+    if (alternativeCommand == null) {
+      if (other.alternativeCommand != null)
+        return false;
+    } else if (!alternativeCommand.equals(other.alternativeCommand))
       return false;
     if (isContinuedOrNo != other.isContinuedOrNo)
       return false;
