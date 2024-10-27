@@ -124,6 +124,8 @@ public class SshAccessor {
                             out.flush();
                         }
 
+                        logCreater.saveLog(hostNameList.get(i), commandSet.getCommand());
+                        logCreater.saveLog(hostNameList.get(i), " ");
                         logCreater.saveLog(hostNameList.get(i), responseString);
                         if(!channel.isClosed()){
                             channel.close();
