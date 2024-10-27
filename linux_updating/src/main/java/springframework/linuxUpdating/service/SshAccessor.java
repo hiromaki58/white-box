@@ -93,8 +93,14 @@ public class SshAccessor {
         System.exit(exitCode);
 	}
 
+    /**
+     * Handle bunch of hosts
+     * @param session
+     * @param hostNameList
+     * @param distributionList
+     * @param numOfHost
+     */
     private void sendCommandList(ClientSession session, List<String> hostNameList, List<String> distributionList, int numOfHost){
-        String responseString;
         List<CommandSet> commnadList;
 
         if(distributionList.get(numOfHost).equalsIgnoreCase("Ubuntu")){
@@ -104,60 +110,64 @@ public class SshAccessor {
             commnadList = CommandList.getRedHatCommandList();
         }
 
-        // Send linux command
         for(CommandSet commandSet : commnadList){
-            try (ByteArrayOutputStream responseStream = new ByteArrayOutputStream();
-                ClientChannel channel = session.createExecChannel(commandSet.getCommand())) {
+            sendCommand(session, hostNameList, numOfHost, commandSet);
+        }
+    }
 
-                channel.setOut(responseStream);
-                channel.open().verify(5, TimeUnit.SECONDS);
-                channel.waitFor(EnumSet.of(ClientChannelEvent.CLOSED), TimeUnit.SECONDS.toMillis(60));
+    private void sendCommand(ClientSession session, List<String> hostNameList, int numOfHost, CommandSet commandSet){
+        String responseString;
+        try (ByteArrayOutputStream responseStream = new ByteArrayOutputStream();
+            ClientChannel channel = session.createExecChannel(commandSet.getCommand())) {
 
-                responseString = new String(responseStream.toByteArray());
+            channel.setOut(responseStream);
+            channel.open().verify(5, TimeUnit.SECONDS);
+            channel.waitFor(EnumSet.of(ClientChannelEvent.CLOSED), TimeUnit.SECONDS.toMillis(60));
 
-                if((responseString.contains("command not found") || responseString.contains("コマンドがありません")) && commandSet.getAlternativeCommand() != null){
-                    try(ByteArrayOutputStream alternativeResponseStream = new ByteArrayOutputStream();
-                        ClientChannel alternativeChannel = session.createExecChannel(commandSet.getAlternativeCommand())){
-                        alternativeChannel.setOut(alternativeResponseStream);
-                        alternativeChannel.open().verify(5, TimeUnit.SECONDS);
-                        alternativeChannel.waitFor(EnumSet.of(ClientChannelEvent.CLOSED), TimeUnit.SECONDS.toMillis(60));
+            responseString = new String(responseStream.toByteArray());
 
-                        responseString = new String(alternativeResponseStream.toByteArray());
-                    }
-                    catch(IOException e){
-                        e.getStackTrace();
-                    }
+            if((responseString.contains("command not found") || responseString.contains("コマンドがありません")) && commandSet.getAlternativeCommand() != null){
+                try(ByteArrayOutputStream alternativeResponseStream = new ByteArrayOutputStream();
+                    ClientChannel alternativeChannel = session.createExecChannel(commandSet.getAlternativeCommand())){
+                    alternativeChannel.setOut(alternativeResponseStream);
+                    alternativeChannel.open().verify(5, TimeUnit.SECONDS);
+                    alternativeChannel.waitFor(EnumSet.of(ClientChannelEvent.CLOSED), TimeUnit.SECONDS.toMillis(60));
+
+                    responseString = new String(alternativeResponseStream.toByteArray());
                 }
-
-                // Show the response in the terminal and aks to keep going or not
-                if(commandSet.getIsContinuedOrNo()){
-                    Scanner scan = new Scanner(System.in);
-                    if(TerminalHandler.checkOutputAndWaitForEnterKey(commandSet, responseString, scan)){
-                        break;
-                    };
+                catch(IOException e){
+                    e.getStackTrace();
                 }
-
-                if(commandSet.isAskedToSayYesOrNo()){
-                    Scanner scan = new Scanner(System.in);
-                    String userInput = TerminalHandler.inputYesOrNo(commandSet, responseString, scan);
-                    OutputStream out = channel.getInvertedIn();
-
-                    out.write((userInput + "\\n").getBytes());
-                    out.flush();
-                }
-
-                logCreater.saveLog(hostNameList.get(numOfHost), commandSet.getCommand());
-                logCreater.saveLog(hostNameList.get(numOfHost), " ");
-                logCreater.saveLog(hostNameList.get(numOfHost), responseString);
-
-                if(!channel.isClosed()){
-                    channel.close();
-                }
-
             }
-            catch (IOException e) {
-                e.printStackTrace();
+
+            // Show the response in the terminal and aks to keep going or not
+            if(commandSet.getIsContinuedOrNo()){
+                Scanner scan = new Scanner(System.in);
+                if(TerminalHandler.checkOutputAndWaitForEnterKey(commandSet, responseString, scan)){
+                    return;
+                };
             }
+
+            if(commandSet.isAskedToSayYesOrNo()){
+                Scanner scan = new Scanner(System.in);
+                String userInput = TerminalHandler.inputYesOrNo(commandSet, responseString, scan);
+                OutputStream out = channel.getInvertedIn();
+
+                out.write((userInput + "\\n").getBytes());
+                out.flush();
+            }
+
+            logCreater.saveLog(hostNameList.get(numOfHost), commandSet.getCommand());
+            logCreater.saveLog(hostNameList.get(numOfHost), " ");
+            logCreater.saveLog(hostNameList.get(numOfHost), responseString);
+
+            if(!channel.isClosed()){
+                channel.close();
+            }
+
+        }
+        catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }
