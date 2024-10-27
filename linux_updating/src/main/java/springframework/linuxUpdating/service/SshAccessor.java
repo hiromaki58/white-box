@@ -79,7 +79,7 @@ public class SshAccessor {
                 // Authorization
                 session.auth().verify(5000);
 
-                sendCommandList(session, hostNameList, distributionList, i);
+                sendCommandList(session, hostNameList.get(i), distributionList.get(i));
                 session.close();
             }
             catch (Exception e) {
@@ -100,10 +100,10 @@ public class SshAccessor {
      * @param distributionList
      * @param numOfHost
      */
-    private void sendCommandList(ClientSession session, List<String> hostNameList, List<String> distributionList, int numOfHost){
+    private void sendCommandList(ClientSession session, String hostName, String distribution){
         List<CommandSet> commnadList;
 
-        if(distributionList.get(numOfHost).equalsIgnoreCase("Ubuntu")){
+        if(distribution.equalsIgnoreCase("Ubuntu")){
             commnadList = CommandList.getUbuntuCommandList();
         }
         else{
@@ -111,11 +111,18 @@ public class SshAccessor {
         }
 
         for(CommandSet commandSet : commnadList){
-            sendCommand(session, hostNameList, numOfHost, commandSet);
+            sendCommand(session, hostName, commandSet);
         }
     }
 
-    private void sendCommand(ClientSession session, List<String> hostNameList, int numOfHost, CommandSet commandSet){
+    /**
+     * Send the commands
+     * @param session
+     * @param hostNameList
+     * @param numOfHost
+     * @param commandSet
+     */
+    private void sendCommand(ClientSession session, String hostName, CommandSet commandSet){
         String responseString;
         try (ByteArrayOutputStream responseStream = new ByteArrayOutputStream();
             ClientChannel channel = session.createExecChannel(commandSet.getCommand())) {
@@ -126,18 +133,10 @@ public class SshAccessor {
 
             responseString = new String(responseStream.toByteArray());
 
+            // In case of the commmand does not have any response
             if((responseString.contains("command not found") || responseString.contains("コマンドがありません")) && commandSet.getAlternativeCommand() != null){
-                try(ByteArrayOutputStream alternativeResponseStream = new ByteArrayOutputStream();
-                    ClientChannel alternativeChannel = session.createExecChannel(commandSet.getAlternativeCommand())){
-                    alternativeChannel.setOut(alternativeResponseStream);
-                    alternativeChannel.open().verify(5, TimeUnit.SECONDS);
-                    alternativeChannel.waitFor(EnumSet.of(ClientChannelEvent.CLOSED), TimeUnit.SECONDS.toMillis(60));
-
-                    responseString = new String(alternativeResponseStream.toByteArray());
-                }
-                catch(IOException e){
-                    e.getStackTrace();
-                }
+                sendCommand(session, hostName, commandSet);
+                return;
             }
 
             // Show the response in the terminal and aks to keep going or not
@@ -157,9 +156,9 @@ public class SshAccessor {
                 out.flush();
             }
 
-            logCreater.saveLog(hostNameList.get(numOfHost), commandSet.getCommand());
-            logCreater.saveLog(hostNameList.get(numOfHost), " ");
-            logCreater.saveLog(hostNameList.get(numOfHost), responseString);
+            logCreater.saveLog(hostName, commandSet.getCommand());
+            logCreater.saveLog(hostName, " ");
+            logCreater.saveLog(hostName, responseString);
 
             if(!channel.isClosed()){
                 channel.close();
