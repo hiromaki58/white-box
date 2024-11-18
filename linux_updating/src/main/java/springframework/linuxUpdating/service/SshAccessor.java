@@ -25,31 +25,35 @@ import springframework.linuxupdating.utils.TerminalHandler;
 
 @Service
 public class SshAccessor {
-    @Value("${ssh.port}")
     private int port;
+    private final String ubuntUserName;
+    private final String redHatUserName;
+    private final String privateKeyPath;
+    private final String publicKeyPath;
+    private final String pass;
 
-    @Value("${ssh.ubuntuUserName}")
-    private String ubuntUserName;
+    private final LogCreater logCreater;
+    private final ConfigurableApplicationContext context;
 
-    @Value("${ssh.redHatUserName}")
-    private String redHatUserName;
-
-    @Value("${ssh.privateKeyPath}")
-    private String privateKeyPath;
-
-    @Value("${ssh.publicKeyPath}")
-    private String publicKeyPath;
-
-    @Value("${ssh.pass}")
-    private String pass;
-
-    @Autowired
-    private LogCreater logCreater;
-
-    @Autowired
-    private ConfigurableApplicationContext context;
-
-	public SshAccessor() {
+	public SshAccessor(
+        @Value("${ssh.port}") int port,
+        @Value("${ssh.ubuntuUserName}") String ubuntuUserName,
+        @Value("${ssh.redHatUserName}") String redHatUserName,
+        @Value("${ssh.privateKeyPath}") String privateKeyPath,
+        @Value("${ssh.publicKeyPath}") String publicKeyPath,
+        @Value("${ssh.pass}") String pass,
+        LogCreater logCreater,
+        ConfigurableApplicationContext context
+    )
+    {
+        this.port = port;
+        this.ubuntUserName = ubuntuUserName;
+        this.redHatUserName = redHatUserName;
+        this.privateKeyPath = privateKeyPath;
+        this.publicKeyPath = publicKeyPath;
+        this.pass = pass;
+        this. logCreater = logCreater;
+        this.context = context;
 	}
 
     /**
