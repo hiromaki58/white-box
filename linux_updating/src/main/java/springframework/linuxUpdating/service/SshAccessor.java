@@ -13,6 +13,7 @@ import org.apache.sshd.client.SshClient;
 import org.apache.sshd.client.channel.ClientChannel;
 import org.apache.sshd.client.channel.ClientChannelEvent;
 import org.apache.sshd.client.session.ClientSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -33,7 +34,9 @@ public class SshAccessor {
 
     private final LogCreater logCreater;
     private final ConfigurableApplicationContext context;
+    private final TerminalHandler terminalHandler;
 
+    @Autowired
 	public SshAccessor(
         @Value("${ssh.port}") int port,
         @Value("${ssh.ubuntuUserName}") String ubuntuUserName,
@@ -42,7 +45,8 @@ public class SshAccessor {
         @Value("${ssh.publicKeyPath}") String publicKeyPath,
         @Value("${ssh.pass}") String pass,
         LogCreater logCreater,
-        ConfigurableApplicationContext context
+        ConfigurableApplicationContext context,
+        TerminalHandler terminalHandler
     )
     {
         this.port = port;
@@ -51,8 +55,9 @@ public class SshAccessor {
         this.privateKeyPath = privateKeyPath;
         this.publicKeyPath = publicKeyPath;
         this.pass = pass;
-        this. logCreater = logCreater;
+        this.logCreater = logCreater;
         this.context = context;
+        this.terminalHandler = terminalHandler;
 	}
 
     /**
@@ -145,7 +150,7 @@ public class SshAccessor {
             // Show the response in the terminal and aks to keep going or not
             if(commandSet.getIsContinuedOrNo()){
                 Scanner scan = new Scanner(System.in);
-                if(TerminalHandler.checkOutputAndWaitForEnterKey(commandSet, responseString, scan)){
+                if(terminalHandler.checkOutputAndWaitForEnterKey(commandSet, responseString, scan)){
                     return;
                 };
             }
