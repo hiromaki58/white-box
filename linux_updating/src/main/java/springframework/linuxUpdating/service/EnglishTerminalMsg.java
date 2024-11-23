@@ -7,11 +7,27 @@ import org.springframework.stereotype.Service;
 @Service
 @Profile("EN")
 public class EnglishTerminalMsg implements TerminalMsg{
-  @Value("${terminal.msg.checkOutput}")
-  private String checkOutputMsg;
+    @Value("${terminal.msg.checkOutputMsg}")
+    private String checkOutputMsg;
 
-  @Override
-  public String getCheckOutputMsg() {
-    return checkOutputMsg;
-  }
+    @Value("${terminal.msg.theCmdIsMsg}")
+    private String theCmdIsMsg;
+
+    @Value("${terminal.mgs.skipCmdMsg}")
+    private String skipCmdMsg;
+
+    @Override
+    public String getCheckOutputMsg() {
+        return checkOutputMsg;
+    }
+
+    @Override
+    public String getTheCmdIsMsg(){
+        return theCmdIsMsg;
+    }
+
+    @Override
+    public String getSkipCmdMsg() {
+        return skipCmdMsg;
+    }
 }

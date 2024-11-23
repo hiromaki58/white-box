@@ -13,7 +13,6 @@ import org.apache.sshd.client.SshClient;
 import org.apache.sshd.client.channel.ClientChannel;
 import org.apache.sshd.client.channel.ClientChannelEvent;
 import org.apache.sshd.client.session.ClientSession;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -156,7 +155,7 @@ public class SshAccessor {
 
             if(commandSet.isAskedToSayYesOrNo()){
                 Scanner scan = new Scanner(System.in);
-                String userInput = TerminalHandler.inputYesOrNo(commandSet, responseString, scan);
+                String userInput = terminalHandler.inputYesOrNo(commandSet, responseString, scan);
                 OutputStream out = channel.getInvertedIn();
 
                 out.write((userInput + "\\n").getBytes());

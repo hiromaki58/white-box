@@ -16,13 +16,13 @@ public class TerminalHandler {
 	}
 
 	public boolean checkOutputAndWaitForEnterKey(CommandSet commandSet, String responseString, Scanner scan){
-		System.out.println("The command is " + commandSet.getCommand());
+		System.out.println(terminalMsg.getTheCmdIsMsg() + commandSet.getCommand());
 		System.out.println(responseString);
 		System.out.println(terminalMsg.getCheckOutputMsg());
 
 		String userInput =  scan.nextLine();
 		if(userInput.equalsIgnoreCase("q")){
-			System.out.println("Skipping to the next command...");
+			System.out.println(terminalMsg.getSkipCmdMsg());
 			scan.close();
 			return true;
 		}
@@ -31,8 +31,8 @@ public class TerminalHandler {
 		}
 	}
 
-	public static String inputYesOrNo(CommandSet commandSet, String responseString, Scanner scan){
-		System.out.println("The command is " + commandSet.getCommand());
+	public String inputYesOrNo(CommandSet commandSet, String responseString, Scanner scan){
+		System.out.println(terminalMsg.getTheCmdIsMsg() + commandSet.getCommand());
 		System.out.println(responseString);
 
 		String input = scan.nextLine();
