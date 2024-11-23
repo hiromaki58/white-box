@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 @Service
-@Profile("english")
+@Profile("EN")
 public class EnglishTerminalMsg implements TerminalMsg{
   @Value("${terminal.msg.checkOutput}")
   private String checkOutputMsg;

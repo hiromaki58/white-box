@@ -18,7 +18,6 @@ public class TerminalHandler {
 	public boolean checkOutputAndWaitForEnterKey(CommandSet commandSet, String responseString, Scanner scan){
 		System.out.println("The command is " + commandSet.getCommand());
 		System.out.println(responseString);
-		// System.out.println("Check the output and press enter to continue, or type 'q' to skip or press enter to continue.");
 		System.out.println(terminalMsg.getCheckOutputMsg());
 
 		String userInput =  scan.nextLine();

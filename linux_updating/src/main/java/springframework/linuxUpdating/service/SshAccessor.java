@@ -36,7 +36,6 @@ public class SshAccessor {
     private final ConfigurableApplicationContext context;
     private final TerminalHandler terminalHandler;
 
-    @Autowired
 	public SshAccessor(
         @Value("${ssh.port}") int port,
         @Value("${ssh.ubuntuUserName}") String ubuntuUserName,
