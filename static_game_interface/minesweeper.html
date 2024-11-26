@@ -4,13 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Main page</title>
-    <!-- <script src="dist/main.js" type="module"></script> -->
+    <title>Mine Sweeper</title>
+    <script src="./dist/minesweeper.js" type="module"></script>
   </head>
   <body>
     <div id="container" style="position: relative;"></div>
     <div style="font-size: 30px;">
-      Main page
+      <input type="radio" id="pick" name="action" checked />
+      <label for="pick">⛏</label> /
+      <input type="radio" id="flag" name="action" />
+      <label for="flag">🚩</label> /
+      <span id="timer"></span>
     </div>
   </body>
 </html>
