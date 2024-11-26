@@ -2,15 +2,27 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Main page</title>
-    <!-- <script src="dist/main.js" type="module"></script> -->
+    <title>Game list</title>
+    <link rel="stylesheet" href="./src/common/css/base-pc.css" media="all and (min-width: 769px)">
+    <link rel="stylesheet" href="./src/common/css/base-sp.css" media="all and (max-width: 768px)">
+    <link rel="stylesheet" href="./customized/css/customized-pc.css" media="all and (min-width: 769px)">
+    <link rel="stylesheet" href="./customized/css/customized-sp.css" media="all and (max-width: 768px)">
+    <script type="text/javascript" src="./src/index.ts"></script>
   </head>
   <body>
-    <div id="container" style="position: relative;"></div>
-    <div style="font-size: 30px;">
-      Main page
-    </div>
+    <div class="body-in">
+      <header class="header">
+        <h1><a href="#"><img class="logo-top" src="./customized/img/logo_top_02.svg" alt="ロゴ"></a></h1>
+      </header><!-- header -->
+      <div class="gameList" id="root"></div><!-- chatlp -->
+      <script>
+        <div style="font-size: 30px;">
+          Main page
+        </div>
+        // ef.initChatLp('3');
+      </script>
+    </div><!-- body-in -->
   </body>
 </html>

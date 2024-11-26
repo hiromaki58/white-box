@@ -1,0 +1,571 @@
+@charset "UTF-8";
+/* ==========================================================
+ html5 elements
+========================================================== */
+.chatlp article, .chatlp aside, .chatlp figure, .chatlp figcaption, .chatlp footer, .chatlp header, .chatlp nav, .chatlp section
+{ display: block;}
+/* ==========================================================
+ reseting
+========================================================== */
+.chatlp {
+  line-height: 1.6;
+  color: #000000;
+  font-size: 13px;
+  -webkit-text-size-adjust: 100%;
+}
+.chatlp, .chatlp input, .chatlp textarea, .chatlp select, .chatlp button {
+  font-family: "Hiragino Sans", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", sans-serif;
+}
+.chatlp, .chatlp div, .chatlp pre, .chatlp p, .chatlp blockquote,
+.chatlp dl, .chatlp dt, .chatlp dd, .chatlp ul, .chatlp ol, .chatlp li,
+.chatlp h1, .chatlp h2, .chatlp h3, .chatlp h4, .chatlp h5, .chatlp h6,
+.chatlp form, .chatlp fieldset, .chatlp th, .chatlp td, .chatlp button, .chatlp figure, .chatlp figcaption
+{ margin: 0; padding: 0;}
+.chatlp input, .chatlp textarea
+{ margin: 0; font-size: 100%;}
+.chatlp textarea
+{ resize: none;}
+.chatlp button
+{ border: none; overflow: visible; background: none; vertical-align: top;  font-size: 100%; color: inherit; cursor: pointer;}
+.chatlp label
+{ cursor: pointer;}
+.chatlp table
+{ border-collapse: collapse; border-spacing: 0; font-size: 100%;}
+.chatlp fieldset, .chatlp img
+{ border: 0;}
+.chatlp img
+{ height: auto; vertical-align: top;}
+.chatlp address, .chatlp caption, .chatlp code, .chatlp em, .chatlp th
+{ font-style: normal; font-weight: normal;}
+.chatlp ol, .chatlp ul
+{ list-style: none;}
+.chatlp caption, .chatlp th
+{ text-align: left;}
+.chatlp h1, .chatlp h2, .chatlp h3, .chatlp h4, .chatlp h5, .chatlp h6, .chatlp strong, .chatlp em
+{ font-size: 100%; font-weight: normal;}
+.chatlp sup, .chatlp sub
+{ font-size: 63%;}
+.chatlp sup
+{ vertical-align: top;}
+.chatlp sub
+{ vertical-align: baseline;}
+.chatlp
+{ box-sizing: border-box; -webkit-box-sizing: border-box;}
+/* ==========================================================
+ base Link
+========================================================== */
+.chatlp a {
+  color: #000;
+  text-decoration: none;
+}
+.chatlp a:visited {
+  color: #000;
+  text-decoration: none;
+}
+.chatlp a:hover,
+.chatlp a:active,
+.chatlp a:focus { text-decoration: none;}
+/* ==========================================================
+ clearfix
+========================================================== */
+.chatlp .clearfix:before, .chatlp .clearfix:after,
+.chatlp .contents:before, .chatlp .contents:after
+{
+  content: "";
+  display: table;
+}
+.chatlp .clearfix:after,
+.chatlp .contents:after
+{
+  clear: both;
+}
+/* ==========================================================
+ layout
+========================================================== */
+.chatlp html { overflow-y: scroll;}
+.chatlp { text-align: center; }
+/* ==========================================================
+ wrapper
+========================================================== */
+.chatlp {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+}
+/* ==========================================================
+ contents
+========================================================== */
+.chatlp .contents {
+  margin: 0 0 0 1.8%;
+  padding: 15.46px 0 38.5px 0;
+  text-align: left;
+}
+.chatlp .contents-scrolled {
+  position: relative;
+  margin: 0 0 0 1.8%;
+  padding: 15.46px 0 38.5px 0;
+  text-align: left;
+}
+.chatlp .iFrame {
+  width: 375px;
+  height: 100%;
+  border: none;
+}
+/* ==========================================================
+ section
+========================================================== */
+.chatlp .sec-cmn {
+  margin-bottom: 25.1px;
+}
+.chatlp .sec-send {
+  margin-bottom: 26.5px;
+}
+.chatlp section:last-of-type {
+  margin-bottom: 0;
+}
+.chatlp .sec-bottom {
+  height: 78.49px;
+}
+/* ==========================================================
+ text
+========================================================== */
+.chatlp .txt-box-top {
+  width: 100%;
+  text-align: left;
+}
+.chatlp .startChatting {
+  margin-bottom: 11px;
+  padding: 14px 12px;
+  border: 1px solid #EEEEEE;
+  border-radius: 24px;
+  background: #FAFAFA;
+}
+.chatlp .txt-dev {
+  width: 100%;
+  overflow: hidden;
+}
+.chatlp .txt-msg {
+  display: inline-block;
+  position: relative;
+  margin: 4.9% 6.4% 3.2% 4.6%;
+  padding: 3.5% 5.2% 3.5% 5.2%;
+  border: 1px solid #EEEEEE;
+  border-radius: 10px;
+  background: #FAFAFA;
+  font-size: 15px;
+}
+.chatlp .txt-msg-reg {
+  display: inline-block;
+  width: 87.44%;
+  height: 83px;
+  margin: 17px 11px 22px 16px;
+  padding: 12px 18px;
+  border: 1px solid #EEEEEE;
+  border-radius: 10px;
+  background: #FAFAFA;
+  font-size: 15px;
+}
+.chatlp .txt-msg-error {
+  color: #FF6347;
+}
+/* ==========================================================
+ list
+========================================================== */
+.chatlp .list-cmn {
+  padding: 19px 26.5px 0 0;
+  font-size: 16px;
+  color: #818181;
+}
+.chatlp .list-cmn li {
+  display: inline-block;
+  margin-left: 28px;
+}
+.chatlp .list-cmn li a {
+  color: #818181;
+}
+/* ==========================================================
+ button
+========================================================== */
+.chatlp .btn-dev {
+  width: 76%;
+  margin: 0 0 0 15.31%;
+  padding: 15px 3.62% 5px 3.62%;
+  border-radius: 15px;
+  background-color: #DEFDFB;
+}
+.chatlp .btn-img-dev {
+  width: 81.5%;
+  margin: 0 0 0 9.31%;
+  padding: 15px 3.62% 5px 3.62%;
+  border-radius: 15px;
+  background-color: #DEFDFB;
+}
+.chatlp .btn-cmn {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 6px 1em;
+  border-radius: 24px;
+  background: #50A599;
+  color: #FFFFFF;
+  font-family: "Hiragino Kaku Gothic Std", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+}
+.chatlp .btn-outbound {
+  width: 90.06%;
+  height: 35px;
+  margin-bottom: 10px;
+  border-radius: 24px;
+  background: #50A599;
+  color: #FFFFFF;
+  font-family: "Hiragino Kaku Gothic Std", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+}
+.chatlp .btn-clicked {
+  background: #6FD7C7;
+  cursor: default;
+}
+.chatlp .btn-disable {
+  cursor: default;
+}
+.chatlp .btn-cmn-pagetop {
+  text-align: right;
+}
+.chatlp .btn-sending {
+  display: inline-flex;
+  background: #CCCCCC;
+  cursor: default;
+}
+.chatlp .btn-sent {
+  background: #6FD7C7;
+  cursor: default;
+}
+.chatlp .btn-img-wrap {
+  display: flex;
+  width: 100%;
+}
+.chatlp .btn-img {
+  display: flex;
+  flex: 1;
+  padding-right: 1%;
+}
+.chatlp .btn-img-clicked {
+  background: #6FD7C7;
+}
+.chatlp .btn-img:first-child {
+  padding-left: 1%;
+}
+.chatlp .btn-img-in {
+  display: flex;
+  flex: 1;
+}
+/* ==========================================================
+ icon
+========================================================== */
+.chatlp .ico-cmn {
+  position: relative;
+  z-index: 9998;
+  float: left;
+  width: 40px;
+  margin-right: -50px;
+}
+.chatlp .ico-cmn img{
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #FFF;
+}
+/* ==========================================================
+ image
+========================================================== */
+.chatlp .img-dev {
+  display: flex;
+  height: 280px;
+  margin: 0 1.39% 25.1px 4.6%;
+  overflow-x: scroll;
+}
+.chatlp .img-dev-single {
+  display: flex;
+  margin: 0 1.39% 25.1px 4.6%;
+  overflow-x: hidden;
+}
+.chatlp .img-cmn {
+  flex-shrink: 0;
+  margin: 0 7px 0 0;
+  border-radius: 24px;
+  background: #FFF;
+}
+.chatlp .img-single {
+  flex-shrink: 0;
+  max-width: 100%;
+  max-height: 280px;
+  border-radius: 24px;
+  background: #FFF;
+}
+.chatlp .img-textarea {
+  width: 19.5px;
+  height: 42.23px;
+  margin: 54px 0 0 7px;
+}
+.chatlp .img-textarea::placeholder {
+  font-size: 10px;
+}
+/* ==========================================================
+ send
+========================================================== */
+.chatlp .send-msg-dev {
+  display: inline-block;
+  width: 61.71%;
+  height: 21px;
+  margin: 3.34% 0 0 19.33%;
+  border: 1px solid #707070;
+  border-radius: 12px;
+  background-color: #818181;
+}
+.chatlp .send-msg-box {
+  margin: -2.2px 0 0 7.5px;
+  background: url(../img/ico_reg_01.svg) no-repeat;
+  background-position: 136px 7.8px;
+  color: #FFFFFF;
+  font-family: "Hiragino Kaku Gothic Std";
+  font-weight: 300;
+}
+.chatlp .send-btn-dev {
+  margin-left: 32.57px;
+}
+/* ==========================================================
+ form
+========================================================== */
+/* base Form
+---------------------------------------------------------- */
+.chatlp .pre-box-form {
+  display: flex;
+  position: absolute;
+  right: -0.27%;
+  bottom: 0;
+  width: 101.8%;
+  height: 117px;
+  padding: 3.53% 2.58% 3.53% 3.8%;
+  background: #F2F2F2;
+}
+.chatlp .post-box-form {
+  display: none;
+}
+/* .chatlp .post-box-form {
+  display: flex;
+  position: relative;
+  right: 1.8%;
+  width: 101.8%;
+  height: 117px;
+  padding: 13px 9.5px 13px 14px;
+  background: #F2F2F2;
+  pointer-events: none;
+} */
+.chatlp .pre-box-input {
+  display: none;
+}
+.chatlp .post-box-input {
+  width: 76%;
+  margin: 0 0 0 15.31%;
+  padding: 10px 3.62% 10px 3.62%;
+  border-radius: 15px;
+  background-color: #DEFDFB;
+  color: #16A4CE;
+  font-size: 15px;
+  font-family: "Hiragino Kaku Gothic Std";
+  font-weight: 300;
+}
+.chatlp textarea {
+  width: 100%;
+  padding: 8px;
+  border-radius: 8px;
+  font-size: 15px;
+}
+/* ==========================================================
+ animation
+========================================================== */
+/* showing
+---------------------------------------------------------- */
+.chatlp .mod-show-ani {
+  display: inline-block;
+  position: relative;
+  width: 5px;
+  height: 5px;
+  margin: 15px 0 0 43.45%;
+  border-radius: 5px;
+  background-color: #50A599;
+  color: #50A599;
+  animation: showDotFlashing 1s infinite linear alternate;
+  animation-delay: .5s;
+}
+.chatlp .mod-show-ani::before, .chatlp .mod-show-ani::after {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  top: 0;
+}
+.chatlp .mod-show-ani::before {
+  left: -8px;
+  width: 5px;
+  height: 5px;
+  border-radius: 5px;
+  background-color: #50A599;
+  color: #50A599;
+  animation: showDotFlashing 1s infinite alternate;
+  animation-delay: 0s;
+}
+.chatlp .mod-show-ani::after {
+  left: 8px;
+  width: 5px;
+  height: 5px;
+  border-radius: 5px;
+  background-color: #50A599;
+  color: #50A599;
+  animation: showDotFlashing 1s infinite alternate;
+  animation-delay: 1s;
+}
+@keyframes showDotFlashing {
+  0% {
+    background-color: #50A599;
+  }
+  50%,
+  100% {
+    background-color: #a8d2cc;
+  }
+}
+/* sending
+---------------------------------------------------------- */
+.chatlp .mod-send-msg {
+  display:inline-block;
+  margin: 6.2px 0 0 36.88%;
+}
+.chatlp .mod-send-ani {
+  display: inline-block;
+  position: relative;
+  width: 5px;
+  height: 5px;
+  margin: 14.3px 0 0 5.45%;
+  border-radius: 5px;
+  background-color: #e6e6e6;
+  color: #e6e6e6;
+  animation: dotFlashing 1s infinite linear alternate;
+  animation-delay: .5s;
+}
+.chatlp .mod-send-ani::before, .chatlp .mod-send-ani::after {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  top: 0;
+}
+.chatlp .mod-send-ani::before {
+  left: -8px;
+  width: 5px;
+  height: 5px;
+  border-radius: 5px;
+  background-color: #e6e6e6;
+  color: #e6e6e6;
+  animation: dotFlashing 1s infinite alternate;
+  animation-delay: 0s;
+}
+.chatlp .mod-send-ani::after {
+  left: 8px;
+  width: 5px;
+  height: 5px;
+  border-radius: 5px;
+  background-color: #e6e6e6;
+  color: #e6e6e6;
+  animation: dotFlashing 1s infinite alternate;
+  animation-delay: 1s;
+}
+@keyframes dotFlashing {
+  0% {
+    background-color: #e6e6e6;
+  }
+  50%,
+  100% {
+    background-color: #FFFFFF;
+  }
+}
+/* ==========================================================
+ is
+========================================================== */
+/* opacity hover
+---------------------------------------------------------- */
+.chatlp .is-opacity
+{
+  opacity: 1;
+}
+.chatlp .is-opacity:hover
+{
+  -ms-filter: 'alpha( opacity=70)';
+  filter: alpha( opacity=70);
+  opacity: 0.7;
+}
+/* css animation
+---------------------------------------------------------- */
+.chatlp .is-animate
+{
+  -webkit-transition: all 0.2s ease 0s;
+  transition: all 0.2s ease 0s;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+/* ==========================================================
+ style
+========================================================== */
+.chatlp .s-fw-n     { font-weight: normal;}
+.chatlp .s-fw-b     { font-weight: bold;}
+.chatlp .s-ta-l     { text-align: left !important;}
+.chatlp .s-ta-c     { text-align: center !important;}
+.chatlp .s-ta-r     { text-align: right !important;}
+.chatlp .s-va-t     { vertical-align: top !important;}
+.chatlp .s-va-m     { vertical-align: middle !important;}
+.chatlp .s-va-b     { vertical-align: bottom !important;}
+.chatlp .s-ov-h     { overflow: hidden;}
+.chatlp .s-clear    { clear: both;}
+.chatlp .s-hide     { display: none;}
+.chatlp .s-txt-hide { text-indent: 100%; white-space: nowrap; overflow: hidden;}
+.chatlp .s-bg-n     { background: none !important;}
+.chatlp .s-mt-00    { margin-top: 0 !important;}
+.chatlp .s-mb-00    { margin-bottom: 0 !important;}
+.chatlp .s-ml-00    { margin-left: 0 !important;}
+.chatlp .s-mr-00    { margin-right: 0 !important;}
+/* ==========================================================
+ rwd switch
+========================================================== */
+/* pc
+---------------------------------------------------------- */
+.chatlp .only-pc { display: block !important; }
+.chatlp .only-tb,
+.chatlp .only-sp,
+.chatlp .no-pc { display: none !important;}
+/* tb
+---------------------------------------------------------- */
+@media screen and (max-width: 1024px) {
+  .chatlp .only-pc,
+  .chatlp .no-tb    { display: none !important;}
+  .chatlp .only-tb,
+  .chatlp .no-pc    { display: block !important;}
+  .chatlp img.only-tb,
+  .chatlp img.no-pc { display: inline-block !important;}
+}
+/* sp
+---------------------------------------------------------- */
+@media screen and (max-width: 768px) {
+  .chatlp .only-pc,
+  .chatlp .no-sp,
+  .chatlp .only-tb,
+  .chatlp img.only-tb  { display: none !important;}
+  .chatlp .only-sp,
+  .chatlp .no-pc,
+  .chatlp .no-tb     { display: block !important;}
+  .chatlp img.only-sp,
+  .chatlp img.no-pc,
+  .chatlp img.no-tb  { display: inline-block !important;}
+}
+/* ==========================================================
+ tool
+========================================================== */
+.chatlp .atode { padding: 10px; border: 2px solid #8c0000; background-color: #ff4d4d; color: #fff; font-size: 30px; text-align: center;}
