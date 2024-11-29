@@ -1,28 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Game list</title>
-    <link rel="stylesheet" href="./src/common/css/base-pc.css" media="all and (min-width: 769px)">
-    <link rel="stylesheet" href="./src/common/css/base-sp.css" media="all and (max-width: 768px)">
-    <link rel="stylesheet" href="./customized/css/customized-pc.css" media="all and (min-width: 769px)">
-    <link rel="stylesheet" href="./customized/css/customized-sp.css" media="all and (max-width: 768px)">
-    <script type="text/javascript" src="./src/index.ts"></script>
-  </head>
-  <body>
-    <div class="body-in">
-      <header class="header">
-        <h1><a href="#"><img class="logo-top" src="./customized/img/logo_top_02.svg" alt="ロゴ"></a></h1>
-      </header><!-- header -->
-      <div class="gameList" id="root"></div><!-- chatlp -->
-      <script>
-        <div style="font-size: 30px;">
-          Main page
-        </div>
-        // ef.initChatLp('3');
-      </script>
-    </div><!-- body-in -->
-  </body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Game list</title>
+        <link rel="stylesheet" href="./src/common/css/base-pc.css" media="all and (min-width: 769px)">
+        <link rel="stylesheet" href="./src/common/css/base-sp.css" media="all and (max-width: 768px)">
+        <link rel="stylesheet" href="./customized/css/customized-pc.css" media="all and (min-width: 769px)">
+        <link rel="stylesheet" href="./customized/css/customized-sp.css" media="all and (max-width: 768px)">
+        <script type="text/javascript" src="./src/index.ts"></script>
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="wrapper">
+                <header class="header">
+                    <div class="header-in only-sp">
+                        <section>
+                            <h1 class="header-logo logo-company"><!-- Wealth Dynamicsのロゴ -->
+                                <a href=""><img src="/wdseminar/common/img/logo_institution_02.png" alt="Wealth Dynamics https://jwda.org/"></a></h1><!-- /header-logo-->
+                            <nav class="nav-global"><!-- トップのナヴィゲーションバー -->
+                                <ul>
+                                    <li><a href="#"><span class="nav-global-in-first">Login</span></a></li>
+                                </ul>
+                            </nav><!-- /nav-global -->
+                        </section>
+                    </div><!-- /header-in -->
+                    <div class="header-in only-pc clearfix">
+                        <section>
+                            <h1 class="header-logo logo-company"><!-- Wealth Dynamicsのロゴ -->
+                                <a href=""><img src="/wdseminar/common/img/logo_institution_01.jpg" alt="Wealth Dynamics https://jwda.org/"></a></h1><!-- /header-logo-->
+                            <nav class="nav-global"><!-- トップのナヴィゲーションバー -->
+                                <ul>
+                                    <li><a href="#"><span class="nav-global-in-first">Login</span></a></li>
+                                </ul>
+                            </nav><!-- /nav-global -->
+                        </section>
+                    </div><!-- /header-in only-pc-->
+                </header>
+            <article class="contents">
+                <div class="area-game-list">
+                    <div class="sec-game-list-wrap">
+                        <section>
+                            <div class="sec-game-list-in" id="number_list">
+                                <ul class="box-game-list-wrap"><!-- game list -->
+                                    <li class="mod-game-list-wrap"><!-- game #01 -->
+                                        <a href="#">
+                                            <div class="img-game" style="background-image: url(/wdseminar/img/wdseminar/img_recommendation_01.jpg)" ></div>
+                                        </a>
+                                        <div class="date-game-list">12月12日(土) 10：00</div><!-- game title -->
+                                        <div class="mod-game-list-detail">
+                                            <section>
+                                                <div class="btn-game-list-wrap">
+                                                    <a href="#" class="btn-game-list-02">
+                                                        <span class="btn-game-list-detail">play</span>
+                                                    </a>
+                                                </div><!-- /btn-game-list-wrap -->
+                                            </section>
+                                        </div><!-- /mod-game-list-detail -->
+                                    </li><!-- /mod-game-list-wrap -->
+                                </ul><!-- /box-game-list-warp -->
+                            </div><!-- /sec-game-list-in -->
+                        </section>
+                    </div><!-- /sec-game-list-wrap -->
+                </div><!-- /area-game-list -->
+            </article><!-- /contents -->
+        </div><!-- /wrapper -->
+    </body>
+    <body>
+        <div class="body-in">
+        <header class="header">
+            <h1><a href="#"><img class="logo-top" src="./customized/img/logo_top_02.svg" alt="ロゴ"></a></h1>
+        </header><!-- header -->
+        <div class="gameList" id="root"></div><!-- chatlp -->
+        <script>
+            <div style="font-size: 30px;">
+            Main page
+            </div>
+            // ef.initChatLp('3');
+        </script>
+        </div><!-- body-in -->
+    </body>
 </html>
