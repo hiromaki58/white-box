@@ -1,0 +1,431 @@
+@charset "UTF-8";
+/* ==========================================================
+html5 elements
+========================================================== */
+article, aside, figure, figcaption, footer, header, nav, section
+{ display: block;}
+/* ==========================================================
+reseting
+========================================================== */
+body {
+  line-height: 1.6;
+  color: #333;
+  font-size: 18px;
+  -webkit-text-size-adjust: 100%;
+  /*overflow: hidden;*/
+}
+body, input, textarea, select, button {
+  font-family: "M PLUS 1p", "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", sans-serif;
+  /* 明朝フォント
+  font-family: "ヒラギノ明朝 Pro", "Hiragino Mincho Pro", "游明朝体", "Yu Mincho", YuMincho, serif;*/
+}
+body, div, pre, p, blockquote, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, form, fieldset, th, td, button, figure, figcaption
+{ margin: 0; padding: 0;}
+input, textarea
+{ margin: 0; font-size: 100%;}
+textarea
+{ resize: none;}
+button
+{ border: none; overflow: visible; background: none; vertical-align: top;  font-size: 100%; color: inherit; cursor: pointer;}
+label
+{ cursor: pointer;}
+table
+{ border-collapse: collapse; border-spacing: 0; font-size: 100%;}
+fieldset, img
+{ border: 0;}
+img
+{ height: auto; vertical-align: top;}
+address, caption, code, em, th
+{ font-style: normal; font-weight: normal;}
+ol, ul
+{ list-style: none;}
+caption, th
+{ text-align: left;}
+h1, h2, h3, h4, h5, h6, strong, em
+{ font-size: 100%; font-weight: normal;}
+sup, sub
+{ font-size: 63%;}
+sup
+{ vertical-align: top;}
+sub
+{ vertical-align: baseline;}
+*
+{ box-sizing: border-box; -webkit-box-sizing: border-box;}
+/* ==========================================================
+Zoom 処理
+========================================================== */
+body:not(iframe) {
+  zoom: 0.75;
+  -moz-transform: scale(0.75);
+}
+/*
+  transform: scale(1);
+  -moz-transform: scale(1);
+  -webkit-transform: scale(1);
+}
+@media only screen and (min-width: 1240px) {
+  body:not(iframe) {
+    transform: scale(0.75);
+    -moz-transform: scale(0.75);
+    -webkit-transform: scale(0.75);
+  }
+}*/
+iframe {
+width: 470px !important;
+bottom : 11px !important;
+zoom: 1.3;
+}
+/* ==========================================================
+base Link
+========================================================== */
+a {
+  color: #009ECE;
+  text-decoration: none;
+}
+a:focus, input:focus {
+  outline: 0;
+}
+a:hover,
+a:active {
+  color: #009ECE;
+  text-decoration: none;
+  opacity: .7;
+}
+/* ==========================================================
+clearfix
+========================================================== */
+.clearfix:before, .clearfix:after,
+.contents:before, .contents:after
+{
+  content: "";
+  display: table;
+}
+.clearfix:after,
+.contents:after
+{
+  clear: both;
+}
+/* ==========================================================
+layout
+========================================================== */
+/*html { overflow-y: scroll;}*/
+body {
+  width: 100%;
+}
+/* ==========================================================
+wrapper
+========================================================== */
+.wrapper {
+  background: #fff;
+  width: 100%;
+}
+/* ==========================================================
+header
+========================================================== */
+.header {
+  background: #162F50;
+  width: 100%;
+  height: 80px;
+}
+.header-in {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 0 0 15px;
+  text-align: left;
+}
+.header-logo {
+  width: 228.26px;
+  float: left;
+}
+.header-logo a img {
+  width: 228.26px;
+  margin: 2px 0;
+}
+/* ==========================================================
+nav-global
+========================================================== */
+.nav-global {
+  margin: 10px;
+  display: block;
+  float: right;
+}
+.nav-global ul {
+  position: static;
+  top: auto;
+  left: auto;
+  display: inline;
+  width: auto;
+  height: auto;
+  background: transparent;
+  margin: 0;
+}
+.nav-global ul li {
+  width: auto;
+  padding: 0;
+  margin: 12px 0 0 0;
+  display: inline-block;
+  letter-spacing: 0em;
+}
+.nav-global ul li a {
+  display: block;
+  color: #4d4d4d;
+  margin-left: auto;
+  line-height: normal;
+  font-size: 18px;
+  font-weight: bold;
+}
+.nav-global ul li:nth-child(1) a {
+  width: 120px;
+  margin: 0 57px 0 0;
+}
+.nav-global ul li a span {
+  letter-spacing: 0em;
+  font-size: 10px;
+  color: #fff;
+}
+/* ==========================================================
+contents
+========================================================== */
+.contents {
+  width: 1240px;
+  margin: 0 auto;
+}
+.sp-none {
+  display: inline;
+}
+.pc-none {
+  display: none;
+}
+.event-contents-left {
+  width: 804px;
+  float: left;
+}
+/* ==========================================================
+footer
+========================================================== */
+.footer {
+  width: 100%;
+}
+.footer-in {
+  margin: 0 auto;
+  text-align: left;
+}
+.btn-cmn-pagetop {
+  background: #30aabc;
+  width: 120px;
+  height: 46px;
+  padding: 15px 0 0 0;
+  position: fixed;
+  cursor: pointer;
+  right: 5px;
+  bottom: 25px;
+  text-align: center;
+  border-radius: 25px;
+}
+.btn-cmn-pagetop a {
+  color: #163438;
+}
+.footer-utility {
+  background: #1a1a1a;
+  width: 100%;
+  padding: 50px 0 30px 0;
+}
+.footer-utility-in {
+  display: flex;
+  width: 1215px;
+  margin: 0 auto;
+  padding: 0 0 0 50px;
+  font-size: 14px;
+  color: #fff;
+}
+.footer-logo {
+  display: inline-block;
+  width: auto;
+  margin: 0 30px 0 0;
+  text-align: center;
+}
+.footer-section {
+  text-align: left;
+  width: 100%;
+  margin: auto;
+  text-align: center;
+}
+.footer-logo-in {
+  width: 229px;;
+  max-width: 229px;
+}
+.sec-footer-info {
+  width: 275px;
+  margin: 0 20px 0 0;
+  font-size: 14px;;
+}
+.box-info-wrap {
+  margin: 0 0 10px 0;
+}
+.box-phone-wrap {
+  margin: 0 0 10px 0;
+}
+.box-mail-wrap {
+  margin: 0 0 30px 0;
+}
+.footer-regulation ul li {
+  background: url(/educational_institution/common/img/pc/ico_arrow_01.png) left center no-repeat;
+  margin: 0 0 1px 0;
+  padding: 0 0 1px 10px;
+  border-bottom: 1px solid #222;
+}
+.footer-regulation ul li a {
+  color: #777;
+  font-size: 14px;
+}
+.footer-related-site {
+  width: 275px;
+  margin: 0 20px 0 0;
+}
+.footer-related-site ul li {
+  background: url(/educational_institution/common/img/pc/ico_arrow_01.png) left center no-repeat;
+  margin: 0 0 1px 0;
+  padding: 0 0 1px 10px;
+  border-bottom: 1px solid #222;
+}
+.footer-related-site ul li a {
+  font-size: 14px;
+  color: #777;
+  line-height: normal;
+}
+.footer-sns {
+  width: 80%;
+  font-size: 14px;
+  margin: 0;
+}
+.footer-sns ul li {
+  background: url(/educational_institution/common/img/pc/ico_arrow_01.png) left center no-repeat;
+  margin: 0 0 1px 0;
+  padding: 0 0 1px 10px;
+  border-bottom: 1px solid #222;
+}
+.footer-sns ul li a {
+  font-size: 14px;
+  color: #777;
+  line-height: normal;
+}
+.footer-copyright {
+  background: #030000;
+  height: 86px;
+  padding: 30px 0;
+  text-align: center;
+  font-size: 14px;
+  color: #fff;
+}
+/* ==========================================================
+area
+========================================================== */
+.area-game-list {
+  margin: 0 0 110px 0;
+}
+/* ==========================================================
+section
+========================================================== */
+.sec-game-list {
+  margin: 0 0 55px 0;
+  padding: 0 0 34px 0;
+  border-bottom: 2px solid #ececec;
+}
+.mod-game-list-wrap {
+  width: 94%;
+  max-width: 390px;
+  height: 394px;
+  display: inline-block;
+  position: relative;
+  letter-spacing: 0em;
+  box-shadow:0px 0px 10px rgba(0, 0, 0, 0.16);
+  border-radius: 6px;
+  margin: 0 9.25px 20px;
+}
+@media only screen and (min-width: 796px) {
+.mod-game-list-wrap:not(:nth-child(3n)) {
+    margin: 0 9.25px 0 0;
+  }
+}
+@media only screen and (min-width: 1201px) {
+  .mod-game-list-wrap:not(:nth-child(3n)) {
+    margin: 0 9.25px 0 0;
+  }
+}
+.img-game {
+  width: 100%;
+  max-width: 390px;
+  height: 160px;
+  border-radius: 6px 6px 0 0;
+  background-position:center;
+  background-size:cover;
+}
+_:lang(x)+_:-webkit-full-screen-document,
+.img-game {
+  width: 100%;
+  max-width: 390px;
+  height: 160px;
+  border-radius: 6px 6px 0 0;
+  background-position:center;
+  background-size:cover;
+}
+.date-game-list {
+  position: absolute;
+  background:#162F50;
+  width: 224px;
+  height: 37px;
+  top: 140px;
+  right: 0;
+  text-align: center;
+  z-index: 5;
+  line-height: 2;
+  font-size: 18px;
+  color: #fff;
+}
+.date-game-list::before {
+  width: 0;
+  height: 0;
+  display: block;
+  position: absolute;
+  left: -11px;
+  top: 0;
+  content: "";
+  border-style: solid;
+  border-width: 37px 0 0 11px;
+  border-color: #162F50 transparent transparent transparent;
+}
+.txt-game-list-instructor {
+  background: url(/educational_institution/common/img/img_instructor_02.svg) left center no-repeat;
+  background-size: 13px 16px;
+  width: 90%;
+  max-width: 330px;
+  margin: 0 0 10px 26px;
+  padding: 0 0 0 19px;
+  text-align: left;
+  font-size: 14px;
+  color: #808080;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+}
+.btn-game-list-wrap {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+.btn-game-list-02 {
+  background:#162f50;
+  width: 151px;
+  height: 38px;
+  padding: 7px 0 0 0;
+  display: block;
+  text-align: center;
+  border-radius: 6px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.16);
+}
+.btn-game-list-detail {
+  display: block;
+  line-height: 1.8;
+  letter-spacing: .2em;
+}
