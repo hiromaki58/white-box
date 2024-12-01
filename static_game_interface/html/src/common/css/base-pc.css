@@ -64,7 +64,7 @@ body:not(iframe) {
   -moz-transform: scale(1);
   -webkit-transform: scale(1);
 }
-@media only screen and (min-width: 1240px) {
+@media only screen and (min-width: 1201px) {
   body:not(iframe) {
     transform: scale(0.75);
     -moz-transform: scale(0.75);
@@ -128,7 +128,7 @@ header
   width: 100%;
   height: 60px;
 }
-@media only screen and (min-width: 1240px) {
+@media only screen and (min-width: 1201px) {
   .header {
     height: 80px;
   }
@@ -139,7 +139,7 @@ header
   padding: 0 0 0 10px;
   text-align: left;
 }
-@media only screen and (min-width: 1240px) {
+@media only screen and (min-width: 1201px) {
   .header-in {
     padding: 0 0 0 15px;
   }
@@ -152,7 +152,7 @@ header
   width: 152.17px;
   margin: 2px 0;
 }
-@media only screen and (min-width: 1240px) {
+@media only screen and (min-width: 1201px) {
   .header-logo a img {
     width: 228.26px;
   }
@@ -193,7 +193,7 @@ nav-global
   font-size: 18px;
   font-weight: bold;
 }
-@media only screen and (min-width: 1240px) {
+@media only screen and (min-width: 1201px) {
   .nav-global ul {
     position: static;
     top: auto;
@@ -239,7 +239,6 @@ nav-global
   }
   .nav-global ul li a span {
     letter-spacing: 0em;
-    font-size: 10px;
     color: #fff;
   }
 }
@@ -250,9 +249,9 @@ contents
   width: 100%;
   margin: 0;
 }
-@media only screen and (min-width: 1240px) {
+@media only screen and (min-width: 1201px) {
   .contents {
-    width: 1240px;
+    width: 1201px;
     margin: 0 auto;
   }
 }
@@ -265,7 +264,7 @@ contents
 .pc-none {
   display: inline;
 }
-@media only screen and (min-width: 1240px) {
+@media only screen and (min-width: 1201px) {
   .sp-none {
     display: inline;
   }
@@ -314,7 +313,7 @@ footer
   font-size: 14px;
   color: #fff;
 }
-@media only screen and (min-width: 1240px) {
+@media only screen and (min-width: 1201px) {
   .footer-utility-in {
     width: 1215px;
     padding: 0 0 0 50px;
@@ -327,7 +326,7 @@ footer
   margin: 20px auto 60px;
   text-align: center;
 }
-@media only screen and (min-width: 1240px) {
+@media only screen and (min-width: 1201px) {
   .footer-logo {
     width: auto;
     margin: 0 30px 0 0;
@@ -338,7 +337,7 @@ footer
   margin: 0 auto;
   text-align: center;
 }
-@media only screen and (min-width: 1240px) {
+@media only screen and (min-width: 1201px) {
   .footer-section {
     text-align: left;
     width: 100%;
@@ -349,7 +348,7 @@ footer
   width: 60%;
   max-width: 229px;
 }
-@media only screen and (min-width: 1240px) {
+@media only screen and (min-width: 1201px) {
   .footer-logo-in {
     width: 229px;
   }
@@ -359,7 +358,7 @@ footer
   margin: 10px 10%;
   font-size: 18px;
 }
-@media only screen and (min-width: 1240px) {
+@media only screen and (min-width: 1201px) {
   .sec-footer-info {
     width: 275px;
     margin: 0 20px 0 0;
@@ -379,7 +378,7 @@ footer
   margin: 0 0 30px 0;
 }
 .footer-regulation ul li {
-  background: url(/educational_institution/common/img/pc/ico_arrow_01.png) left center no-repeat;
+  background: url(../img/pc/ico_arrow_01.png) left center no-repeat;
   margin: 0 0 1px 0;
   padding: 0 0 1px 10px;
   border-bottom: 1px solid #222;
@@ -388,7 +387,7 @@ footer
   color: #777;
   font-size: 18px;
 }
-@media only screen and (min-width: 1240px) {
+@media only screen and (min-width: 1201px) {
   .footer-regulation  ul li a {
     font-size: 14px;
   }
@@ -397,7 +396,7 @@ footer
   width: 80%;
   margin: 30px 10%;
 }
-@media only screen and (min-width: 1240px) {
+@media only screen and (min-width: 1201px) {
   .footer-related-site {
     width: 275px;
     margin: 0 20px 0 0;
@@ -408,13 +407,13 @@ footer
   font-size: 18px;
   color: #fff;
 }
-@media only screen and (min-width: 1240px) {
+@media only screen and (min-width: 1201px) {
   .ttl-related-site {
     font-size: 13px;
   }
 }
 .footer-related-site ul li {
-  background: url(/educational_institution/common/img/pc/ico_arrow_01.png) left center no-repeat;
+  background: url(/../img/pc/ico_arrow_01.png) left center no-repeat;
   margin: 0 0 1px 0;
   padding: 0 0 1px 10px;
   border-bottom: 1px solid #222;
@@ -424,7 +423,7 @@ footer
   color: #777;
   line-height: 40px;
 }
-@media only screen and (min-width: 1240px) {
+@media only screen and (min-width: 1201px) {
   .footer-related-site ul li a {
     font-size: 14px;
     line-height: normal;
@@ -435,7 +434,7 @@ footer
   font-size: 18px;
   margin: 30px 10%;
 }
-@media only screen and (min-width: 1240px) {
+@media only screen and (min-width: 1201px) {
   .footer-sns {
     font-size: 14px;
     width: 275px;
@@ -447,23 +446,22 @@ footer
   font-size: 18px;
   color: #fff;
 }
-@media only screen and (min-width: 1240px) {
+@media only screen and (min-width: 1201px) {
   .ttl-sns {
     font-size: 13px;
   }
 }
 .footer-sns ul li {
-  background: url(/educational_institution/common/img/pc/ico_arrow_01.png) left center no-repeat;
+  background: url(../img/pc/ico_arrow_01.png) left center no-repeat;
   margin: 0 0 1px 0;
   padding: 0 0 1px 10px;
   border-bottom: 1px solid #222;
 }
 .footer-sns ul li a {
   font-size: 18px;
-  color: #777;
   line-height: 40px;
 }
-@media only screen and (min-width: 1240px) {
+@media only screen and (min-width: 1201px) {
   .footer-sns ul li a {
     font-size: 14px;
     line-height: normal;
@@ -493,7 +491,7 @@ area
 .area-game {
   margin: 0 0 70px 0;
 }
-@media only screen and (min-width: 1240px){
+@media only screen and (min-width: 1201px){
   .area-new-arrival {
     margin: 0 0 71px 0;
   }
@@ -505,7 +503,7 @@ area
   width: 96%;
   margin: 0 2%;
 }
-@media only screen and (min-width: 1240px) {
+@media only screen and (min-width: 1201px) {
   .area-practitioner {
     width: 100%;
     margin: 0 auto;
@@ -525,7 +523,7 @@ section
   text-align: center;
   font-size: 26px;
 }
-@media only screen and (min-width: 1240px) {
+@media only screen and (min-width: 1201px) {
   .ttl-game-01,
   .ttl-available-01,
   .ttl-available-04 {
@@ -538,7 +536,7 @@ section
   font-size: 12px;
   color:#A9A9A9;
 }
-@media only screen and (min-width: 1240px) {
+@media only screen and (min-width: 1201px) {
   .ttl-game-02{
     font-size: 22px;
   }
@@ -678,7 +676,7 @@ _:lang(x)+_:-webkit-full-screen-document,
   overflow: hidden;
 }
 .txt-game-instructor{
-  background: url(/educational_institution/common/img/img_instructor_02.svg) left center no-repeat;
+  background: url(../img/img_instructor_02.svg) left center no-repeat;
   background-size: 13px 16px;
   width: 90%;
   max-width: 330px;
@@ -693,7 +691,7 @@ _:lang(x)+_:-webkit-full-screen-document,
   overflow: hidden;
 }
 .txt-game-address{
-  background: url(/educational_institution/common/img/img_address_pointer_01.svg) left center no-repeat;
+  background: url(../img/img_address_pointer_01.svg) left center no-repeat;
   background-size: 10px 16px;
   width: 90%;
   max-width: 330px;
@@ -755,7 +753,7 @@ _:lang(x)+_:-webkit-full-screen-document,
   font-weight: bold;
   text-align: center;
 }
-@media only screen and (min-width: 1240px) {
+@media only screen and (min-width: 1201px) {
   .ttl-practitioner-top {
     font-size: 44px;
   }
@@ -768,7 +766,7 @@ _:lang(x)+_:-webkit-full-screen-document,
   font-weight: bold;
   border-left: 4px solid #162F50;
 }
-@media only screen and (min-width: 1240px) {
+@media only screen and (min-width: 1201px) {
   .ttl-practitioner-sub {
     padding: 0 0 0 16px;
     font-size: 22px;
@@ -789,7 +787,7 @@ _:lang(x)+_:-webkit-full-screen-document,
   letter-spacing: -.4em;
   margin: 0 auto;
 }
-@media only screen and (min-width: 1240px) {
+@media only screen and (min-width: 1201px) {
   .box-practitioner {
     text-align: left;
   }
@@ -802,7 +800,7 @@ _:lang(x)+_:-webkit-full-screen-document,
   border-radius: 20px;
   margin: 0 4px 24px 4px;
 }
-@media only screen and (min-width: 1240px) {
+@media only screen and (min-width: 1201px) {
   .mod-practitioner-01 {
     width: 296px;
     height: 356px;
@@ -823,7 +821,7 @@ _:lang(x)+_:-webkit-full-screen-document,
   display: inline-block;
   letter-spacing: 0em;
 }
-	@media only screen and (min-width: 1240px) {
+	@media only screen and (min-width: 1201px) {
 	  .mod-practitioner-02 {
 	    text-align: left;
 	    width: 200px;
@@ -837,7 +835,7 @@ _:lang(x)+_:-webkit-full-screen-document,
   border-radius: 20px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.5);
 }
-@media only screen and (min-width: 1240px) {
+@media only screen and (min-width: 1201px) {
   .img-practitioner {
     width: 296px;
     height: 296px;
@@ -851,7 +849,7 @@ _:lang(x)+_:-webkit-full-screen-document,
   height: 30px;
   margin: 4px 7px 0 4px;
 }
-@media only screen and (min-width: 1240px) {
+@media only screen and (min-width: 1201px) {
   .img-practitioner-profile {
     width: 42px;
     height: 50px;
@@ -871,7 +869,7 @@ _:lang(x)+_:-webkit-full-screen-document,
   font-weight: bold;
   color: #4D4D4D;
 }
-@media only screen and (min-width: 1240px) {
+@media only screen and (min-width: 1201px) {
   .txt-practitioner-name-01,
   .txt-practitioner-name-02 {
     font-size: 22px;
@@ -895,7 +893,7 @@ _:lang(x)+_:-webkit-full-screen-document,
 .txt-practitioner-profile-02 {
   font-size: 16px;
 }
-@media only screen and (min-width: 1240px) {
+@media only screen and (min-width: 1201px) {
   .txt-practitioner-profile-01,
   .txt-practitioner-profile-02 {
     font-size: 12px;
@@ -904,7 +902,7 @@ _:lang(x)+_:-webkit-full-screen-document,
 .txt-practitioner-profile-02 {
   font-size: 13px;
 }
-@media only screen and (min-width: 1240px) {
+@media only screen and (min-width: 1201px) {
   .txt-practitioner-profile-02 {
     font-size: 16px;
   }
@@ -915,7 +913,7 @@ _:lang(x)+_:-webkit-full-screen-document,
 .txt-practitioner-profile-02 {
   font-size: 10px;
 }
-@media only screen and (min-width: 1240px) {
+@media only screen and (min-width: 1201px) {
   .txt-practitioner-profile-02 {
     font-size: 16px;
   }
@@ -942,7 +940,7 @@ _:lang(x)+_:-webkit-full-screen-document,
 	color: #fff;
 	border-radius: 4px;
 }
-@media only screen and (min-width: 1240px) {
+@media only screen and (min-width: 1201px) {
 	.sec-utility-in li {
 		width: 398px;
 		height: 200px;
@@ -956,34 +954,34 @@ _:lang(x)+_:-webkit-full-screen-document,
 		border-radius: 4px;
 	}
 }
-@media only screen and (min-width: 1240px) {
+@media only screen and (min-width: 1201px) {
   .sec-utility-in li:not(:last-child) {
     margin: 0 10px 0 0;
   }
 }
 .sec-utility-in li:nth-child(1) {
-  background: #48A3A9 url(/educational_institution/common/img/img_utility_star.svg) center 35px no-repeat;
+  background: #48A3A9 url(../img/img_utility_star.svg) center 35px no-repeat;
   background-size: 45px 43px;
 }
-@media only screen and (min-width: 1240px) {
+@media only screen and (min-width: 1201px) {
   .sec-utility-in li:nth-child(1) {
     background-size: 60px 57px;
   }
 }
 .sec-utility-in li:nth-child(2) {
-  background: #162f50 url(/educational_institution/common/img/img_utility_pencil.svg) center 35px no-repeat;
+  background: #162f50 url(../img/img_utility_pencil.svg) center 35px no-repeat;
   background-size: 45px 43px;
 }
-@media only screen and (min-width: 1240px) {
+@media only screen and (min-width: 1201px) {
   .sec-utility-in li:nth-child(2) {
     background-size: 60px 57px;
   }
 }
 .sec-utility-in li:nth-child(3) {
-  background: #01A71B url(/educational_institution/common/img/img_utility_award.svg) center 35px no-repeat;
+  background: #01A71B url(../img/img_utility_award.svg) center 35px no-repeat;
   background-size: 45px 43px;
 }
-@media only screen and (min-width: 1240px) {
+@media only screen and (min-width: 1201px) {
   .sec-utility-in li:nth-child(3) {
     background-size: 60px 57px;
   }
@@ -994,7 +992,7 @@ _:lang(x)+_:-webkit-full-screen-document,
 	align-items: center;
 	color: #fff
 }
-@media only screen and (min-width: 1240px) {
+@media only screen and (min-width: 1201px) {
   .sec-utility-in li a {
     padding: 132px 0 0 0;
   }
@@ -1009,7 +1007,7 @@ _:lang(x)+_:-webkit-full-screen-document,
   padding: 0 0 59px 0;
   border-bottom: 2px solid #ececec;
 }
-@media only screen and (min-width: 1240px){
+@media only screen and (min-width: 1201px){
   .sec-new-arrival {
     display: inline;
   }
@@ -1106,7 +1104,7 @@ _:lang(x)+_:-webkit-full-screen-document,
   text-align: left;
 }
 .txt-new-arrival-instructor {
-  background: url(/educational_institution/common/img/img_instructor_02.svg) left center no-repeat;
+  background: url(../img/img_instructor_02.svg) left center no-repeat;
   width: 355px;
   margin: 0 30px 0 0;
   padding: 0 0 0 26px;
@@ -1119,7 +1117,7 @@ _:lang(x)+_:-webkit-full-screen-document,
   overflow: hidden;
 }
 .txt-new-arrival-address {
-  background: url(/educational_institution/common/img/img_address_pointer_01.svg) left center no-repeat;
+  background: url(../img/img_address_pointer_01.svg) left center no-repeat;
   width: 355px;
   padding: 0 0 0 18px;
   font-size: 14px;
@@ -1222,7 +1220,7 @@ _:lang(x)+_:-webkit-full-screen-document,
 /* sec-instructor
 ---------------------------------------------------------- */
 .sec-instructor {
-  background: #e19d3a url(/educational_institution/common/img/img_instructor_01.svg) 48.29px center no-repeat;
+  background: #e19d3a url(../img/img_instructor_01.svg) 48.29px center no-repeat;
   background-size: 35.12px 43.9px;
   width: 291.21px;
   height: 91.46px;
@@ -1232,7 +1230,7 @@ _:lang(x)+_:-webkit-full-screen-document,
   box-shadow: 0 0 6px rgba(0,0,0,0.16);
 }
 .sec-instructor-02 {
-  background: #e19d3a url(/educational_institution/common/img/img_instructor_01.svg) 48.29px center no-repeat;
+  background: #e19d3a url(../img/img_instructor_01.svg) 48.29px center no-repeat;
   background-size: 35.12px 43.9px;
   width: 291.21px;
   height: 91.46px;
@@ -1241,16 +1239,16 @@ _:lang(x)+_:-webkit-full-screen-document,
   border-radius: 4px;
   box-shadow: 0 0 6px rgba(0,0,0,0.16);
 }
-@media only screen and (min-width: 1240px) {
+@media only screen and (min-width: 1201px) {
   .sec-instructor {
-    background: #e19d3a url(/educational_institution/common/img/img_instructor_01.svg) 66px center no-repeat;
+    background: #e19d3a url(../img/img_instructor_01.svg) 66px center no-repeat;
     background-size: 48px 60px;
     width: 398px;
     height: 125px;
     padding: 48.5px 63.78px 0 154px;
   }
   .sec-instructor-02 {
-    background: #e19d3a url(/educational_institution/common/img/img_instructor_01.svg) 66px center no-repeat;
+    background: #e19d3a url(../img/img_instructor_01.svg) 66px center no-repeat;
     background-size: 48px 60px;
     width: 398px;
     height: 125px;
@@ -1263,7 +1261,7 @@ _:lang(x)+_:-webkit-full-screen-document,
   font-size: 21px;
   color: #fff;
 }
-@media only screen and (min-width: 1240px) {
+@media only screen and (min-width: 1201px) {
   .btn-instructor {
     font-size: 30px;
     line-height: 1.06;
@@ -1279,7 +1277,7 @@ _:lang(x)+_:-webkit-full-screen-document,
   line-height: 10px;
   color: #808080;
 }
-@media only screen and (min-width: 1240px) {
+@media only screen and (min-width: 1201px) {
   .txt-name-kana {
     font-size: 18px;
     line-height: 14px;
@@ -1291,7 +1289,7 @@ _:lang(x)+_:-webkit-full-screen-document,
   margin: 0 0 33px 0;
   border-radius: 20px;
 }
-@media only screen and (min-width: 1240px) {
+@media only screen and (min-width: 1201px) {
   .img-practitioner-02 {
     width: 296px;
     height: 296px;
@@ -1303,7 +1301,7 @@ _:lang(x)+_:-webkit-full-screen-document,
   font-size: 28px;
   color: #333;
 }
-@media only screen and (min-width: 1240px) {
+@media only screen and (min-width: 1201px) {
   .txt-name-02 {
     margin: 0 0 39px 0;
     font-size: 40px;
@@ -1314,7 +1312,7 @@ _:lang(x)+_:-webkit-full-screen-document,
   color: #808080;
   vertical-align: -2px;
 }
-@media only screen and (min-width: 1240px) {
+@media only screen and (min-width: 1201px) {
   .txt-practitioner-profile-03 {
     font-size: 20px;
     vertical-align: -12px;
@@ -1331,7 +1329,7 @@ _:lang(x)+_:-webkit-full-screen-document,
   text-shadow: 0px 3px 6px rgba(0,0,0,.16);
   text-align: center;
 }
-@media only screen and (min-width: 1240px) {
+@media only screen and (min-width: 1201px) {
   .txt-profile-detail {
     background: url(/educational_institution/img/wdseminar/ico_practitioner_01.png) left top no-repeat;
     background-size: 50px 52px;
@@ -1342,7 +1340,6 @@ _:lang(x)+_:-webkit-full-screen-document,
     text-align: left;
   }
 }
-.ttl-practitioner-certification,
 .ttl-practitioner-profile,
 .ttl-practitioner-accomplishment {
   padding: 0 0 0 15px;
@@ -1353,15 +1350,11 @@ _:lang(x)+_:-webkit-full-screen-document,
   color: #4d4d4d;
   border-left: 4px solid #4d4d4d;
 }
-@media only screen and (min-width: 1240px) {
-  .ttl-practitioner-certification,
+@media only screen and (min-width: 1201px) {
   .ttl-practitioner-profile,
   .ttl-practitioner-accomplishment {
     font-size: 22px;
   }
-}
-.ttl-practitioner-certification {
-  margin: 0 0 20px 0;
 }
 .ttl-practitioner-profile {
   margin: 0 0 14px 0;
@@ -1374,7 +1367,7 @@ _:lang(x)+_:-webkit-full-screen-document,
   font-size: 14px;
   word-break: break-word;
 }
-@media only screen and (min-width: 1240px) {
+@media only screen and (min-width: 1201px) {
   .txt-practitioner-profile {
     font-size: 20px;
   }
@@ -1384,123 +1377,9 @@ _:lang(x)+_:-webkit-full-screen-document,
   font-size: 14px;
   word-break: break-word;
 }
-@media only screen and (min-width: 1240px) {
+@media only screen and (min-width: 1201px) {
   .txt-practitioner-profile-04 {
     font-size: 20px;
-  }
-}
-.list-practitioner-certification {
-  margin: 0 0 8px 0;
-  text-align: center;
-  letter-spacing: -.4em;
-}
-@media only screen and (min-width: 1240px) {
-  .list-practitioner-certification {
-    margin: 0 0 30px 0;
-    text-align: left;
-  }
-}
-.list-practitioner-certification li {
-  display: inline-block;
-  letter-spacing: 0em;
-}
-.list-practitioner-certification li:not(:last-child) {
-  margin: 0 8px 0 0;
-}
-.list-practitioner-certification li img {
-  width: 161px;
-  height: 173px;
-}
-@media only screen and (min-width: 1240px) {
-  .list-practitioner-certification li img {
-    width: 194px;
-    height: 207px;
-  }
-}
-.list-practitioner-accomplishment {
-  margin: 0 0 62px 0;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  letter-spacing: -.4em;
-}
-.list-accomplishment-not-url {
-  background-size: 24.5px 24.5px;
-  padding: 0 0 0 34px;
-  letter-spacing: 0em;
-}
-.list-practitioner-accomplishment li {
-  padding: 0 0 0 34px;
-  letter-spacing: 0em;
-}
-.list-practitioner-accomplishment-url {
-  background: url(/educational_institution/img/wdseminar/ico_practitioner_link.png) left top no-repeat;
-  background-size: 24.5px 24.5px;
-}
-.list-practitioner-accomplishment-book {
-  background: url(/educational_institution/common/img/img_book.png) left top no-repeat;
-  background-size: 24.5px 24.5px;
-}
-.list-practitioner-accomplishment-media {
-  background: url(/educational_institution/common/img/img_tv.png) left top no-repeat;
-  background-size: 24.5px 24.5px;
-}
-.list-practitioner-accomplishment-miscellaneous {
-  background: url(/educational_institution/common/img/img_finger.png) left top no-repeat;
-  background-size: 24.5px 24.5px;
-}
-@media only screen and (min-width: 1240px) {
-	.list-practitioner-accomplishment li {
-	  padding: 0 0 0 39px;
-	}
-	.list-practitioner-accomplishment-url {
-	   background-size: 30px 29px;
-	}
-	.list-practitioner-accomplishment-book {
-	 background: url(/educational_institution/common/img/img_book.png) left top no-repeat;
-	 background-size: 30px 29px;
-	}
-	.list-practitioner-accomplishment-media {
-	  background: url(/educational_institution/common/img/img_tv.png) left top no-repeat;
-	  background-size: 30px 29px;
-	}
-	.list-practitioner-accomplishment-miscellaneous {
-	  background: url(/educational_institution/common/img/img_finger.png) left top no-repeat;
-	  background-size: 30px 29px;
-	}
-}
-.list-practitioner-accomplishment li:not(:last-child) {
-  margin: 0 0 17px 0;
-}
-.list-practitioner-accomplishment li strong {
-  letter-spacing: 0em;
-}
-.list-practitioner-accomplishment li strong a {
-  font-size: 18px;
-  font-weight: bold;
-}
-@media only screen and (min-width: 1240px) {
-  .list-practitioner-accomplishment li strong a {
-    font-size: 20px;
-  }
-}
-.list-practitioner-occupation {
-  margin: 0 0 49px 0;
-  letter-spacing: -.4em;
-}
-.list-practitioner-occupation li {
-  background: url(/educational_institution/img/wdseminar/ico_practitioner_occupation.png) left 10px no-repeat;
-  background-size: 10px;
-  margin: 0 0 0 10px;
-  padding: 0 0 0 20px;
-  font-size: 18px;
-  letter-spacing: 0em;
-}
-@media only screen and (min-width: 1240px) {
-  .list-practitioner-occupation li {
-    background-size: 20px;
-    font-size: 24px;
-    padding: 0 0 0 39px;
   }
 }
 .box-practitioner-contact {
@@ -1541,7 +1420,7 @@ event
   height: 55vw;
   background-size: cover;
 }
-@media only screen and (min-width: 1240px) {
+@media only screen and (min-width: 1201px) {
   .img-fuzzy-top {
     display: inline;
     width: 100%;
@@ -1560,7 +1439,7 @@ event
   max-height: none;
   height: 80px;
 }
-@media only screen and (min-width: 1240px) {
+@media only screen and (min-width: 1201px) {
   .open {
     height:auto;
   }
@@ -1568,7 +1447,7 @@ event
 .sec-clear-img {
   height: 0px;
 }
-@media only screen and (min-width: 1240px){
+@media only screen and (min-width: 1201px){
   .sec-clear-img {
     height: 500px;
   }
@@ -1587,7 +1466,7 @@ event
   left: 0;
   right: 0;
 }
-@media only screen and (min-width: 1240px) {
+@media only screen and (min-width: 1201px) {
   .img-clear-top {
     height: 500px;
   }
@@ -1629,7 +1508,7 @@ event
   bottom: -20px;
   right: 0;
 }
-@media only screen and (min-width: 1240px) {
+@media only screen and (min-width: 1201px) {
   .tag-event-date {
     width: 350px;
     height: 58px;
@@ -1649,7 +1528,7 @@ event
   border-width: 40px 0 0 21px;
   border-color: #162F50 transparent transparent transparent;
 }
-@media only screen and (min-width: 1240px) {
+@media only screen and (min-width: 1201px) {
   .tag-event-date::before {
     border-width: 58px 0 0 21px;
   }
@@ -1660,7 +1539,7 @@ event
   line-height: 1;
   font-size: 28px;
 }
-@media only screen and (min-width: 1240px) {
+@media only screen and (min-width: 1201px) {
   .ttl-event {
     font-size: 40px;
     margin: 40px 0 19px 0;
@@ -1677,7 +1556,7 @@ event
   color: #4d4d4d;
   border-left: 4px solid #4d4d4d;
 }
-@media only screen and (min-width: 1240px) {
+@media only screen and (min-width: 1201px) {
   .ttl-game {
     width: auto;
     margin: 0 0 26px 0;
@@ -1688,7 +1567,7 @@ event
   margin: 0 3% 18px 3%;
   font-size: 14px;
 }
-@media only screen and (min-width: 1240px) {
+@media only screen and (min-width: 1201px) {
   .txt-game {
     width: auto;
     margin: 0 0 154px 0;
@@ -1740,7 +1619,7 @@ event
   margin: 0 3%;
   float: none;
 }
-@media only screen and (min-width: 1240px) {
+@media only screen and (min-width: 1201px) {
   .event-contents-right {
     width: 398px;
     margin: auto;
@@ -1754,7 +1633,7 @@ event
   margin: 0 3% 70px;
   border-radius: 5px;
 }
-@media only screen and (min-width: 1240px) {
+@media only screen and (min-width: 1201px) {
   .nav-event {
     width: 398px;
     margin: auto;
@@ -1774,7 +1653,7 @@ event
   border-radius: 5px;
 }
 .txt-event-place {
-  background: url(/educational_institution/common/img/wdseminar/ico_address_pointer.svg) left center no-repeat;
+  background: url(../img/wdseminar/ico_address_pointer.svg) left center no-repeat;
   background-size: 14px 22px;
   margin: 0 0 2px 0;
   padding: 0 0 0 22px;
@@ -1790,7 +1669,7 @@ event
   height: 305px;
   margin: 0 auto 12px auto;
 }
-@media only screen and (min-width: 1240px) {
+@media only screen and (min-width: 1201px) {
   .map-event {
     width: 356px;
   }
@@ -1799,21 +1678,10 @@ event
   margin: 0 0 10px 0;
 }
 .link-place-map strong {
-  background: url(/educational_institution/img/wdseminar/ico_practitioner_link.png) left center no-repeat;
   background-size: 24px 24px;
   padding: 0 0 0 34px;
   font-weight: bold;
   word-break: break-word;
-}
-/* ==========================================================
-hero
-========================================================== */
-.area-hero {
-  /*background: url(/educational_institution/img/wdseminar/img_hero_06.jpg) center center no-repeat;*/
-  background-size: cover;
-  width: 100%;
-  height: 37.47vw;
-  margin: 0 0 3.54vw 0;
 }
 /* ==========================================================
 is
@@ -1874,7 +1742,7 @@ rwd switch
 .no-sp {}
 /* sp
 ---------------------------------------------------------- */
-@media screen and (max-width: 1240px) {
+@media screen and (max-width: 1201px) {
   .only-pc,
   .no-sp,
   .only-tb,
