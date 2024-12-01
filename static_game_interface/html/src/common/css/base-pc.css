@@ -280,49 +280,9 @@ contents
     display: none;
   }
 }
-.practitioner-contents-right {
-  width: 90%;
-  margin: 0 5%;
-  float: none;
-}
-.practitioner-contents-right-02 {
-  width: 90%;
-  margin: 0 5%;
-  float: none;
-}
-@media only screen and (min-width: 1240px) {
-  .practitioner-contents-right {
-    width: 806px;
-    margin: 0 0 93px 0;
-    float: right;
-  }
-  .practitioner-contents-right-02 {
-    width: 806px;
-    margin: 0 0 93px 0;
-    float: right;
-  }
-}
-.practitioner-contents-left {
-  width: 90%;
-  margin: 0 5%;
-  float: none;
-}
-@media only screen and (min-width: 1240px) {
-  .practitioner-contents-left {
-    width: 300px;
-    margin: 0 105px 0 0;
-    float: left;
-  }
-}
-.event-contents-left {
+.game-contents {
   width: 100%;
   float: none;
-}
-@media only screen and (min-width: 1240px) {
-  .event-contents-left {
-    width: 804px;
-    float: left;
-  }
 }
 /* ==========================================================
 footer
@@ -1587,82 +1547,6 @@ _:lang(x)+_:-webkit-full-screen-document,
 /* ==========================================================
 event
 ========================================================== */
-.btn-event-application {
-  background: rgba(0,0,0,.4);
-  width: 100%;
-  height: 60px;
-  position: fixed;
-  bottom:0px;
-  z-index: 20;
-}
-@media only screen and (min-width: 1240px) {
-  .btn-event-application {
-    height: 80px;
-  }
-}
-.btn-event-application-in {
-  background: #E19D3A url(/educational_institution/img/wdseminar/ico_check_white.png) 61px 11px no-repeat;
-  background-size: 17px 17px;
-  width: 272px;
-  height: 40px;
-  margin: 10px auto;
-  padding: 8px 0 0 92px;
-  letter-spacing: 0.2em;
-  font-size: 15px;
-  color: #fff;
-  border-radius: 6px;
-  opacity: 1;
-  z-index: 20;
-}
-@media only screen and (min-width: 1240px) {
-  .btn-event-application-in {
-    background: #E19D3A url(/educational_institution/img/wdseminar/ico_check_white.png) 81px 16px no-repeat;
-    width: 400px;
-    height: 60px;
-    background-size: 25px 25px;
-    padding: 9px 0 0 124px;
-    font-size: 24px;
-  }
-}
-@media only screen and (min-width: 1240px) {
-	.area-event-hero {
-	  background-size: cover;
-	  width: 100%;
-	  height: 240px;
-	  position: relative;
-  }
-}
-.area-event-hero {
-  background-size: cover;
-  width: 100%;
-  height: 56vw;
-  position: relative;
-}
-	.area-event-hero:before {
-	    position: absolute;
-	    content: "";
-	    background-color: #fff;
-	    width: 100%;
-	    height: 20px;
-	    top: 55vw;
-	    left: 0;
-	    z-index: 50;
-	 }
-@media only screen and (min-width: 1240px) {
-  .area-event-hero {
-    height: 500px;
-  }
-  .area-event-hero:before {
-    position: absolute;
-    content: "";
-    background-color: #fff;
-    width: 100%;
-    height: 20px;
-    top: 500px;
-    left: 0;
-    z-index: 50;
-  }
-}
 .img-fuzzy-top {
   filter: blur(8px);
   height: 55vw;
@@ -1793,210 +1677,7 @@ event
     margin: 40px 0 19px 0;
   }
 }
-.ttl-event-date {
-  width: 94%;
-  background: url(/educational_institution/img/wdseminar/ico_clock.png) left 2px no-repeat;
-  background-size: 23px;
-  margin: 0 3% 24px 3%;
-  padding: 0 0 0 33px;
-  font-size: 18px;
-  color: #808080;
-}
-@media only screen and (min-width: 1240px) {
-  .ttl-event-date {
-    background: url(/educational_institution/img/wdseminar/ico_clock.png) left 5px no-repeat;
-    margin: 0 0 24px 0;
-    font-size: 24px;
-    background-size: 30px;
-    padding: 0 0 0 40px;
-  }
-}
-.practitioner-contents {
-/* margin: 74px 0 0 0; */
-}
-.event-contents-left{
-
-}
-.txt-event-detail {
-  background: #162F50;
-  width: 94%;
-  height: 120px;
-  margin: 0 3% 25px 3%;
-  border-radius: 6px;
-}
-@media only screen and (min-width: 1240px) {
-  .txt-event-detail {
-    width: 804px;
-    margin: 0 0 25px 0;
-  }
-}
-.img-event-user {
-  width: 100px;
-  height: 100px;
-  margin: 10px auto 10px 15px;
-  border-radius: 6px;
-}
-.txt-event-user {
-  margin: 21px 0 0 22px;
-  display: inline-block;
-  color: #fff;
-}
-.txt-job-title {
-  font-size: 16px;
-  line-height: 20px;
-}
-.txt-user-name {
-  font-size: 25px;
-  line-height: 40px;
-  font-weight: bold;
-}
-.txt-user-profile {
-  font-size: 13px;
-  line-height: 18px;
-}
-.list-event-basic {
-  width: 94%;
-  margin: 0 3% 33px 3%;
-  padding: 0 0 0 15px;
-  color: #808080;
-  word-wrap: break-word;
-}
-@media only screen and (min-width: 1240px) {
-  .list-event-basic {
-    width: auto;
-    margin: 0 0 33px 0;
-    padding: 0 0 0 17px;
-  }
-}
-.list-event-basic li{
-  padding: 0 0 0 30px;
-  font-size: 15px;
-}
-@media only screen and (min-width: 1240px) {
-  .list-event-basic li {
-    padding: 0 0 0 42px;
-    font-size:24px;
-  }
-}
-.list-event-basic li:not(:last-child) {
-  margin: 0 0 10px 0;
-}
-.list-event-basic li:nth-child(1) {
-  background: url(/educational_institution/img/wdseminar/ico_office.png) left top no-repeat;
-  background-size: 20px 20px;
-}
-@media only screen and (min-width: 1240px) {
-  .list-event-basic li:nth-child(1){
-    background-size: 28px 28px;
-  }
-}
-.list-event-basic li:nth-child(2) {
-  background: url(/educational_institution/img/wdseminar/ico_money.png) 1px top no-repeat;
-  background-size: 20px 19px;
-}
-@media only screen and (min-width: 1240px) {
-  .list-event-basic li:nth-child(2){
-    background-size: 28px 27px;
-  }
-}
-.list-event-basic li:nth-child(3) {
-  background: url(/educational_institution/img/wdseminar/ico_users.png) left top no-repeat;
-  background-size: 20px 18px;
-}
-@media only screen and (min-width: 1240px) {
-  .list-event-basic li:nth-child(3){
-    background-size: 30px 26px;
-  }
-}
-.list-event-basic li:nth-child(4) {
-  background: url(/educational_institution/img/wdseminar/ico_stopwatch.png) 3px top no-repeat;
-  background-size: 18px 20px;
-}
-@media only screen and (min-width: 1240px) {
-  .list-event-basic li:nth-child(4){
-    background-size: 24px 28px;
-  }
-}
-.list-event-basic li:nth-child(5) {
-  background: url(/educational_institution/img/wdseminar/ico_practitioner_mail.png) left 2px no-repeat;
-  background-size: 20px 16px;
-}
-@media only screen and (min-width: 1240px) {
-  .list-event-basic li:nth-child(5){
-    background-size: 30px 24px;
-  }
-}
-.list-event-basic li:nth-child(6) {
-  background: url(/educational_institution/img/wdseminar/ico_practitioner_phone.png) left top no-repeat;
-  background-size: 20px 20px;
-}
-@media only screen and (min-width: 1240px) {
-  .list-event-basic li:nth-child(6){
-    background-size: 28px 28px;
-  }
-}
-.list-event-basic li:nth-child(7) {
-  background: url(/educational_institution/img/wdseminar/ico_practitioner_link.png) left top no-repeat;
-  background-size: 20px 20px;
-}
-@media only screen and (min-width: 1240px) {
-  .list-event-basic li:nth-child(7){
-    background-size: 28px 28px;
-  }
-}
-.list-event-img {
-  width: 93%;
-  margin: 0 3% 40px 3%;
-  letter-spacing: -.4em;
-}
-@media only screen and (min-width: 1240px) {
-  .list-event-img {
-    width: auto;
-    margin: 0 0 40px 0;
-  }
-}
-.list-event-img li {
-  display: inline-block;
-  letter-spacing: 0em;
-  width: 48%;
-  height: 41vw;
-  background-position: center;
-  background-size: cover;
-}
-@media only screen and (min-width: 1240px) {
-  .list-event-img li {
-    width: 194px;
-    height:130px;
-    margin: 0 10px 0 0;
-  }
-  .list-event-img li:last-child {
-    margin: 0 0 0 0;
-  }
-}
-.list-event-img li:not(:nth-child(2n)) {
-    margin: 0 1% 0 1%;
-  }
-@media only screen and (min-width: 1240px) {
-	.list-event-img li:not(:nth-child(2n)) {
-	  margin: 0 1% 5px 1%;
-  }
-}
-@media only screen and (min-width: 1240px) {
-  .list-event-img li:not(:last-child) {
-    margin: 0 9px 0 0;
-  }
-}
-.list-event-img li img {
-  width: 100%;
-  height: auto;
-}
-@media only screen and (min-width: 1240px) {
-  .list-event-img li img {
-    width: 194px;
-    height: 130px;
-  }
-}
-.ttl-event-explanation {
+.ttl-game {
   width: 94%;
   margin: 0 3% 26px 3%;
   padding: 0 0 0 15px;
@@ -2008,18 +1689,18 @@ event
   border-left: 4px solid #4d4d4d;
 }
 @media only screen and (min-width: 1240px) {
-  .ttl-event-explanation {
+  .ttl-game {
     width: auto;
     margin: 0 0 26px 0;
   }
 }
-.txt-event-explanation {
+.txt-game {
   width: 94%;
   margin: 0 3% 18px 3%;
   font-size: 14px;
 }
 @media only screen and (min-width: 1240px) {
-  .txt-event-explanation {
+  .txt-game {
     width: auto;
     margin: 0 0 154px 0;
     font-size: 20px;
@@ -2043,20 +1724,6 @@ event
   .btn_open {
     display: none;
   }
-}
-.btn_open_top {
-	display: block;
-	max-width: 370px;
-	height: 40px;
-	line-height: 40px;
-	font-size: 12px;
-	letter-spacing: .2em;
-	margin: 20px auto;
-	color: #162f50;
-	text-align: center;
-	text-decoration: none;
-	border-radius: 20px;
-	border: 1px solid #160f50;
 }
 .btn_open:hover {
 	background: #162F50;
@@ -2158,51 +1825,6 @@ hero
   width: 100%;
   height: 37.47vw;
   margin: 0 0 3.54vw 0;
-}
-.hero-title {
-  width: 52.6vw;
-  margin: 3.81vw 0 0 10.31vw;
-  text-align: left;
-  font-size: 4.58vw;
-  font-family: "游明朝", YuMincho, "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "HG明朝E", "ＭＳ Ｐ明朝", "ＭＳ 明朝", serif;
-  color: #333;
-}
-.hero-date {
-  margin: 0 0 0 10.31vw;
-  float: left;
-  text-align: left;
-  font-family: "游明朝", YuMincho, "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "HG明朝E", "ＭＳ Ｐ明朝", "ＭＳ 明朝", serif;
-  color: #333;
-}
-.hero-date-in-01 {
-  font-size: 60px;
-}
-.hero-date-in-02 {
-  font-size: 120px;
-}
-.btn-hero {
-  background: #E19D3A;
-  width: 186px;
-  height: 46px;
-  margin: 90px 0 0 25px;
-  padding: 5px 0;
-  float: left;
-  font-size: 20px;
-  color: #fff;
-}
-/* ==========================================================
-form
-========================================================== */
-/* base Form
----------------------------------------------------------- */
-/* type="text" */
-input[type="text"] {
-}
-/* type="checkbox" */
-input[type="checkbox"] {
-}
-/* type="radio" */
-input[type="radio"] {
 }
 /* ==========================================================
 is
