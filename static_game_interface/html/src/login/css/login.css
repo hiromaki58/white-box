@@ -53,6 +53,21 @@
 /* ==========================================================
  reset
 ========================================================== */
+.area-reset {
+	padding: 0 0 312px 0;
+}
+.form-reset-button {
+	background: #1C7CD5;
+	margin: 50px auto 0 auto;
+	padding: 12px 34px;
+
+	display: block;
+	border-style: none;
+	border-radius: 3px;
+
+	font-size: 16px;
+	color: #fff;
+}
 .form-reset-in {
 	width: 600px;
 	margin: 0 auto;
