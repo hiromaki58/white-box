@@ -7,9 +7,10 @@
 <meta name="format-detection" content="telephone=no">
 <title>Game List as Portfolio</title>
 <link href="https://fonts.googleapis.com/css?family=M+PLUS+1p" rel="stylesheet">
-<link rel="stylesheet" href="./src/common/css/base-pc.css" media="all and (min-width: 1201px)">
-<link rel="stylesheet" href="./src/common/css/base-sp.css" media="all and (max-width: 1201px)">
-<link rel="shortcut icon" type="image/x-icon" href="./src/common/img/jwda_favicon.ico">
+<link rel="stylesheet" href="../common/css/base-pc.css" media="all and (min-width: 1201px)">
+<link rel="stylesheet" href="../common/css/base-sp.css" media="all and (max-width: 1201px)">
+<link rel="stylesheet" href="./css/login.css">
+<link rel="shortcut icon" type="image/x-icon" href="../common/img/jwda_favicon.ico">
 </head>
 <body>
   <div class="wrapper">
@@ -17,7 +18,7 @@
       <div class="header-in only-sp">
         <section>
           <h1 class="header-logo logo-company">
-            <a href="https://"><img src="./src/common/img/logo_institution_01.jpg" alt="https://"></a>
+            <a href="https://"><img src="../common/img/logo_institution_01.jpg" alt="https://"></a>
           </h1>
           <nav class="nav-global">
             <ul>
@@ -30,7 +31,7 @@
       <div class="header-in only-pc clearfix">
         <section>
           <h1 class="header-logo logo-company">
-            <a href="https://"><img src="./src/common/img/logo_institution_01.jpg" alt="https:///"></a>
+            <a href="https://"><img src="../common/img/logo_institution_01.jpg" alt="https:///"></a>
           </h1>
           <nav class="nav-global">
             <ul>
@@ -42,42 +43,28 @@
       </div><!-- /header-in only-pc-->
     </header>
 
-    <div class="contents">
-      <div class="area-game">
-        <div class="sec-game">
-          <section>
-            <h2 class="ttl-game-01">Game List</h2>
-            <h3 class="ttl-game-02">Login function allows to save the score</h3>
-            <div class="sec-game-in">
-              <ul class="box-game-wrap">
-                <li class="box-game">
-                  <ul class="box-game-in">
+    <article class="contents">
+      <div class="area-login">
+        <section class="sec-login">
+          <h1 class="sec-login-in">Login</h1>
 
-                    <li class="mod-game-wrap">
-                      <a href="#">
-                        <div class="img-game" style="background-image: url(/wdseminar/img/wdseminar/img_recommendation_01.jpg)" ></div>
-                      </a>
-                      <section>
-                        <a href="#">
-                          <h4 class="ttl-game-individuality">Minesweeper</h4>
-                        </a>
-                        <div class="btn-game-wrap">
-                          <a href="#" class="btn-game-02">
-                            <span class="btn-game-detail">Play</span>
-                          </a>
-                        </div><!-- /btn-game-wrap -->
-                      </section>
-                    </li><!-- /mod-game-wrap -->
+          <form class="form-login" action="j_security_check" method="post">
+            <div class="form-login-in">
+              <div class="form-login-ttl">E-mail address</div>
+              <input class="form-login-input" type="text" name="j_username" placeholder="E-mail"><br>
+            </div>
 
-                  </ul><!-- box-game-in -->
-                </li><!-- box-game -->
-              </ul><!-- box-game-wrap -->
-            </div><!-- /sec-available-in -->
-          </section>
-        </div><!-- /sec-game -->
-      </div><!-- /area-game -->
+            <div class="form-login-in">
+                <div class="form-login-ttl">Password</div>
+              <input class="form-login-input" type="password" name="j_password" placeholder="password"><br>
+            </div>
 
-    </div><!-- /contents -->
+            <input class="form-login-button" type="submit" value="login">
+          </form>
+          <a href="./reissue.html">Reset password</a>
+        </section><!-- /sec-login -->
+      </div><!-- /area-login -->
+    </article><!-- /contents -->
   </div><!-- /wrapper -->
 
   <footer class="footer">
@@ -87,7 +74,7 @@
         <div class="footer-utility">
           <div class="footer-utility-in">
             <div class="footer-logo">
-              <img class="footer-logo-in" src="./src/common/img/logo_institution_01.jpg" alt="https://"></div><!-- /footer-logo -->
+              <img class="footer-logo-in" src="../common/img/logo_institution_01.jpg" alt="https://"></div><!-- /footer-logo -->
 
             <section>
               <h3 class="hidden">About</h3>
