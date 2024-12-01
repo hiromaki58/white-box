@@ -24,8 +24,6 @@ body, div, pre, p, blockquote, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, f
 { margin: 0; padding: 0;}
 input, textarea
 { margin: 0; font-size: 100%;}
-input, textarea, select
-{ /*-webkit-appearance: none;*/}
 textarea
 { resize: none;}
 button
@@ -46,8 +44,6 @@ caption, th
 { text-align: left;}
 h1, h2, h3, h4, h5, h6, strong, em
 { font-size: 100%; font-weight: normal;}
-a, input
-{/* outline: none; -webkit-tap-highlight-color:rgba(0,0,0,0);*/}
 sup, sub
 { font-size: 63%;}
 sup
@@ -240,9 +236,6 @@ nav-global
   .nav-global ul li:nth-child(5) a {
     width: 180px;
     margin: 0 0 0 0;
-  }
-  .nav-global ul li a:hover {
-
   }
   .nav-global ul li a span {
     letter-spacing: 0em;
@@ -500,11 +493,7 @@ area
 .area-game {
   margin: 0 0 70px 0;
 }
-.area-new-arrival {
-
-}
 @media only screen and (min-width: 1240px){
-
   .area-new-arrival {
     margin: 0 0 71px 0;
   }
