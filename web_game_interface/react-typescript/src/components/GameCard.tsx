@@ -43,7 +43,6 @@ const GameCard: React.FC<GameCardProps> = ({ title, image, onPlayClick }) => {
           </section>
         </div>
       </div>
-
     </div>
   );
 };

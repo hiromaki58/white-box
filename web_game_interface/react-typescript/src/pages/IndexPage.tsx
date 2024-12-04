@@ -11,16 +11,11 @@ const HomePage: React.FC = () => {
   return (
     <div className="wrapper">
       <Header isLoggedIn={false} onLoginClick={() => alert("Login clicked!")} />
-      <main>
-        <h1>Game List</h1>
-        <div className="game-list">
-          <GameCard
-            title="Minesweeper"
-            image="/images/minesweeper.jpg"
-            onPlayClick={() => handlePlayClick("Minesweeper")}
-          />
-        </div>
-      </main>
+        <GameCard
+          title="Minesweeper"
+          image="/images/minesweeper.jpg"
+          onPlayClick={() => handlePlayClick("Minesweeper")}
+        />
       <Footer />
     </div>
   );
