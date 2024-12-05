@@ -8,7 +8,7 @@ const App: React.FC = () => {
     <Router>
       <Routes>
         <Route path="/" element={<IndexPage />} />
-        <Route path="/game" element={<GamePage />} />
+        <Route path="/game/minesweeper" element={<GamePage />} />
       </Routes>
     </Router>
   );

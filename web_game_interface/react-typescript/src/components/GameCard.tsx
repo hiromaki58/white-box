@@ -1,13 +1,13 @@
 import React from "react";
 import "../css/base-pc.css";
+import { Link } from "react-router-dom";
 
 type GameCardProps = {
   title: string;
-  image: string;
-  onPlayClick: () => void;
+  linkTo: string;
 };
 
-const GameCard: React.FC<GameCardProps> = ({ title, image, onPlayClick }) => {
+const GameCard: React.FC<GameCardProps> = ({ title, linkTo }) => {
   return (
     <div className="contents">
       <div className="area-game">
@@ -20,21 +20,23 @@ const GameCard: React.FC<GameCardProps> = ({ title, image, onPlayClick }) => {
                 <li className="box-game">
                   <ul className="box-game-in">
 
-                    <li className="mod-game-wrap">
-                      <a href="#">
-                        <div className="img-game"></div>
-                      </a>
-                      <section>
+                    <Link to={linkTo}>
+                      <li className="mod-game-wrap">
                         <a href="#">
-                          <h4 className="ttl-game-individuality">Minesweeper</h4>
+                          <div className="img-game"></div>
                         </a>
-                        <div className="btn-game-wrap">
-                          <a href="#" className="btn-game-02">
-                            <span className="btn-game-detail">Play</span>
+                        <section>
+                          <a href="#">
+                            <h4 className="ttl-game-individuality">Minesweeper</h4>
                           </a>
-                        </div>
-                      </section>
-                    </li>
+                          <div className="btn-game-wrap">
+                            <a href="#" className="btn-game-02">
+                              <span className="btn-game-detail">Play</span>
+                            </a>
+                          </div>
+                        </section>
+                      </li>
+                    </Link>
 
                   </ul>
                 </li>
