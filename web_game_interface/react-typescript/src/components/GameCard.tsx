@@ -3,11 +3,10 @@ import "../css/base-pc.css";
 import { Link } from "react-router-dom";
 
 type GameCardProps = {
-  title: string;
   linkTo: string;
 };
 
-const GameCard: React.FC<GameCardProps> = ({ title, linkTo }) => {
+const GameCard: React.FC<GameCardProps> = ({ linkTo }) => {
   return (
     <div className="contents">
       <div className="area-game">

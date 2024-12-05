@@ -8,7 +8,6 @@ const HomePage: React.FC = () => {
     <div className="wrapper">
       <Header isLoggedIn={false} onLoginClick={() => alert("Login clicked!")} />
       <GameCard
-        title="Minesweeper"
         linkTo="/game/minesweeper"
       />
       <Footer />
