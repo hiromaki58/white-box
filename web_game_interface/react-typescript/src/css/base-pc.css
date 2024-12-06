@@ -1372,6 +1372,11 @@ event
     margin: auto;
   }
 }
+#gamePivot {
+  position: relative;
+  width: 320px; /* width * size */
+  height: 320px; /* height * size */
+}
 /* ==========================================================
 is
 ========================================================== */

@@ -1,17 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { startGame } from "../dist/minesweeper";
 import "../css/base-pc.css";
 
-type GameAreaProps = {
-  title: string;
-  image: string;
-  onPlayClick: () => void;
-};
+const GameArea: React.FC = () => {
+  useEffect(() => {
+    startGame();
+  }, []);
 
-const GameArea: React.FC<GameAreaProps> = ({ title, image, onPlayClick }) => {
   return (
     <div className="contents">
       <div className="area-game">
-        
+        <div id="gamePivot" style={{ position: "relative" }}></div>
+        <div style={{ fontSize: "30px" }}>
+          <input type="radio" id="pick" name="action" defaultChecked />
+          <label htmlFor="pick">⛏</label> /
+          <input type="radio" id="flag" name="action" />
+          <label htmlFor="flag">🚩</label> /
+          <span id="timer"></span>
+        </div>
       </div>
     </div>
   );
