@@ -398,6 +398,64 @@ player profile
   color: #fff;
 }
 /* ==========================================================
+game
+========================================================== */
+.game-contents-left {
+  width: 100%;
+  float: none;
+}
+@media only screen and (min-width: 1240px) {
+  .game-contents-left {
+    width: 804px;
+    float: left;
+  }
+}
+.game-contents-right{
+  width: 94%;
+  margin: 0 3%;
+  float: none;
+}
+@media only screen and (min-width: 1201px) {
+  .game-contents-right {
+    width: 398px;
+    margin: auto;
+    float: right;
+  }
+}
+.nav-game {
+  background: #162F50;
+  padding: 11px 6px 7px 6px;
+  width: 94%;
+  margin: 0 3% 70px;
+  border-radius: 5px;
+}
+@media only screen and (min-width: 1201px) {
+  .nav-game {
+    width: 398px;
+    margin: auto;
+  }
+}
+.txt-game-score {
+  margin: 0 auto 10px auto;
+  text-align: center;
+  font-size: 22px;
+  color: #fff;
+}
+.nav-game-in {
+  background: #fff;
+  width: 100%;
+  margin: 0 auto;
+  padding: 23px 15px;
+  border-radius: 5px;
+}
+.txt-game-score-in {
+  background: url(../img/wdseminar/ico_address_pointer.svg) left center no-repeat;
+  background-size: 14px 22px;
+  margin: 0 0 2px 0;
+  padding: 0 0 0 22px;
+  font-size: 20px;
+}
+/* ==========================================================
 footer
 ========================================================== */
 .footer {
@@ -855,6 +913,35 @@ _:lang(x)+_:-webkit-full-screen-document,
   letter-spacing: .2em;
   font-size: 14px;
   color: #fff;
+}
+.ttl-game {
+  width: 94%;
+  margin: 0 3% 26px 3%;
+  padding: 0 0 0 15px;
+  line-height: 1;
+  letter-spacing: 0em;
+  font-size: 22px;
+  font-weight: bold;
+  color: #4d4d4d;
+  border-left: 4px solid #4d4d4d;
+}
+@media only screen and (min-width: 1201px) {
+  .ttl-game {
+    width: auto;
+    margin: 0 0 26px 0;
+  }
+}
+.txt-game {
+  width: 94%;
+  margin: 0 3% 18px 3%;
+  font-size: 14px;
+}
+@media only screen and (min-width: 1201px) {
+  .txt-game {
+    width: auto;
+    margin: 0 0 154px 0;
+    font-size: 20px;
+  }
 }
 /* sec-utility
 ---------------------------------------------------------- */
@@ -1373,35 +1460,6 @@ event
     margin: 40px 0 19px 0;
   }
 }
-.ttl-game {
-  width: 94%;
-  margin: 0 3% 26px 3%;
-  padding: 0 0 0 15px;
-  line-height: 1;
-  letter-spacing: 0em;
-  font-size: 22px;
-  font-weight: bold;
-  color: #4d4d4d;
-  border-left: 4px solid #4d4d4d;
-}
-@media only screen and (min-width: 1201px) {
-  .ttl-game {
-    width: auto;
-    margin: 0 0 26px 0;
-  }
-}
-.txt-game {
-  width: 94%;
-  margin: 0 3% 18px 3%;
-  font-size: 14px;
-}
-@media only screen and (min-width: 1201px) {
-  .txt-game {
-    width: auto;
-    margin: 0 0 154px 0;
-    font-size: 20px;
-  }
-}
 /* 続きを読む */
 .btn_open {
 	display: block;
@@ -1442,51 +1500,8 @@ event
   background: #162F50;
 	color: #fff;
 }
-.event-contents-right{
-  width: 94%;
-  margin: 0 3%;
-  float: none;
-}
-@media only screen and (min-width: 1201px) {
-  .event-contents-right {
-    width: 398px;
-    margin: auto;
-    float: right;
-  }
-}
-.nav-event {
-  background: #162F50;
-  padding: 11px 6px 7px 6px;
-  width: 94%;
-  margin: 0 3% 70px;
-  border-radius: 5px;
-}
-@media only screen and (min-width: 1201px) {
-  .nav-event {
-    width: 398px;
-    margin: auto;
-  }
-}
-.txt-event-access {
-  margin: 0 auto 10px auto;
-  text-align: center;
-  font-size: 22px;
-  color: #fff;
-}
-.nav-event-in {
-  background: #fff;
-  width: 100%;
-  margin: 0 auto;
-  padding: 23px 15px;
-  border-radius: 5px;
-}
-.txt-event-place {
-  background: url(../img/wdseminar/ico_address_pointer.svg) left center no-repeat;
-  background-size: 14px 22px;
-  margin: 0 0 2px 0;
-  padding: 0 0 0 22px;
-  font-size: 20px;
-}
+
+
 .txt-event-address {
   margin: 0 0 12px 22px;
   font-size: 12px;
