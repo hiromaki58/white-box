@@ -8,18 +8,29 @@ const GameArea: React.FC = () => {
   }, []);
 
   return (
-    <div className="contents">
-      <div className="area-game">
-        <div id="gamePivot" style={{ position: "relative" }}></div>
-        <div style={{ fontSize: "30px" }}>
-          <input type="radio" id="pick" name="action" defaultChecked />
-          <label htmlFor="pick">⛏</label> /
-          <input type="radio" id="flag" name="action" />
-          <label htmlFor="flag">🚩</label> /
-          <span id="timer"></span>
-        </div>
+    <article className="contents">
+      <div className="game-contents-left">
+        <section>
+          <h4 className="ttl-game">Minesweeper</h4>
+          <div id="gamePivot"></div>
+          <div>
+            <input type="radio" id="pick" name="action" defaultChecked />
+            <label htmlFor="pick">⛏</label> /
+            <input type="radio" id="flag" name="action" />
+            <label htmlFor="flag">🚩</label> /
+            <span id="timer"></span>
+          </div>
+        </section>
       </div>
-    </div>
+      <div className="game-contents-right">
+        <nav className="nav-game">
+          <p className="txt-game-score">Bast score</p>
+          <div className="nav-game-in">
+            <p className="txt-game-score-in">pull the score from DB</p>
+          </div>
+        </nav>
+      </div>
+    </article>
   );
 };
 
