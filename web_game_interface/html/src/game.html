@@ -45,7 +45,14 @@
       <div class="game-contents-left">
         <section>
           <h4 class="ttl-game">Minesweeper</h4>
-          <p class="txt-game">Minesweeper, provide by ts file, will be here.</p>
+          <div id="gamePivot"></div>
+          <div>
+            <input type="radio" id="pick" name="action" defaultChecked />
+            <label htmlFor="pick">⛏</label> /
+            <input type="radio" id="flag" name="action" />
+            <label htmlFor="flag">🚩</label> /
+            <span id="timer"></span>
+          </div>
         </section>
       </div>
       <div class="game-contents-right">
