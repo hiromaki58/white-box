@@ -31,13 +31,12 @@
 	width: 600px;
 	height: 40px;
 	padding: 0 0 0 5px;
-
 	font-size: 16px;
 	line-height: 1.125;
 }
 .form-login-button {
 	background: #1C7CD5;
-	margin: 55px 0;
+	margin: 55px 45%;
 	padding: 12px 34px;
 	border-style: none;
 	border-radius: 3px;
@@ -46,9 +45,10 @@
 }
 .area-login a {
 	margin: 0 0 150px 0;
+	padding: 0 0 0 4%;
 	display: block;
 	text-align: center;
-	text-decoration: underline;
+	text-decoration: none;
 }
 /* ==========================================================
  reset

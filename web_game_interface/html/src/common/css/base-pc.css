@@ -291,6 +291,11 @@ player profile
   margin: 52px auto 0 auto;
   text-align: left;
 }
+.profile-contents-sub {
+  float: left;
+  width: 234.5px;
+  height: 372px;
+}
 .sec-ttl-in {
   margin: 0 0 48px 0;
   line-height: 1.1;
@@ -353,6 +358,7 @@ player profile
   text-align: center;
 }
 .btn-player-img {
+  width: 296px;
   margin: 50px auto 0;
   display: block;
   text-align: center;
