@@ -1,4 +1,6 @@
 import React from "react";
+import { useAuth } from "../context/AuthContext";
+import { Link } from "react-router-dom";
 import "../css/base-pc.css";
 
 type HeaderProps = {
@@ -17,12 +19,12 @@ const Header: React.FC<HeaderProps> = ({ isLoggedIn }) => {
           <ul>
               {isLoggedIn ? (
                 <>
-                  <li><a href="#"><span className="nav-global-in-first">logout</span></a></li>
+                  <li><Link to="/logout"><span className="nav-global-in-first">logout</span></Link></li>
                   <li><a href="#"><span className="nav-global-in">profile</span></a></li>
                 </>
               ) : (
                 <>
-                  <li><a href="#"><span className="nav-global-in-first">login</span></a></li>
+                  <li><Link to="/login"><span className="nav-global-in-first">login</span></Link></li>
                   <li><a href="#"><span className="nav-global-in">registration</span></a></li>
                 </>
               )}
@@ -40,12 +42,12 @@ const Header: React.FC<HeaderProps> = ({ isLoggedIn }) => {
             <ul>
               {isLoggedIn ? (
                 <>
-                  <li><a href="#"><span className="nav-global-in-first">logout</span></a></li>
+                  <li><Link to="/logout"><span className="nav-global-in-first">logout</span></Link></li>
                   <li><a href="#"><span className="nav-global-in">profile</span></a></li>
                 </>
               ) : (
                 <>
-                  <li><a href="#"><span className="nav-global-in-first">login</span></a></li>
+                  <li><Link to="/login"><span className="nav-global-in-first">login</span></Link></li>
                   <li><a href="#"><span className="nav-global-in">registration</span></a></li>
                 </>
               )}
