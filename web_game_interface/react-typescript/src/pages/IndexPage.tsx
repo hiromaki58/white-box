@@ -6,7 +6,7 @@ import GameCard from "../components/GameCard";
 const HomePage: React.FC = () => {
   return (
     <div className="wrapper">
-      <Header isLoggedIn={false} onLoginClick={() => alert("Login clicked!")} />
+      <Header isLoggedIn={false} />
       <GameCard
         linkTo="/game/minesweeper"
       />

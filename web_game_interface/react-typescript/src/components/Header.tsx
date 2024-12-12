@@ -3,10 +3,9 @@ import "../css/base-pc.css";
 
 type HeaderProps = {
   isLoggedIn: boolean;
-  onLoginClick: () => void;
 };
 
-const Header: React.FC<HeaderProps> = ({ isLoggedIn, onLoginClick }) => {
+const Header: React.FC<HeaderProps> = ({ isLoggedIn }) => {
   return (
     <header className="header">
       <div className="header-in only-sp">
