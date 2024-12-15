@@ -36,6 +36,7 @@ const Registration: React.FC = () => {
                   <input className="form-registrtion-input-04" type="text" name="instructor_mail" placeholder="E-mail address" />
                 </li>
               </ul>
+            </section>
 
             <div className="btn-registration-player">
               <input className="btn-registration-player-01" type="submit" value="registration" />
