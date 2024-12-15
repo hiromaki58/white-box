@@ -7,7 +7,9 @@ type HeaderProps = {
   isLoggedIn: boolean;
 };
 
-const Header: React.FC<HeaderProps> = ({ isLoggedIn }) => {
+const Header: React.FC<HeaderProps> = () => {
+  const { isLoggedIn } = useAuth();
+
   return (
     <header className="header">
       <div className="header-in only-sp">
