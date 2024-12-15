@@ -3,6 +3,7 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import "../../css/base-pc.css";
 import "../../css/registration.css"
+import { Link } from "react-router-dom";
 
 const RegistrationFail: React.FC = () => {
   return(
@@ -13,7 +14,7 @@ const RegistrationFail: React.FC = () => {
           <section className="sec-login">
             <h1 className="sec-login-fail-in">Registration Failure</h1>
             <p className="sec-login-detail">Please try again later</p>
-            <a href="../index.html">Back to login page</a>
+            <Link to="/">Back to login page</Link>
           </section>
         </div>
       </article>

@@ -3,6 +3,7 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import "../../css/base-pc.css";
 import "../../css/login.css";
+import { Link } from "react-router-dom";
 
 const PasswordResetSuccess: React.FC = () => {
   return(
@@ -19,9 +20,9 @@ const PasswordResetSuccess: React.FC = () => {
             </div>
 
             <div className="btn-registration-password">
-              <a href="/wdseminar/instructor/login">
+              <Link to="/">
                 <span className="btn-registration-password-01">To login page</span>
-              </a>
+              </Link>
             </div>
           </section>
         </div>

@@ -3,6 +3,7 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import "../../css/base-pc.css";
 import "../../css/login.css";
+import { Link } from "react-router-dom";
 
 const LoginSucesss: React.FC = () => {
   return(
@@ -12,7 +13,7 @@ const LoginSucesss: React.FC = () => {
         <div className="area-login">
           <section className="sec-login">
             <h1 className="sec-login-in">Login Succeded</h1>
-            <a href="../index.html">Back to top page</a>
+            <Link to="/">Back to top page</Link>
           </section>
         </div>
       </article>

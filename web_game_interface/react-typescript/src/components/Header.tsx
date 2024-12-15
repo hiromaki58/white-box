@@ -22,12 +22,12 @@ const Header: React.FC<HeaderProps> = () => {
               {isLoggedIn ? (
                 <>
                   <li><Link to="/logout"><span className="nav-global-in-first">logout</span></Link></li>
-                  <li><a href="#"><span className="nav-global-in">profile</span></a></li>
+                  <li><Link to="/profile"><span className="nav-global-in">profile</span></Link></li>
                 </>
               ) : (
                 <>
                   <li><Link to="/login"><span className="nav-global-in-first">login</span></Link></li>
-                  <li><a href="#"><span className="nav-global-in">registration</span></a></li>
+                  <li><Link to="/registration"><span className="nav-global-in">registration</span></Link></li>
                 </>
               )}
             </ul>
@@ -45,12 +45,12 @@ const Header: React.FC<HeaderProps> = () => {
               {isLoggedIn ? (
                 <>
                   <li><Link to="/logout"><span className="nav-global-in-first">logout</span></Link></li>
-                  <li><a href="#"><span className="nav-global-in">profile</span></a></li>
+                  <li><Link to="/profile"><span className="nav-global-in">profile</span></Link></li>
                 </>
               ) : (
                 <>
                   <li><Link to="/login"><span className="nav-global-in-first">login</span></Link></li>
-                  <li><a href="#"><span className="nav-global-in">registration</span></a></li>
+                  <li><Link to="/registration"><span className="nav-global-in">registration</span></Link></li>
                 </>
               )}
             </ul>

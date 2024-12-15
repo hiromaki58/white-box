@@ -3,6 +3,7 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import "../../css/base-pc.css";
 import "../../css/login.css";
+import { Link } from "react-router-dom";
 
 const LoginFail: React.FC = () => {
   return(
@@ -13,7 +14,7 @@ const LoginFail: React.FC = () => {
           <section className="sec-login">
             <h1 className="sec-login-fail-in">Login Failure</h1>
             <p className="sec-login-detail">Please check your e-mail and password</p>
-            <a href="../index.html">Back to login page</a>
+            <Link to="/">Back to login page</Link>
           </section>
         </div>
       </article>
