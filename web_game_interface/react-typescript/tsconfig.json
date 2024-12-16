@@ -111,13 +111,3 @@
     "include": ["src/**/*.ts", "test/**/*"],
     "exclude": ["node_modules", "src/dist"]
 }
-// {
-//   "compilerOptions": {
-//       "target": "ES6",
-//       "module": "ES6",
-//       "strict": true,
-//       "outDir": "./src/dist",
-//   },
-//   "include": ["src/**/*.ts"],
-//   "exclude": ["node_modules", "src/dist"]
-// }
