@@ -9,11 +9,13 @@ import RegistrationPage from "./pages/registration/Registration";
 import RegistrationSuccessPage from "./pages/registration/RegistrationSuccess";
 import RegistrationFailPage from "./pages/registration/RegistrationFail";
 import GamePage from "./pages/GamePage";
+import Header from "./components/Header";
 
 const App: React.FC = () => {
   return (
     <AuthProvider>
       <Router>
+      <Header />
         <Routes>
           <Route path="/" element={<IndexPage />} />
           <Route path="/login" element={<LoginPage />} />

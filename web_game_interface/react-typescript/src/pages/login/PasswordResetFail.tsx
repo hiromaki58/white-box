@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 const PasswordResetFail: React.FC = () => {
   return(
     <div className="wrapper">
-      <Header isLoggedIn={false} />
+      <Header />
       <article className="contents">
         <div className="area-reset">
           <section className="sec-login">

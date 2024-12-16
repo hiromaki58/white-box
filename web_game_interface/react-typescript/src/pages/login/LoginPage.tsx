@@ -7,7 +7,7 @@ import "../../css/login.css"
 const LoginPage: React.FC = () => {
   return (
     <div className="wrapper">
-      <Header isLoggedIn={false} />
+      <Header />
       <article className="contents">
         <div className="area-login">
           <section className="sec-login">

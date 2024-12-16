@@ -7,7 +7,7 @@ import "../../css/registration.css"
 const Registration: React.FC = () => {
   return(
     <div className="wrapper">
-      <Header isLoggedIn={false} />
+      <Header />
       <article className="contents clearfix">
         <div className="contents-ttl">
           <section className="sec-ttl">

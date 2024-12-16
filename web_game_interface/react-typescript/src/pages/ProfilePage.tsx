@@ -7,7 +7,7 @@ import "../css/registration.css";
 const ProfilePage: React.FC = () => {
   return(
     <div className="wrapper">
-      <Header isLoggedIn={false} />
+      <Header />
       <article className="contents clearfix">
         <div className="profile-contents-ttl">
           <section>
