@@ -6,7 +6,7 @@ import GameArea from "../components/GameArea";
 const GamePage: React.FC = () => {
   return (
     <div className="wrapper">
-      <Header isLoggedIn={false} />
+      <Header />
       <GameArea/>
       <Footer />
     </div>
