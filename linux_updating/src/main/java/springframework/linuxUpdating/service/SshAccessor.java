@@ -20,6 +20,7 @@ import org.springframework.stereotype.Service;
 
 import springframework.linuxupdating.model.Command;
 import springframework.linuxupdating.utils.CommandList;
+import springframework.linuxupdating.utils.CommandListProviderFactory;
 import springframework.linuxupdating.utils.TerminalHandler;
 
 @Service
@@ -109,12 +110,13 @@ public class SshAccessor {
     private void sendCommandList(ClientSession session, String hostName, String distribution){
         List<Command> commnadList;
 
-        if(distribution.equalsIgnoreCase("Ubuntu")){
-            commnadList = CommandList.getUbuntuCommandList();
-        }
-        else{
-            commnadList = CommandList.getRedHatCommandList();
-        }
+        // if(distribution.equalsIgnoreCase("Ubuntu")){
+        //     commnadList = CommandList.getUbuntuCommandList();
+        // }
+        // else{
+        //     commnadList = CommandList.getRedHatCommandList();
+        // }
+        commnadList = CommandListProviderFactory.getCommandListProvider(distribution).getCommandList();
 
         for(Command commandSet : commnadList){
             sendCommand(session, hostName, commandSet);
