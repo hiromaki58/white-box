@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import org.springframework.stereotype.Component;
 
-import springframework.linuxupdating.model.CommandSet;
+import springframework.linuxupdating.model.Command;
 import springframework.linuxupdating.service.TerminalMsg;
 
 @Component
@@ -15,7 +15,7 @@ public class TerminalHandler {
 		this.terminalMsg = terminalMsg;
 	}
 
-	public boolean checkOutputAndWaitForEnterKey(CommandSet commandSet, String responseString, Scanner scan){
+	public boolean checkOutputAndWaitForEnterKey(Command commandSet, String responseString, Scanner scan){
 		System.out.println(terminalMsg.getTheCmdIsMsg() + commandSet.getCommand());
 		System.out.println(responseString);
 		System.out.println(terminalMsg.getCheckOutputMsg());
@@ -31,7 +31,7 @@ public class TerminalHandler {
 		}
 	}
 
-	public String inputYesOrNo(CommandSet commandSet, String responseString, Scanner scan){
+	public String inputYesOrNo(Command commandSet, String responseString, Scanner scan){
 		System.out.println(terminalMsg.getTheCmdIsMsg() + commandSet.getCommand());
 		System.out.println(responseString);
 

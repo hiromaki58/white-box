@@ -18,7 +18,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.stereotype.Service;
 
-import springframework.linuxupdating.model.CommandSet;
+import springframework.linuxupdating.model.Command;
 import springframework.linuxupdating.utils.CommandList;
 import springframework.linuxupdating.utils.TerminalHandler;
 
@@ -107,7 +107,7 @@ public class SshAccessor {
      * @param numOfHost
      */
     private void sendCommandList(ClientSession session, String hostName, String distribution){
-        List<CommandSet> commnadList;
+        List<Command> commnadList;
 
         if(distribution.equalsIgnoreCase("Ubuntu")){
             commnadList = CommandList.getUbuntuCommandList();
@@ -116,7 +116,7 @@ public class SshAccessor {
             commnadList = CommandList.getRedHatCommandList();
         }
 
-        for(CommandSet commandSet : commnadList){
+        for(Command commandSet : commnadList){
             sendCommand(session, hostName, commandSet);
         }
     }
@@ -128,7 +128,7 @@ public class SshAccessor {
      * @param numOfHost
      * @param commandSet
      */
-    private void sendCommand(ClientSession session, String hostName, CommandSet commandSet){
+    private void sendCommand(ClientSession session, String hostName, Command commandSet){
         String responseString;
         try (ByteArrayOutputStream responseStream = new ByteArrayOutputStream();
             ClientChannel channel = session.createExecChannel(commandSet.getCommand())) {

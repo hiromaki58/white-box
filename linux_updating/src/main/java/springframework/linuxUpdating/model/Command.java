@@ -1,15 +1,15 @@
 package springframework.linuxupdating.model;
 
-public class CommandSet {
+public class Command {
   private String command;
   private String alternativeCommand;
   private boolean isContinuedOrNo;
   private boolean isAskedToSayYesOrNo;
 
-  public CommandSet(){
+  public Command(){
   }
 
-  public CommandSet(String command, String alternativeCommand, boolean isContinuedOrNo, boolean isAskedToSayYesOrNo){
+  public Command(String command, String alternativeCommand, boolean isContinuedOrNo, boolean isAskedToSayYesOrNo){
     this.command = command;
     this.alternativeCommand = alternativeCommand;
     this.isContinuedOrNo = isContinuedOrNo;
@@ -67,7 +67,7 @@ public class CommandSet {
       return false;
     if (getClass() != obj.getClass())
       return false;
-    CommandSet other = (CommandSet) obj;
+    Command other = (Command) obj;
     if (command == null) {
       if (other.command != null)
         return false;
