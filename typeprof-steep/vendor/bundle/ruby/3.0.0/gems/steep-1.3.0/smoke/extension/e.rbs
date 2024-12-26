@@ -1,7 +1,0 @@
-class NumberLike
-  def to_number: -> Integer
-end
-
-class Integer
-  def `+`: (NumberLike) -> NumberLike | ...
-end

@@ -1,3 +1,0 @@
-class EmptyYield
-  def foo: () { (Integer) -> void } -> void
-end
