@@ -1,4 +1,0 @@
-class Fun
-  def foo: (Integer?) -> void
-  def foo2: (Integer) -> void
-end

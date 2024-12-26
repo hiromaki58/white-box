@@ -1,1 +1,0 @@
-BlockBodyTypeMismatch.new.foo { "" }

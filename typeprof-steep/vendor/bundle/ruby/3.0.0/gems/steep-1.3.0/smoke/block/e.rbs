@@ -1,4 +1,0 @@
-class BlockWithSelf
-  @name: String
-  @id: Integer
-end

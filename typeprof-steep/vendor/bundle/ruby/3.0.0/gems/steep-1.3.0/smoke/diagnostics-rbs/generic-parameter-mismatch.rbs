@@ -1,7 +1,0 @@
-class GenericParameterMismatchError
-  class Foo[A]
-  end
-
-  class Foo[A, B]
-  end
-end
