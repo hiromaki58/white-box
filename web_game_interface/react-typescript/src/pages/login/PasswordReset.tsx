@@ -20,31 +20,31 @@ const PasswordReset: React.FC = () => {
     }, []);
 
     const handleSubmit = async (e: React.FormEvent) => {
-            e.preventDefault();
+        e.preventDefault();
 
-            if(newPassword !== newConfirmPassword){
-                setMsg("The password is not matched.");
-                return;
-            }
+        if(newPassword !== newConfirmPassword){
+            setMsg("The password is not matched.");
+            return;
+        }
 
-            try{
-                const response = await fetch("/api/player/password-reset", {
-                    method: "PUT",
-                    headers: { "Content-Type": "application/json" },
-                    credentials: "include",
-                    body: JSON.stringify({ newPassword }),
-                });
+        try{
+            const response = await fetch("/api/player/password-reset", {
+                method: "PUT",
+                headers: { "Content-Type": "application/json" },
+                credentials: "include",
+                body: JSON.stringify({ newPassword }),
+            });
 
-                if(response.ok){
-                    navigate("/login/password-reset/success");
-                }
-                else{
-                    navigate("/login/password-reset/fail");
-                }
+            if(response.ok){
+                navigate("/login/password-reset/success");
             }
-            catch(err){
-                setMsg("Please try again later.");
+            else{
+                navigate("/login/password-reset/fail");
             }
+        }
+        catch(err){
+            setMsg("Please try again later.");
+        }
     }
 
     return(

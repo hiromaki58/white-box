@@ -1,10 +1,10 @@
 import React from "react";
-import { useAuth } from "../context/AuthContext";
+import { useAuthProvider } from "../context/AuthContext";
 import { Link } from "react-router-dom";
 import "../css/base-pc.css";
 
 const Header: React.FC = () => {
-  const { isLoggedIn } = useAuth();
+  const { isLoggedIn } = useAuthProvider();
 
   return (
     <header className="header">
