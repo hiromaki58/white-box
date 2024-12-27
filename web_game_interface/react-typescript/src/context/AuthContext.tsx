@@ -7,12 +7,12 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     // To login
-    const login = async (email: string, password: string) => {
+    const login = async (emailAddr: string, password: string) => {
         try {
             const response = await fetch("/api/player/login", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ email, password }),
+                body: JSON.stringify({ emailAddr, password }),
             });
 
             const result = await response.json();
@@ -20,7 +20,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
             if (result.success) {
                 setIsLoggedIn(true);
                 sessionStorage.setItem("isLoggedIn", "true");
-                sessionStorage.setItem("emailAddr", email);
+                sessionStorage.setItem("emailAddr", emailAddr);
 
                 // Session time out
                 setTimeout(() => {
