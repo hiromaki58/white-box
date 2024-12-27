@@ -1,10 +1,5 @@
 import React, { createContext, useContext, useState, ReactNode } from "react";
-
-type AuthContextType = {
-    isLoggedIn: boolean;
-    login: (email: string, password: string) => Promise<void>;
-    logout: () => void;
-};
+import { AuthContextType } from "src/model/Auth";
 
 export const AuthContext = createContext<AuthContextType | null>(null);
 
@@ -14,7 +9,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     // To login
     const login = async (email: string, password: string) => {
         try {
-            const response = await fetch("/api/login", {
+            const response = await fetch("/api/player/login", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ email, password }),
@@ -25,26 +20,29 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
             if (result.success) {
                 setIsLoggedIn(true);
                 sessionStorage.setItem("isLoggedIn", "true");
+                sessionStorage.setItem("emailAddr", email);
 
                 // Session time out
                 setTimeout(() => {
                 sessionStorage.removeItem("isLoggedIn");
+                sessionStorage.removeItem("emailAddr");
                 setIsLoggedIn(false);
                 }, 60 * 60 * 1000);
             } else {
                 throw new Error(result.message || "Login failed");
             }
-        } catch (error) {
-            console.error("Login error:", error);
+        }
+        catch (err) {
+            console.error("Login error:", err);
         }
     };
 
-  // To logout
+    // To logout
     const logout = () => {
         sessionStorage.removeItem("isLoggedIn");
         setIsLoggedIn(false);
 
-        fetch("/api/logout", { method: "POST" }).catch((error) =>
+        fetch("/api/player/logout", { method: "POST" }).catch((error) =>
             console.error("Logout error:", error)
         );
     };
@@ -56,10 +54,10 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     );
 };
 
-export const useAuth = (): AuthContextType => {
+export const useAuthProvider = (): AuthContextType => {
     const context = useContext(AuthContext);
     if (!context) {
-        throw new Error("useAuth must be used within an AuthProvider");
+        throw new Error("useAuthProvider must be used within an AuthProvider");
     }
     return context;
 };
