@@ -42,8 +42,8 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         sessionStorage.removeItem("isLoggedIn");
         setIsLoggedIn(false);
 
-        fetch("/api/player/logout", { method: "POST" }).catch((error) =>
-            console.error("Logout error:", error)
+        fetch("/api/player/logout", { method: "POST" }).catch((err) =>
+            console.error("Logout error:", err)
         );
     };
 
