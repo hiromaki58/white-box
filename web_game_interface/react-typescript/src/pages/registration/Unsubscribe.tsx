@@ -3,7 +3,7 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import "../../css/base-pc.css";
 import "../../css/registration.css"
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const Unsubscribe: React.FC = () => {
     const navigate = useNavigate();
@@ -22,7 +22,7 @@ const Unsubscribe: React.FC = () => {
                 navigate("/");
             }
             else{
-
+                navigate("/unsubscribe/fail");
             }
         }
         catch(err){
@@ -41,10 +41,13 @@ const Unsubscribe: React.FC = () => {
                 </div>
                 <div className="contents-in">
                     <div className="btn-registration-player">
-                        <span className="btb-cmn-positive-01">Back</span>
-                        <span className="btb-cmn-negative-01">Delete</span>
+                        <Link to={"/profile"}>
+                            <span className="btb-cmn-positive-01">Back</span>
+                        </Link>
+                        <span className="btb-cmn-negative-01" onClick={handleSubmit}>Delete</span>
                     </div>
                 </div>
+                {msg && <p>{msg}</p>}
             </article>
             <Footer />
         </div>
