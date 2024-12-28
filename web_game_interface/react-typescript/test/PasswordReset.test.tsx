@@ -6,7 +6,7 @@ import PasswordReset from "../src/pages/login/PasswordReset";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../src/context/AuthContext";
 
-describe("Password Change Component", () => {
+describe("Password reset component", () => {
     beforeEach(() => {
         global.fetch = vi.fn().mockResolvedValue({
             ok: true,
