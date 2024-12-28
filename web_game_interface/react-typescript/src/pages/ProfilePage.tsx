@@ -79,9 +79,7 @@ const ProfilePage: React.FC = () => {
                                 <div className="form-registration-img">
                                     <img className="img-preview" src={profileImgUrl} alt="profile img" />
                                     <div className="btn-player-img">
-                                        <a href="#">
-                                            <span className="btb-cmn-positive-01">Edit image</span>
-                                        </a>
+                                        <span className="btb-cmn-positive-01">Edit image</span>
                                     </div>
                                 </div>
                             </div>
