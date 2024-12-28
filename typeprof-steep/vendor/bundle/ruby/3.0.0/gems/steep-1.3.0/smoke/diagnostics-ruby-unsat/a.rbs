@@ -1,3 +1,0 @@
-class UnsatisfiableConstraint
-  def foo: [A, B] (A) { (A) -> void } -> B
-end

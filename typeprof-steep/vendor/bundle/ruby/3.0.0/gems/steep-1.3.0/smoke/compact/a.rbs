@@ -1,5 +1,0 @@
-module Compact
-  class Foo
-    def compact: () -> Array[String | bool | nil]
-  end
-end

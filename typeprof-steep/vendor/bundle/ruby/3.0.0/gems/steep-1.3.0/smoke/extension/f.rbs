@@ -1,3 +1,0 @@
-class Array[unchecked out X]
-  def __f__: () -> X
-end

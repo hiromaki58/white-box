@@ -1,12 +1,10 @@
 # white-box
 
-This repository has 5 packages as the portfolio.
+This repository has 3 packages as the portfolio.
 
 1. [linux_updating]
 2. [web_game]
 3. [web_game_interface]
-4. [react_native_expo]
-5. [typeprof-steep]
 
 ## 1 liux_updating
 
@@ -73,25 +71,3 @@ This repo is for a web application GUI built using React, TypeScript and CSS, de
 - **Backend Integration**:
   - Java Spring Boot for authentication and database management.
   - REST APIs for user data and game scores.
-
-## 4 react_native_expo
-
-### Purpose
-
-To test "expo" frame work and create the basic react native app.
-
-### Technology used
-
-- Frame work: Expo
-- Front-end: React native
-
-### Installation
-
-Excecute the code with the command.
-Command: expo start
-
-## 5 TypeProf and Steep Testing
-
-### Purpose
-
-Make the funciton to check the data type with RBS, TypeProf and Steep
