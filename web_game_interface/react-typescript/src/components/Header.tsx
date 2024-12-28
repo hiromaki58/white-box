@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import "../css/base-pc.css";
 
 const Header: React.FC = () => {
-  const { isLoggedIn } = useAuthProvider();
+  const { isLoggedIn, logout } = useAuthProvider();
 
   return (
     <header className="header">
@@ -17,7 +17,7 @@ const Header: React.FC = () => {
           <ul>
               {isLoggedIn ? (
                 <>
-                  <li><Link to="/logout"><span className="nav-global-in-first">logout</span></Link></li>
+                  <li onClick={logout} ><span className="nav-global-in-first">logout</span></li>
                   <li><Link to="/profile"><span className="nav-global-in">profile</span></Link></li>
                 </>
               ) : (
