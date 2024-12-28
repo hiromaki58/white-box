@@ -39,9 +39,9 @@ const Registration: React.FC = () => {
             <Header />
             <article className="contents clearfix">
                 <div className="contents-ttl">
-                <section className="sec-ttl">
-                    <h1 className="sec-ttl-in">Player registration</h1>
-                </section>
+                    <section className="sec-ttl">
+                        <h1 className="sec-ttl-in">Player registration</h1>
+                    </section>
                 </div>
                 <div className="contents-in">
                     <form className="form-register-player" onSubmit={handleSubmit}>
