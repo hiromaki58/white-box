@@ -1,10 +1,45 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import "../css/base-pc.css";
 import "../css/registration.css";
 
+import { ProfileType } from "../model/Api"
+
 const ProfilePage: React.FC = () => {
+    const [msg, setMsg] = useState("");
+    const [profileData, setProfileData] = useState<ProfileType | null>(null);
+
+    useEffect(() => {
+        const fetchProfile = async () => {
+            try{
+                const profileResponse = await fetch("/api/player/getProfile");
+                const profileJson = await profileResponse.json();
+
+                const profileImgResponse = await fetch("/api/player/getProfileImg");
+                const profileImgBlob = await profileImgResponse.blob();
+
+                setProfileData({
+                    firstName: profileJson.firstName,
+                    familyName: profileJson.familyName,
+                    emailAddr: profileJson.emailAddr,
+                    profileImg: profileImgBlob
+                });
+            }
+            catch(err){
+                setMsg("There are some issues.");
+            }
+        };
+
+        fetchProfile();
+    }, []);
+
+    if(!profileData){
+        setMsg("Please access again later.");
+    }
+
+    const profileImgUrl = profileData?.profileImg ? URL.createObjectURL(profileData?.profileImg) : "";
+
     return(
         <div className="wrapper">
             <Header />
@@ -22,17 +57,17 @@ const ProfilePage: React.FC = () => {
                             <ul className="form-cmn-01-wrap">
                                 <li className="list-basic-01">
                                     <p className="ttl-player-info">First name</p>
-                                    <span className="txt-player-info">First name</span>
+                                    <span className="txt-player-info">{profileData?.firstName}</span>
                                 </li>
                                 <li className="list-basic-01">
                                     <p className="ttl-player-info">Last name</p>
-                                    <span className="txt-player-info">Last name</span>
+                                    <span className="txt-player-info">{profileData?.familyName}</span>
                                 </li>
                             </ul>
                             <ul className="form-cmn-01-wrap">
                                 <li className="list-basic-02">
                                     <p className="ttl-player-info">E-mail address</p>
-                                    <span className="txt-player-info">e-mail</span>
+                                    <span className="txt-player-info">{profileData?.emailAddr}</span>
                                 </li>
                             </ul>
                         </section>
@@ -42,11 +77,9 @@ const ProfilePage: React.FC = () => {
                             <h3 className="ttl-register-player">Image</h3>
                             <div className="ttl-player-img">
                                 <div className="form-registration-img">
-                                    <div className="img-preview"></div>
+                                    <img className="img-preview" src={profileImgUrl} alt="profile img" />
                                     <div className="btn-player-img">
-                                        <a href="#">
-                                            <span className="btn-registration-player-01">Edit image</span>
-                                        </a>
+                                        <span className="btb-cmn-positive-01">Edit image</span>
                                     </div>
                                 </div>
                             </div>
@@ -58,6 +91,7 @@ const ProfilePage: React.FC = () => {
                         </div>
                     </div>
                 </div>
+                {msg && <p>{msg}</p>}
                 <div className="profile-contents-sub">
                     <nav className="nav-local">
                         <ul>

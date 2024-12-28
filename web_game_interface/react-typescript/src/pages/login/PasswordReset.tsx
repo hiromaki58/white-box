@@ -54,18 +54,15 @@ const PasswordReset: React.FC = () => {
                 <div className="area-login">
                     <section className="sec-login">
                         <h1 className="sec-login-in">Password reset</h1>
-
                         <div className="form-reset-in">
                             <div className="form-reset-ttl">E-mail address</div>
                             <div className="form-reset-mail">{emailAddr}</div>
                         </div>
-
                         <form className="form-login" onSubmit={handleSubmit}>
                             <div className="form-login-in">
                                 <div className="form-login-ttl">New password</div>
                                 <input className="form-login-input" type="password" value={newPassword} onChange={(e) => setNewPassword(e.target.value)} required placeholder="E-mail address" /><br />
                             </div>
-
                             <div className="form-login-in">
                                 <div className="form-login-ttl">New password(Re-enter)</div>
                                 <input className="form-login-input" type="password" value={newConfirmPassword} onChange={(e) => setNewConfirmPassword(e.target.value)} required placeholder="Password" /><br />

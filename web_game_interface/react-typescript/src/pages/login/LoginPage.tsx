@@ -9,13 +9,13 @@ import { useAuthProvider } from "../../context/AuthContext";
 
 const LoginPage: React.FC = () => {
     const navigate = useNavigate();
-    const {loginFunction} = useAuthProvider();
+    const { login } = useAuthProvider();
     const [emailAddr, setEmailAddr] = useState("");
     const [password, setPassword] = useState("");
 
     const handleSubmit = async (e: React.FormEvent) => {
         try{
-            await loginFunction(emailAddr, password);
+            await login(emailAddr, password);
             navigate("/login/success");
         }
         catch(err){
@@ -30,7 +30,6 @@ const LoginPage: React.FC = () => {
                 <div className="area-login">
                     <section className="sec-login">
                         <h1 className="sec-login-in">Login</h1>
-
                         <form className="form-login" onSubmit={handleSubmit}>
                             <div className="form-login-in">
                                 <div className="form-login-ttl">E-mail address</div>
@@ -43,7 +42,7 @@ const LoginPage: React.FC = () => {
                             </div>
 
                             <input className="form-login-button" type="submit" value="login" />
-                            </form>
+                        </form>
                         <a href="./reissue.html">If you forget password</a>
                     </section>
                 </div>

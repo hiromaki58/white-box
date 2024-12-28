@@ -1,25 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
-    <meta name="format-detection" content="telephone=no">
-    <title>Game List as Portfolio</title>
-    <link href="https://fonts.googleapis.com/css?family=M+PLUS+1p" rel="stylesheet">
-    <link rel="stylesheet" href="./common/css/base-pc.css" media="all and (min-width: 1201px)">
-    <link rel="stylesheet" href="./common/css/base-sp.css" media="all and (max-width: 1201px)">
-    <link rel="shortcut icon" type="image/x-icon" href="./src/common/img/jwda_favicon.ico">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<meta name="format-detection" content="telephone=no">
+<title>Game List as Portfolio</title>
+<link href="https://fonts.googleapis.com/css?family=M+PLUS+1p" rel="stylesheet">
+<link rel="stylesheet" href="../common/css/base-pc.css" media="all and (min-width: 1201px)">
+<link rel="stylesheet" href="../common/css/base-sp.css" media="all and (max-width: 1201px)">
+<link rel="stylesheet" href="./css/registration.css">
+<link rel="shortcut icon" type="image/x-icon" href="../common/img/portfolio_favicon.ico">
 </head>
-
 <body>
     <div class="wrapper">
         <header class="header">
             <div class="header-in only-sp">
                 <section>
                     <h1 class="header-logo logo-company">
-                        <a href="https://"><img src="./common/img/logo_institution_01.jpg" alt="https://"></a>
+                        <a href="https://"><img src="../common/img/logo_institution_01.jpg" alt="https://"></a>
                     </h1>
                     <nav class="nav-global">
                         <ul>
@@ -28,10 +27,11 @@
                     </nav>
                 </section>
             </div><!-- /header-in only-sp -->
+
             <div class="header-in only-pc clearfix">
                 <section>
                     <h1 class="header-logo logo-company">
-                        <a href="https://"><img src="./common/img/logo_institution_01.jpg" alt="https:///"></a>
+                        <a href="https://"><img src="../common/img/logo_institution_01.jpg" alt="https:///"></a>
                     </h1>
                     <nav class="nav-global">
                         <ul>
@@ -42,29 +42,19 @@
                 </section>
             </div><!-- /header-in only-pc-->
         </header>
-        <article class="contents">
-            <div class="game-contents-left">
-                <section>
-                    <h4 class="ttl-game">Minesweeper</h4>
-                    <div id="gamePivot"></div>
-                    <div>
-                        <input type="radio" id="pick" name="action" defaultChecked />
-                        <label htmlFor="pick">⛏</label> /
-                        <input type="radio" id="flag" name="action" />
-                        <label htmlFor="flag">🚩</label> /
-                        <span id="timer"></span>
-                    </div>
+        <article class="contents clearfix">
+            <div class="contents-ttl">
+                <section class="sec-ttl">
+                    <h1 class="sec-ttl-in">Delete play info</h1>
                 </section>
             </div>
-            <div class="game-contents-right">
-                <nav class="nav-game">
-                    <p class="txt-game-score">Bast score</p>
-                    <div class="nav-game-in">
-                        <p class="txt-game-score-in">pull the score from DB</p>
-                    </div>
-                </nav>
+            <div class="contents-in">
+                <div class="btn-registration-player">
+                        <span class="btb-cmn-positive-01">Back</span>
+                        <span class="btb-cmn-negative-01">Delete</span>
+                </div>
             </div>
-        </article><!-- /contents -->
+        </article>
     </div><!-- /wrapper -->
     <footer class="footer">
         <section>
@@ -73,30 +63,27 @@
                 <div class="footer-utility">
                     <div class="footer-utility-in">
                         <div class="footer-logo">
-                            <img class="footer-logo-in" src="./common/img/logo_institution_01.jpg" alt="https://">
-                        </div><!-- /footer-logo -->
+                        <img class="footer-logo-in" src="../common/img/logo_institution_01.jpg" alt="https://"></div><!-- /footer-logo -->
                         <section>
                             <div class="sec-footer-info">
                                 <div class="box-info-wrap">
-                                    <p class="ttl-info">Portfolio creater</p>
+                                <p class="ttl-info">Portfolio creater</p>
                                 </div>
                                 <div class="box-mail-wrap">
-                                    <span class="txt-mail">Hiro Maki</span>
+                                <span class="txt-mail">Hiro Maki</span>
                                 </div>
                             </div><!-- /sec-footer-info -->
                         </section>
-
                         <section>
-                            <div class="sec-footer-info">
-                                <div class="box-info-wrap">
-                                    <p class="ttl-info">Contact</p>
-                                </div>
-                                <div class="box-mail-wrap">
-                                    <span class="txt-mail">hiromaki58@gmail.com</span>
-                                </div>
-                            </div><!-- /sec-footer-info -->
+                        <div class="sec-footer-info">
+                            <div class="box-info-wrap">
+                                <p class="ttl-info">Contact</p>
+                            </div>
+                            <div class="box-mail-wrap">
+                                <span class="txt-mail">hiromaki58@gmail.com</span>
+                            </div>
+                        </div><!-- /sec-footer-info -->
                         </section>
-
                         <section>
                             <div class="box-info-wrap">
                                 <p class="ttl-info">SNS</p>

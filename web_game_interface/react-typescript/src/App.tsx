@@ -11,6 +11,9 @@ import PasswordResetFail from "./pages/login/PasswordResetFail";
 import RegistrationPage from "./pages/registration/Registration";
 import RegistrationSuccessPage from "./pages/registration/RegistrationSuccess";
 import RegistrationFailPage from "./pages/registration/RegistrationFail";
+import ProfilePage from "./pages/ProfilePage";
+import UnsubscribePage from "./pages/registration/Unsubscribe";
+import UnsubscribeFailPage from "./pages/registration/UnsubscribeFail";
 import GamePage from "./pages/GamePage";
 import Header from "./components/Header";
 
@@ -30,6 +33,9 @@ const App: React.FC = () => {
           <Route path="/registration" element={<RegistrationPage />} />
           <Route path="/registration/success" element={<RegistrationSuccessPage />} />
           <Route path="/registration/fail" element={<RegistrationFailPage />} />
+          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/unsubscribe" element={<UnsubscribePage />} />
+          <Route path="/unsubscribe/fail" element={<UnsubscribeFailPage />} />
           <Route path="/game/minesweeper" element={<GamePage />} />
         </Routes>
       </Router>

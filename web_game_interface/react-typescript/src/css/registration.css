@@ -1,48 +1,44 @@
 @charset "UTF-8";
-
 /* ==========================================================
  マイページに関連するページ全体に共通する部分
 ========================================================== */
 .contents {
-  min-width: 1215px;
-  font-family: "M PLUS 1p", "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", sans-serif;
+	min-width: 1215px;
+	font-family: "M PLUS 1p", "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", sans-serif;
 }
 /* ==========================================================
  nav-local
 ========================================================== */
-.nav-local {
-
+.nav-local li {
+	margin: 0 0 65px 0;
 }
-  .nav-local li {
-		margin: 0 0 65px 0;
-	}
-	  .nav02 {
-			height: 22px;
-			margin: 0 0 25px 0;
-			padding: 0 0 0 14px;
+.nav02 {
+	height: 22px;
+	margin: 0 0 25px 0;
+	padding: 0 0 0 14px;
 
-			border-left: 2px solid #333;
+	border-left: 2px solid #333;
 
-			line-height: 1;
-			font-size: 22px;
-			font-weight: bold;
-			color: #4D4D4D;
-		}
-			.nav-local-in li {
-				margin: 0 0 20px 0;
-			}
-				.nav-local li a {
-					padding: 0 0 0 14px;
-					letter-spacing: 0em;
-					line-height: 1.5;
-					font-size: 20px;
-					font-weight: bold;
-					color: #009ECE;
-				}
-					.nav-local li a:hover {
-						color: #009ECE;
-						text-decoration: underline;
-					}
+	line-height: 1;
+	font-size: 22px;
+	font-weight: bold;
+	color: #4D4D4D;
+}
+.nav-local-in li {
+	margin: 0 0 20px 0;
+}
+.nav-local li a {
+	padding: 0 0 0 14px;
+	letter-spacing: 0em;
+	line-height: 1.5;
+	font-size: 20px;
+	font-weight: bold;
+	color: #009ECE;
+}
+.nav-local li a:hover {
+	color: #009ECE;
+	text-decoration: underline;
+}
 /* ==========================================================
  contents
 ========================================================== */
@@ -50,31 +46,31 @@
 	min-width: 1215px;
 	margin: 52px auto 49px auto;
 	text-align: left;
-  }
-		.contents-main {
-		float: right;
-		width: 980px;
-		}
-		  .contents-main-main {
-				float: left;
-		    width: 684px;
-			}
-			.contents-main-sub {
-				float: right;
-				width: 296px;
-				height: 296px;
-			}
-			.contents-main-bottom {
-				min-width: 980px;
-				float: left;
-				margin: 52px auto 0 auto;
-				text-align: left;
-			}
-		.contents-sub {
-		float: left;
-		width: 234.5px;
-		height: 372px;
-		}
+}
+.contents-main {
+	float: right;
+	width: 980px;
+}
+.contents-main-main {
+	float: left;
+	width: 684px;
+}
+.contents-main-sub {
+	float: right;
+	width: 296px;
+	height: 296px;
+}
+.contents-main-bottom {
+	min-width: 980px;
+	float: left;
+	margin: 52px auto 0 auto;
+	text-align: left;
+}
+.contents-sub {
+	float: left;
+	width: 234.5px;
+	height: 372px;
+}
 /* ==========================================================
  contents-ttl
 ========================================================== */
@@ -83,154 +79,143 @@
 	position: relative;
 }
 .sec-ttl-in {
-  margin: 0 0 48px 0;
-
-  line-height: 1.1;
-  letter-spacing: 0;
-  font-size: 40px;
+	margin: 0 0 48px 0;
+	line-height: 1.1;
+	letter-spacing: 0;
+	font-size: 40px;
 }
 .sec-ttl-in p {
-  font-size: 20px;
-  line-height: 1.5;
+	font-size: 20px;
+	line-height: 1.5;
 }
 /* ==========================================================
  mypage identity
 ========================================================== */
-	.link-identity {
-		color: #333;
-	}
-	.link-identity:hover {
-		opacity: .7;
-	}
-		.box-identity-wrap {
-			display: inline-block;
-		}
-		.box-identity-sentence {
-				position: absolute;
-				right: 0;
-				top: 0;
-			}
-				.txt-user-name {
-					diplay: inline-block;
-					font-size: 20px;
-				}
-				.txt-release {
-					background: #EBD844;
-					width: 90px;
-					height: 27px;
-					margin: 0 0 0 auto;
-					text-align: center;
-					font-size: 16px;
-					color: #fff;
-					border-radius: 5px;
-				}
+.link-identity {
+	color: #333;
+}
+.link-identity:hover {
+	opacity: .7;
+}
+.box-identity-wrap {
+	display: inline-block;
+}
+.box-identity-sentence {
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+.txt-user-name {
+	display: inline-block;
+	font-size: 20px;
+}
+.txt-release {
+	background: #EBD844;
+	width: 90px;
+	height: 27px;
+	margin: 0 0 0 auto;
+	text-align: center;
+	font-size: 16px;
+	color: #fff;
+	border-radius: 5px;
+}
 /* ==========================================================
  register player
 ========================================================== */
 .sec-register-player-01 {
-  margin: 0 0 70px 0;
+	margin: 0 0 70px 0;
 }
 .ttl-register-player {
-  margin: 0 0 35px 0;
-  padding: 0 0 0 15px;
-  border-left: 4px solid #4d4d4d;
+	margin: 0 0 35px 0;
+	padding: 0 0 0 15px;
+	border-left: 4px solid #4d4d4d;
 
-  line-height: 1;
-  letter-spacing: 0em;
-  font-size: 22px;
-  font-weight: bold;
-  color: #4D4D4D;
+	line-height: 1;
+	letter-spacing: 0em;
+	font-size: 22px;
+	font-weight: bold;
+	color: #4D4D4D;
 }
 .form-cmn-01-wrap {
-  width: 602px;
-  margin: 0 0 0 100px;
-  display: flex;
+	width: 602px;
+	margin: 0 0 0 100px;
+	display: flex;
 }
 .ttl-register-player-in {
-  margin: 0 0 0 100px;
+	margin: 0 0 0 100px;
 }
 .form-cmn-01 {
-  width: 602px;
+	width: 602px;
 }
 .btn-registration-player {
-  margin: 0 auto;
-  display: block;
-  text-align: center;
-}
-.btn-registration-player-01{
-  background: #1C7CD5;
-  margin: 50px 0;
-  padding: 12px 34px;
-  border-style: none;
-  border-radius: 3px;
-  font-size: 16px;
-  color: #fff;
+	margin: 0 auto;
+	display: block;
+	text-align: center;
 }
 .form-registrtion-ttl-01 {
-  margin: 0 0 8px 0;
-  font-size: 16px;
+	margin: 0 0 8px 0;
+	font-size: 16px;
 }
 .form-registrtion-ttl-02 {
-  margin: 0 0 14px 0;
+	margin: 0 0 14px 0;
 }
 .form-cmn-02:last-child .form-registrtion-ttl-02 {
-  margin: 0;
+	margin: 0;
 }
 .form-registrtion-input-01 {
-  width: 288px;
-  height: 40px;
-  margin: 0 26px 21px 0;
+	width: 288px;
+	height: 40px;
+	margin: 0 26px 21px 0;
 }
 .form-registrtion-input-04 {
-  width: 602px;
-  height: 40px;
-  margin: 0 0 0 0;
+	width: 602px;
+	height: 40px;
+	margin: 0 0 0 0;
 }
 .form-registrtion-input-01::placeholder,
-.form-registrtion-input-04::placeholder
-  {
-  padding: 0 0 0 10px;
+.form-registrtion-input-04::placeholder {
+	padding: 0 0 0 10px;
 }
 .form-registrtion-check {
-  width: 602px;
-  margin: 21px 0 28px 100px;
-  display: grid;
+	width: 602px;
+	margin: 21px 0 28px 100px;
+	display: grid;
 }
 .form-registration-ttl-02 {
-  margin: 0 0 14px 0;
+	margin: 0 0 14px 0;
 }
 .list-certification-consultant {
-  padding: 0 0 0 13px;
+	padding: 0 0 0 13px;
 }
 .form-registrtion-check label {
-  display: block;
+	display: block;
 }
 .hidden {
-    display: none;
+	display: none;
 }
 .hidden input {
-  display: none;
+	display: none;
 }
 /* ==========================================================
  player info
 ========================================================== */
 .list-basic-01 {
-  width: 311px;
+	width: 311px;
 }
 .list-basic-02 {
-  width: 500px;
+	width: 500px;
 }
 .box-registrtion-check {
-  width: 602px;
-  margin: 21px 0 28px 0;
-  display: grid;
+	width: 602px;
+	margin: 21px 0 28px 0;
+	display: grid;
 }
 .txt-detail-01 {
-  width: 899px;
+	width: 899px;
 }
 .ttl-instructor-info {
-  margin-bottom: 14px;
-  font-size: 16px;
-  font-family: "Helvetica Neue","M PLUS 1p", "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", sans-serif;
-  color: #373A3C;
+	margin-bottom: 14px;
+	font-size: 16px;
+	font-family: "Helvetica Neue", "M PLUS 1p", "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", sans-serif;
+	color: #373A3C;
 }

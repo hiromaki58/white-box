@@ -32,16 +32,16 @@ const Registration: React.FC = () => {
         catch(err){
             setMsg("Please try again later.");
         }
-    }
+    };
 
     return(
         <div className="wrapper">
             <Header />
             <article className="contents clearfix">
                 <div className="contents-ttl">
-                <section className="sec-ttl">
-                    <h1 className="sec-ttl-in">Player registration</h1>
-                </section>
+                    <section className="sec-ttl">
+                        <h1 className="sec-ttl-in">Player registration</h1>
+                    </section>
                 </div>
                 <div className="contents-in">
                     <form className="form-register-player" onSubmit={handleSubmit}>
@@ -65,7 +65,7 @@ const Registration: React.FC = () => {
                             </ul>
                         </section>
                         <div className="btn-registration-player">
-                            <input className="btn-registration-player-01" type="submit" value="registration" />
+                            <input className="btb-cmn-positive-01" type="submit" value="registration" />
                         </div>
                     </form>
                     {msg && <p>{msg}</p>}
