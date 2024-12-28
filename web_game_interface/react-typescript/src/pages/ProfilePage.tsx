@@ -80,7 +80,7 @@ const ProfilePage: React.FC = () => {
                                     <img className="img-preview" src={profileImgUrl} alt="profile img" />
                                     <div className="btn-player-img">
                                         <a href="#">
-                                            <span className="btn-registration-player-01">Edit image</span>
+                                            <span className="btb-cmn-positive-01">Edit image</span>
                                         </a>
                                     </div>
                                 </div>

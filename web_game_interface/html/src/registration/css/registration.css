@@ -91,34 +91,34 @@
 /* ==========================================================
  mypage identity
 ========================================================== */
-	.link-identity {
-		color: #333;
-	}
-	.link-identity:hover {
-		opacity: .7;
-	}
-		.box-identity-wrap {
-			display: inline-block;
-		}
-		.box-identity-sentence {
-				position: absolute;
-				right: 0;
-				top: 0;
-			}
-				.txt-user-name {
-					diplay: inline-block;
-					font-size: 20px;
-				}
-				.txt-release {
-					background: #EBD844;
-					width: 90px;
-					height: 27px;
-					margin: 0 0 0 auto;
-					text-align: center;
-					font-size: 16px;
-					color: #fff;
-					border-radius: 5px;
-				}
+.link-identity {
+	color: #333;
+}
+.link-identity:hover {
+	opacity: .7;
+}
+.box-identity-wrap {
+	display: inline-block;
+}
+.box-identity-sentence {
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+.txt-user-name {
+	display: inline-block;
+	font-size: 20px;
+}
+.txt-release {
+	background: #EBD844;
+	width: 90px;
+	height: 27px;
+	margin: 0 0 0 auto;
+	text-align: center;
+	font-size: 16px;
+	color: #fff;
+	border-radius: 5px;
+}
 /* ==========================================================
  register player
 ========================================================== */
@@ -151,15 +151,6 @@
   margin: 0 auto;
   display: block;
   text-align: center;
-}
-.btn-registration-player-01{
-  background: #1C7CD5;
-  margin: 50px 0;
-  padding: 12px 34px;
-  border-style: none;
-  border-radius: 3px;
-  font-size: 16px;
-  color: #fff;
 }
 .form-registrtion-ttl-01 {
   margin: 0 0 8px 0;

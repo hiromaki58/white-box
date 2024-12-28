@@ -65,7 +65,7 @@ const Registration: React.FC = () => {
                             </ul>
                         </section>
                         <div className="btn-registration-player">
-                            <input className="btn-registration-player-01" type="submit" value="registration" />
+                            <input className="btb-cmn-positive-01" type="submit" value="registration" />
                         </div>
                     </form>
                     {msg && <p>{msg}</p>}

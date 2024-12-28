@@ -368,7 +368,7 @@ player profile
   display: block;
   text-align: center;
 }
-.btn-registration-player-01{
+.btb-cmn-positive-01{
   background: #1C7CD5;
   margin: 50px 0;
   padding: 12px 34px;
@@ -377,7 +377,7 @@ player profile
   font-size: 16px;
   color: #fff;
 }
-.btn-registration-player-02{
+.btb-cmn-negative-01{
   background: #F22735;
   margin: 0 45px 0 0;
   padding: 12px 34px;

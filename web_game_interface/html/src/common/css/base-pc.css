@@ -270,7 +270,7 @@ player profile
 	text-align: left;
 }
 .profile-contents-ttl {
-  margin: 0 0 40px 0;
+    margin: 0 0 40px 0;
 }
 .profile-contents-main {
   float: right;
@@ -368,25 +368,23 @@ player profile
   display: block;
   text-align: center;
 }
-.btn-registration-player-01{
-  background: #1C7CD5;
-  margin: 50px 0;
-  padding: 12px 34px;
-  border-style: none;
-  border-radius: 3px;
-  font-size: 16px;
-  color: #fff;
+.btb-cmn-positive-01{
+    background: #1C7CD5;
+    margin: 50px 0;
+    padding: 12px 34px;
+    border-style: none;
+    border-radius: 3px;
+    font-size: 16px;
+    color: #fff;
 }
-.btn-registration-player-02{
-  background: #F22735;
-  margin: 0 45px 0 0;
-  padding: 12px 34px;
-
-  border-style: none;
-  border-radius: 3px;
-
-  font-size: 16px;
-  color: #fff;
+.btb-cmn-negative-01{
+    background: #F22735;
+    margin: 0 45px 0 0;
+    padding: 12px 34px;
+    border-style: none;
+    border-radius: 3px;
+    font-size: 16px;
+    color: #fff;
 }
 /* ==========================================================
 game
