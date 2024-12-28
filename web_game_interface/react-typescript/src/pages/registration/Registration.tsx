@@ -32,7 +32,7 @@ const Registration: React.FC = () => {
         catch(err){
             setMsg("Please try again later.");
         }
-    }
+    };
 
     return(
         <div className="wrapper">
