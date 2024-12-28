@@ -12,31 +12,23 @@ const GameCard: React.FC<GameCardProps> = ({ linkTo }) => {
             <div className="area-game">
                 <div className="sec-game">
                     <section>
-                        <h2 className="ttl-game-01">Game List</h2>
-                        <h3 className="ttl-game-02">Login function allows to save the score</h3>
+                        <h2 className="ttl-game-h2">Game List</h2>
+                        <h3 className="ttl-game-h3">Login function allows to save the score</h3>
                         <div className="sec-game-in">
                             <ul className="box-game-wrap">
                                 <li className="box-game">
                                     <ul className="box-game-in">
-
                                         <Link to={linkTo}>
                                             <li className="mod-game-wrap">
-                                                <a href="#">
-                                                    <div className="img-game"></div>
-                                                </a>
+                                                <div className="img-game"></div>
                                                 <section>
-                                                    <a href="#">
-                                                        <h4 className="ttl-game-individuality">Minesweeper</h4>
-                                                    </a>
-                                                    <div className="btn-game-wrap">
-                                                        <a href="#" className="btn-game-02">
-                                                            <span className="btn-game-detail">Play</span>
-                                                        </a>
+                                                    <h4 className="ttl-game-individuality">Minesweeper</h4>
+                                                    <div className="btn-game">
+                                                        <span className="btn-game-detail">Play</span>
                                                     </div>
                                                 </section>
                                             </li>
                                         </Link>
-
                                     </ul>
                                 </li>
                             </ul>
