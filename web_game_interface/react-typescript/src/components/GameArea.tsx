@@ -1,10 +1,25 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { startGame } from "../dist/minesweeper";
 import "../css/base-pc.css";
 
 const GameArea: React.FC = () => {
+    const [score, setScore] = useState("");
+
     useEffect(() => {
         startGame();
+
+        const fetchGameScore = async () => {
+            try{
+                const minsweeperScoreResponse = await fetch("/api/player/minesweeper-score");
+                const minsweeperScore = await minsweeperScoreResponse.json();
+                setScore(minsweeperScore);
+            }
+            catch(err){
+                setScore("N/A")
+            }
+        };
+
+        fetchGameScore();
     }, []);
 
     return (
@@ -26,7 +41,7 @@ const GameArea: React.FC = () => {
                 <nav className="nav-game">
                     <p className="txt-game-score">Bast score</p>
                     <div className="nav-game-in">
-                        <p className="txt-game-score-in">pull the score from DB</p>
+                        <p className="txt-game-score-in">{score}</p>
                     </div>
                 </nav>
             </div>
