@@ -1,27 +1,6 @@
 @charset "UTF-8";
 
 /* ==========================================================
- nav-local
-========================================================== */
-.nav-local li {
-    margin: 0 0 65px 0;
-}
-.nav-local-in li {
-    margin: 0 0 20px 0;
-}
-.nav-local li a {
-    padding: 0 0 0 14px;
-    letter-spacing: 0em;
-    line-height: 1.5;
-    font-size: 20px;
-    font-weight: bold;
-    color: #009ECE;
-}
-.nav-local li a:hover {
-    color: #009ECE;
-    text-decoration: underline;
-}
-/* ==========================================================
  contents
 ========================================================== */
 .contents {

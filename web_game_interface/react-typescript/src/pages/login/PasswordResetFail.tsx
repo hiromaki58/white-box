@@ -11,8 +11,8 @@ const PasswordResetFail: React.FC = () => {
       <Header />
       <article className="contents">
         <div className="area-reset">
-          <section className="sec-login">
-            <h1 className="sec-login-in">Password reset error</h1>
+          <section className="sec-cmn-01">
+            <h1 className="sec-cmn-in-01">Password reset error</h1>
               <div className="form-reset-in">
                 <p className="form-reset-ttl">The e-mail address is no registered.</p>
               </div>

@@ -10,10 +10,10 @@ const RegistrationFail: React.FC = () => {
     <div className="wrapper">
       <Header />
       <article className="contents">
-        <div className="area-login">
-          <section className="sec-login">
-            <h1 className="sec-login-fail-in">Registration Failure</h1>
-            <p className="sec-login-detail">Please try again later</p>
+        <div className="area-cmn-01">
+          <section className="sec-cmn-01">
+            <h1 className="sec-cmn-01-fail-in">Registration Failure</h1>
+            <p className="sec-cmn-01-detail">Please try again later</p>
             <Link to="/">Back to login page</Link>
           </section>
         </div>
