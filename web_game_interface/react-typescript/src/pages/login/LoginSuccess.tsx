@@ -10,9 +10,9 @@ const LoginSucesss: React.FC = () => {
     <div className="wrapper">
       <Header />
       <article className="contents">
-        <div className="area-login">
-          <section className="sec-login">
-            <h1 className="sec-login-in">Login Succeded</h1>
+        <div className="area-cmn-01">
+          <section className="sec-cmn-01">
+            <h1 className="sec-cmn-in-01">Login Succeded</h1>
             <Link to="/">Back to top page</Link>
           </section>
         </div>

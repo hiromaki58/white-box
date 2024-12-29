@@ -14,6 +14,7 @@ import RegistrationFailPage from "./pages/registration/RegistrationFail";
 import ProfilePage from "./pages/ProfilePage";
 import UnsubscribePage from "./pages/registration/Unsubscribe";
 import UnsubscribeFailPage from "./pages/registration/UnsubscribeFail";
+import NotFoundPage from "./pages/404Page";
 import GamePage from "./pages/GamePage";
 import Header from "./components/Header";
 
@@ -37,6 +38,7 @@ const App: React.FC = () => {
           <Route path="/unsubscribe" element={<UnsubscribePage />} />
           <Route path="/unsubscribe/fail" element={<UnsubscribeFailPage />} />
           <Route path="/game/minesweeper" element={<GamePage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Router>
     </AuthProvider>

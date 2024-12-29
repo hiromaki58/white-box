@@ -1,109 +1,6 @@
 @charset "UTF-8";
 
 /* ==========================================================
- nav-local
-========================================================== */
-.nav-local li {
-    margin: 0 0 65px 0;
-}
-.nav-local-in li {
-    margin: 0 0 20px 0;
-}
-.nav-local li a {
-    padding: 0 0 0 14px;
-    letter-spacing: 0em;
-    line-height: 1.5;
-    font-size: 20px;
-    font-weight: bold;
-    color: #009ECE;
-}
-.nav-local li a:hover {
-    color: #009ECE;
-    text-decoration: underline;
-}
-/* ==========================================================
- contents
-========================================================== */
-.contents {
-    min-width: 1215px;
-    margin: 52px auto 49px auto;
-    text-align: left;
-    font-family: "M PLUS 1p", "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", sans-serif;
-}
-.contents-main {
-    float: right;
-    width: 980px;
-}
-.contents-main-main {
-    float: left;
-    width: 684px;
-}
-.contents-main-sub {
-    float: right;
-    width: 296px;
-    height: 296px;
-}
-.contents-main-bottom {
-    min-width: 980px;
-    float: left;
-    margin: 52px auto 0 auto;
-    text-align: left;
-}
-.contents-sub {
-    float: left;
-    width: 234.5px;
-    height: 372px;
-}
-/* ==========================================================
- contents-ttl
-========================================================== */
-.contents-ttl {
-    margin: 0 0 40px 0;
-    position: relative;
-}
-.sec-ttl-in {
-    margin: 0 0 48px 0;
-
-    line-height: 1.1;
-    letter-spacing: 0;
-    font-size: 40px;
-}
-.sec-ttl-in p {
-    font-size: 20px;
-    line-height: 1.5;
-}
-/* ==========================================================
- mypage identity
-========================================================== */
-.link-identity {
-    color: #333;
-}
-.link-identity:hover {
-    opacity: .7;
-}
-.box-identity-wrap {
-    display: inline-block;
-}
-.box-identity-sentence {
-    position: absolute;
-    right: 0;
-    top: 0;
-}
-.txt-user-name {
-    display: inline-block;
-    font-size: 20px;
-}
-.txt-release {
-    background: #EBD844;
-    width: 90px;
-    height: 27px;
-    margin: 0 0 0 auto;
-    text-align: center;
-    font-size: 16px;
-    color: #fff;
-    border-radius: 5px;
-}
-/* ==========================================================
  register player
 ========================================================== */
 .sec-register-player-01 {
@@ -113,7 +10,6 @@
     margin: 0 0 35px 0;
     padding: 0 0 0 15px;
     border-left: 4px solid #4d4d4d;
-
     line-height: 1;
     letter-spacing: 0em;
     font-size: 22px;
@@ -174,32 +70,6 @@
 .form-registrtion-check label {
     display: block;
 }
-.hidden {
-    display: none;
-}
 .hidden input {
     display: none;
-}
-/* ==========================================================
- player info
-========================================================== */
-.list-basic-01 {
-    width: 311px;
-}
-.list-basic-02 {
-    width: 500px;
-}
-.box-registrtion-check {
-    width: 602px;
-    margin: 21px 0 28px 0;
-    display: grid;
-}
-.txt-detail-01 {
-    width: 899px;
-}
-.ttl-instructor-info {
-    margin-bottom: 14px;
-    font-size: 16px;
-    font-family: "Helvetica Neue", "M PLUS 1p", "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", sans-serif;
-    color: #373A3C;
 }

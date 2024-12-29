@@ -51,9 +51,9 @@ const PasswordReset: React.FC = () => {
         <div className="wrapper">
             <Header />
             <article className="contents">
-                <div className="area-login">
-                    <section className="sec-login">
-                        <h1 className="sec-login-in">Password reset</h1>
+                <div className="area-cmn-01">
+                    <section className="sec-cmn-01">
+                        <h1 className="sec-cmn-in-01">Password reset</h1>
                         <div className="form-reset-in">
                             <div className="form-reset-ttl">E-mail address</div>
                             <div className="form-reset-mail">{emailAddr}</div>

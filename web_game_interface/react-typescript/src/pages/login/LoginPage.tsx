@@ -27,9 +27,9 @@ const LoginPage: React.FC = () => {
         <div className="wrapper">
             <Header />
             <article className="contents">
-                <div className="area-login">
-                    <section className="sec-login">
-                        <h1 className="sec-login-in">Login</h1>
+                <div className="area-cmn-01">
+                    <section className="sec-cmn-01">
+                        <h1 className="sec-cmn-in-01">Login</h1>
                         <form className="form-login" onSubmit={handleSubmit}>
                             <div className="form-login-in">
                                 <div className="form-login-ttl">E-mail address</div>
