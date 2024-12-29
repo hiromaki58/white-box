@@ -12,7 +12,7 @@ const PasswordResetSuccess: React.FC = () => {
       <article className="contents">
         <div className="area-reset">
           <section>
-            <h2 className="sec-login-in">Passwrod reset success</h2>
+            <h2 className="sec-cmn-in-01">Passwrod reset success</h2>
 
             <div className="form-reset-in">
               <p className="form-reset-ttl">Updating password is completed.</p>
