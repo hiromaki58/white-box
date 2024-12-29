@@ -1,21 +1,25 @@
 import React, { useEffect, useState } from "react";
-import { startGame } from "../dist/minesweeper";
+import { startGame } from "../dist/src/game-program/minesweeper";
 import "../css/base-pc.css";
 
 const GameArea: React.FC = () => {
-    const [score, setScore] = useState("");
+    const [finalTime, setFinalTime] = useState("");
 
     useEffect(() => {
-        startGame();
+        const handleGameEnd = (gameRecord) => {
+            setFinalTime(gameRecord);
+        }
+
+        startGame(handleGameEnd);
 
         const fetchGameScore = async () => {
             try{
                 const minsweeperScoreResponse = await fetch("/api/player/minesweeper-score");
                 const minsweeperScore = await minsweeperScoreResponse.json();
-                setScore(minsweeperScore);
+                setFinalTime(minsweeperScore);
             }
             catch(err){
-                setScore("N/A")
+                setFinalTime("N/A")
             }
         };
 
@@ -41,7 +45,7 @@ const GameArea: React.FC = () => {
                 <nav className="nav-game">
                     <p className="txt-game-score">Bast score</p>
                     <div className="nav-game-in">
-                        <p className="txt-game-score-in">{score}</p>
+                        <p className="txt-game-score-in">{finalTime}</p>
                     </div>
                 </nav>
             </div>
