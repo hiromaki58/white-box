@@ -7,7 +7,7 @@ const size = 40;
 
 let gameover = false;
 let leftCount = 0;
-let finalTime = null;
+let gameScore = null;
 
 type Cell = {
     text: string;
@@ -165,9 +165,9 @@ export const startGame = (onGameEnd) => {
     const startTime = Date.now();
     const tick = () => {
         if (gameover){
-            finalTime = ((Date.now() - startTime) / 1000).toFixed(2);
+            gameScore = ((Date.now() - startTime) / 1000).toFixed(2);
             if (onGameEnd && typeof onGameEnd === "function") {
-                onGameEnd(finalTime);
+                onGameEnd(gameScore);
             }
 
             return;
