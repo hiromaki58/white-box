@@ -37,7 +37,6 @@ public class CsvReader {
         catch(IOException e){
             System.err.println("Fail to read the file for " + columnTitle);
         }
-
         return inputList;
     }
 

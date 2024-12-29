@@ -15,7 +15,7 @@ const App: React.FC = () => {
   return (
     <AuthProvider>
       <Router>
-      <Header />
+        <Header />
         <Routes>
           <Route path="/" element={<IndexPage />} />
           <Route path="/login" element={<LoginPage />} />

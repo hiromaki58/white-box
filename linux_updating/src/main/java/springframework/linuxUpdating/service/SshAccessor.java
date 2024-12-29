@@ -18,15 +18,14 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.stereotype.Service;
 
-import springframework.linuxupdating.model.CommandSet;
-import springframework.linuxupdating.utils.CommandList;
+import springframework.linuxupdating.model.Command;
+import springframework.linuxupdating.utils.CommandListProviderFactory;
 import springframework.linuxupdating.utils.TerminalHandler;
+import springframework.linuxupdating.utils.UserNameProviderFactory;
 
 @Service
 public class SshAccessor {
     private int port;
-    private final String ubuntUserName;
-    private final String redHatUserName;
     private final String privateKeyPath;
     private final String publicKeyPath;
     private final String pass;
@@ -34,28 +33,27 @@ public class SshAccessor {
     private final LogCreater logCreater;
     private final ConfigurableApplicationContext context;
     private final TerminalHandler terminalHandler;
+    private final UserNameProviderFactory userNameProviderFactory;
 
 	public SshAccessor(
         @Value("${ssh.port}") int port,
-        @Value("${ssh.ubuntuUserName}") String ubuntuUserName,
-        @Value("${ssh.redHatUserName}") String redHatUserName,
         @Value("${ssh.privateKeyPath}") String privateKeyPath,
         @Value("${ssh.publicKeyPath}") String publicKeyPath,
         @Value("${ssh.pass}") String pass,
         LogCreater logCreater,
         ConfigurableApplicationContext context,
-        TerminalHandler terminalHandler
+        TerminalHandler terminalHandler,
+        UserNameProviderFactory userNameProviderFactory
     )
     {
         this.port = port;
-        this.ubuntUserName = ubuntuUserName;
-        this.redHatUserName = redHatUserName;
         this.privateKeyPath = privateKeyPath;
         this.publicKeyPath = publicKeyPath;
         this.pass = pass;
         this.logCreater = logCreater;
         this.context = context;
         this.terminalHandler = terminalHandler;
+        this.userNameProviderFactory = userNameProviderFactory;
 	}
 
     /**
@@ -69,13 +67,8 @@ public class SshAccessor {
 		client.start();
 
         for(int i = 0; i < hostNameList.size(); i++){
-            String userName= "";
-            if(distributionList.get(i).equalsIgnoreCase("ubuntu")){
-                userName = ubuntUserName;
-            }
-            else {
-                userName = redHatUserName;
-            }
+            String userName= userNameProviderFactory.getUserName(distributionList.get(i));
+
             try (ClientSession session = client.connect(userName, ipAddrList.get(i), port).verify(10000).getSession()) {
                 // Read private and public keies
                 char[] passphrase = pass.toCharArray();
@@ -107,16 +100,10 @@ public class SshAccessor {
      * @param numOfHost
      */
     private void sendCommandList(ClientSession session, String hostName, String distribution){
-        List<CommandSet> commnadList;
+        List<Command> commnadList;
+        commnadList = CommandListProviderFactory.getCommandListProvider(distribution).getCommandList();
 
-        if(distribution.equalsIgnoreCase("Ubuntu")){
-            commnadList = CommandList.getUbuntuCommandList();
-        }
-        else{
-            commnadList = CommandList.getRedHatCommandList();
-        }
-
-        for(CommandSet commandSet : commnadList){
+        for(Command commandSet : commnadList){
             sendCommand(session, hostName, commandSet);
         }
     }
@@ -128,7 +115,7 @@ public class SshAccessor {
      * @param numOfHost
      * @param commandSet
      */
-    private void sendCommand(ClientSession session, String hostName, CommandSet commandSet){
+    private void sendCommand(ClientSession session, String hostName, Command commandSet){
         String responseString;
         try (ByteArrayOutputStream responseStream = new ByteArrayOutputStream();
             ClientChannel channel = session.createExecChannel(commandSet.getCommand())) {

@@ -24,48 +24,63 @@ public class Accessor {
   public Long getId() {
     return id;
   }
+
   public void setId(Long id) {
     this.id = id;
   }
+
   public String getGlobalIpAddr() {
     return globalIpAddr;
   }
+
   public void setGlobalIpAddr(String globalIpAddr) {
     this.globalIpAddr = globalIpAddr;
   }
+
   public String getLocalIpAddr() {
     return localIpAddr;
   }
+
   public void setLocalIpAddr(String localIpAddr) {
     this.localIpAddr = localIpAddr;
   }
+
   public String getHostName() {
     return hostName;
   }
+
   public void setHostName(String hostName) {
     this.hostName = hostName;
   }
+
   public String getLoginId() {
     return loginId;
   }
+
   public void setLoginId(String loginId) {
     this.loginId = loginId;
   }
+
   public String getPassPhrase() {
     return passPhrase;
   }
+
   public void setPassPhrase(String passPhrase) {
     this.passPhrase = passPhrase;
   }
+
   public String getRootPassword() {
     return rootPassword;
   }
+
   public void setRootPassword(String rootPassword) {
     this.rootPassword = rootPassword;
   }
+
   public String getSecretKey() {
     return secretKey;
   }
+
   public void setSecretKey(String secretKey) {
     this.secretKey = secretKey;
   }
