@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 const ProfilePage: React.FC = () => {
     const [msg, setMsg] = useState("");
     const [profileData, setProfileData] = useState<ProfileType | null>(null);
+    const [selectedProfileImg, setSelectedProfileImg] = useState<File | null>(null);
 
     useEffect(() => {
         const fetchProfile = async () => {
@@ -38,6 +39,37 @@ const ProfilePage: React.FC = () => {
     if(!profileData){
         setMsg("Please access again later.");
     }
+
+    const handleUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+
+        if(file){
+            setSelectedProfileImg(file);
+        }
+        if(!selectedProfileImg){
+            setMsg("Please select image");
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append("image", selectedProfileImg);
+
+        try{
+            const response = await fetch("/api/player/uploadProfileImg", {
+                method: "POST",
+                body: formData,
+            });
+            if(response.ok){
+                setMsg("Image is uploaded.");
+            }
+            else{
+                setMsg("Uploding is fail.");
+            }
+        }
+        catch(err){
+
+        }
+    };
 
     const profileImgUrl = profileData?.profileImg ? URL.createObjectURL(profileData?.profileImg) : "";
 
@@ -79,8 +111,9 @@ const ProfilePage: React.FC = () => {
                             <div className="ttl-player-img">
                                 <div className="form-registration-img">
                                     <img className="img-preview" src={profileImgUrl} alt="profile img" />
+                                    <input type="file" accept="image/*" onChange={handleUpload} id="profileImg" />
                                     <div className="btn-player-img">
-                                        <span className="btb-cmn-positive-01">Edit image</span>
+                                        <span className="btb-cmn-positive-01" onClick={() => document.getElementById("profileImg")?.click()}>Edit image</span>
                                     </div>
                                 </div>
                             </div>
