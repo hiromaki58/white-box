@@ -1,5 +1,4 @@
-package springframework.linuxupdating.utils;
-
+package springframework.linuxupdating.utils.interfaces;
 import java.util.List;
 
 import springframework.linuxupdating.model.Command;

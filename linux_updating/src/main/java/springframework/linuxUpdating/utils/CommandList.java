@@ -8,10 +8,10 @@ public class CommandList {
     public static List<Command> getUbuntuCommandList(){
         List<Command> commandList = new ArrayList<>();
         commandList.add(new Command("hostname", null, true, false));
-        // commandList.add(new Command("cat /etc/issue", null, true, false));
-        // commandList.add(new Command("sudo apt update", null, false, false));
-        // commandList.add(new Command("sudo apt upgrade", null, false, true));
-        // commandList.add(new Command("ps aux | grep apache2 | grep -v grep", null, true, false));
+        commandList.add(new Command("cat /etc/issue", null, true, false));
+        commandList.add(new Command("sudo apt update", null, false, false));
+        commandList.add(new Command("sudo apt upgrade", null, false, true));
+        commandList.add(new Command("ps aux | grep apache2 | grep -v grep", null, true, false));
 
         return commandList;
 	}

@@ -1,5 +1,7 @@
 package springframework.linuxupdating.utils;
 
+import springframework.linuxupdating.utils.interfaces.CommandListProvider;
+
 public class CommandListProviderFactory {
     public static CommandListProvider getCommandListProvider(String distribution){
         if(distribution.equalsIgnoreCase("Ubuntu")){

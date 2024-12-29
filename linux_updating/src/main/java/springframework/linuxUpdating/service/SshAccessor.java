@@ -76,6 +76,7 @@ public class SshAccessor {
             else {
                 userName = redHatUserName;
             }
+
             try (ClientSession session = client.connect(userName, ipAddrList.get(i), port).verify(10000).getSession()) {
                 // Read private and public keies
                 char[] passphrase = pass.toCharArray();
