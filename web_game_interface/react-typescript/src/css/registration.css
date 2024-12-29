@@ -1,28 +1,10 @@
 @charset "UTF-8";
-/* ==========================================================
- マイページに関連するページ全体に共通する部分
-========================================================== */
-.contents {
-	min-width: 1215px;
-	font-family: "M PLUS 1p", "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", sans-serif;
-}
+
 /* ==========================================================
  nav-local
 ========================================================== */
 .nav-local li {
 	margin: 0 0 65px 0;
-}
-.nav02 {
-	height: 22px;
-	margin: 0 0 25px 0;
-	padding: 0 0 0 14px;
-
-	border-left: 2px solid #333;
-
-	line-height: 1;
-	font-size: 22px;
-	font-weight: bold;
-	color: #4D4D4D;
 }
 .nav-local-in li {
 	margin: 0 0 20px 0;
@@ -46,6 +28,7 @@
 	min-width: 1215px;
 	margin: 52px auto 49px auto;
 	text-align: left;
+	font-family: "M PLUS 1p", "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", sans-serif;
 }
 .contents-main {
 	float: right;
