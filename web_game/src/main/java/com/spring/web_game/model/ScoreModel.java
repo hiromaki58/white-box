@@ -1,21 +1,17 @@
 package com.spring.web_game.model;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
-public class GameModel {
+public class ScoreModel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String gameTitle;
-    private String gameCode;
-    private boolean isHightestScoreBest;
-    private Set<ScoreModel> scoreList = new HashSet<>();
+    private GameModel game;
+    private PlayerModel player;
+    private int gameScore;
 
     public Long getId() {
         return id;
@@ -23,29 +19,23 @@ public class GameModel {
     public void setId(Long id) {
         this.id = id;
     }
-    public String getGameTitle() {
-        return gameTitle;
+    public GameModel getGame() {
+        return game;
     }
-    public void setGameTitle(String gameTitle) {
-        this.gameTitle = gameTitle;
+    public void setGame(GameModel game) {
+        this.game = game;
     }
-    public String getGameCode() {
-        return gameCode;
+    public PlayerModel getPlayer() {
+        return player;
     }
-    public void setGameCode(String gameCode) {
-        this.gameCode = gameCode;
+    public void setPlayer(PlayerModel player) {
+        this.player = player;
     }
-    public boolean isHightestScoreBest() {
-        return isHightestScoreBest;
+    public int getGameScore() {
+        return gameScore;
     }
-    public void setHightestScoreBest(boolean isHightestScoreBest) {
-        this.isHightestScoreBest = isHightestScoreBest;
-    }
-    public Set<ScoreModel> getScoreList() {
-        return scoreList;
-    }
-    public void setScoreList(Set<ScoreModel> scoreList) {
-        this.scoreList = scoreList;
+    public void setGameScore(int gameScore) {
+        this.gameScore = gameScore;
     }
 
     @Override
@@ -64,7 +54,7 @@ public class GameModel {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        GameModel other = (GameModel) obj;
+        ScoreModel other = (ScoreModel) obj;
         if (id == null) {
             if (other.id != null)
                 return false;
