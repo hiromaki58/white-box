@@ -16,6 +16,7 @@ public class PlayerModel {
     private String firstName;
     private String familyName;
     private String emailAddr;
+    private String password;
     private Blob profileImg;
 
     public PlayerModel(){
@@ -45,6 +46,12 @@ public class PlayerModel {
     }
     public void setEmailAddr(String emailAddr) {
         this.emailAddr = emailAddr;
+    }
+    public String getPassword() {
+        return password;
+    }
+    public void setPassword(String password) {
+        this.password = password;
     }
     public Blob getProfileImg() {
         return profileImg;
