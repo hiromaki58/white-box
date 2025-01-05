@@ -3,3 +3,7 @@
 /Users/hirog/Desktop/white-box/white-box/web_game/src/main/java/com/spring/web_game/model/GameModel.java
 /Users/hirog/Desktop/white-box/white-box/web_game/src/main/java/com/spring/web_game/model/PlayerModel.java
 /Users/hirog/Desktop/white-box/white-box/web_game/src/main/java/com/spring/web_game/model/ScoreModel.java
+/Users/hirog/Desktop/white-box/white-box/web_game/src/main/java/com/spring/web_game/repository/GameRepository.java
+/Users/hirog/Desktop/white-box/white-box/web_game/src/main/java/com/spring/web_game/repository/PlayerRepository.java
+/Users/hirog/Desktop/white-box/white-box/web_game/src/main/java/com/spring/web_game/repository/ScoreRepository.java
+/Users/hirog/Desktop/white-box/white-box/web_game/src/main/java/com/spring/web_game/service/PlayerService.java

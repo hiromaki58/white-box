@@ -1,5 +1,9 @@
+com/spring/web_game/repository/PlayerRepository.class
 com/spring/web_game/WebGameApplication.class
+com/spring/web_game/repository/GameRepository.class
 com/spring/web_game/model/BaseModel.class
+com/spring/web_game/service/PlayerService.class
 com/spring/web_game/model/PlayerModel.class
+com/spring/web_game/repository/ScoreRepository.class
 com/spring/web_game/model/GameModel.class
 com/spring/web_game/model/ScoreModel.class
