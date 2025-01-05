@@ -11,15 +11,12 @@ import lombok.*;
 @Setter
 @Getter
 @NoArgsConstructor
+@AllArgsConstructor
 @MappedSuperclass
 public class BaseModel implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    public BaseModel(Long id){
-        this.id = id;
-    }
 
     @Override
     public int hashCode() {

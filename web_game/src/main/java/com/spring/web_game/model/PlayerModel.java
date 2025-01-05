@@ -36,7 +36,7 @@ public class PlayerModel extends BaseModel{
     private Set<ScoreModel> scoreList = new HashSet<>();
 
     public PlayerModel(Long id, String firstName, String familyName, String emailAddr, String password, Blob profileImg, Set<ScoreModel> scoreList){
-        super(id);
+        super();
         this.firstName = firstName;
         this.familyName = familyName;
         this.emailAddr = emailAddr;

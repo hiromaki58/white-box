@@ -29,7 +29,7 @@ public class GameModel extends BaseModel{
     private Set<ScoreModel> scoreList = new HashSet<>();
 
     public GameModel(Long id, String gameTitle, String gameCode, boolean isHightestScoreBest, Set<ScoreModel> scoreList){
-        super(id);
+        super();
         this.gameTitle = gameTitle;
         this.gameCode = gameCode;
         this.isHightestScoreBest = isHightestScoreBest;
