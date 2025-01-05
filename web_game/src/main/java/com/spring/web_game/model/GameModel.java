@@ -3,73 +3,36 @@ package com.spring.web_game.model;
 import java.util.HashSet;
 import java.util.Set;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-public class GameModel {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
+@Setter
+@Getter
+@NoArgsConstructor
+@Entity
+public class GameModel extends BaseModel{
+    @Column(nullable = false, unique = true)
     private String gameTitle;
+
+    @Column(nullable = true)
     private String gameCode;
+
+    @Column(nullable = false, columnDefinition = "boolean default false")
     private boolean isHightestScoreBest;
+
+    @OneToMany(mappedBy = "game", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<ScoreModel> scoreList = new HashSet<>();
 
-    public Long getId() {
-        return id;
-    }
-    public void setId(Long id) {
-        this.id = id;
-    }
-    public String getGameTitle() {
-        return gameTitle;
-    }
-    public void setGameTitle(String gameTitle) {
+    public GameModel(Long id, String gameTitle, String gameCode, boolean isHightestScoreBest, Set<ScoreModel> scoreList){
+        super();
         this.gameTitle = gameTitle;
-    }
-    public String getGameCode() {
-        return gameCode;
-    }
-    public void setGameCode(String gameCode) {
         this.gameCode = gameCode;
-    }
-    public boolean isHightestScoreBest() {
-        return isHightestScoreBest;
-    }
-    public void setHightestScoreBest(boolean isHightestScoreBest) {
         this.isHightestScoreBest = isHightestScoreBest;
-    }
-    public Set<ScoreModel> getScoreList() {
-        return scoreList;
-    }
-    public void setScoreList(Set<ScoreModel> scoreList) {
         this.scoreList = scoreList;
-    }
-
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((id == null) ? 0 : id.hashCode());
-        return result;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        GameModel other = (GameModel) obj;
-        if (id == null) {
-            if (other.id != null)
-                return false;
-        } else if (!id.equals(other.id))
-            return false;
-        return true;
     }
 }
