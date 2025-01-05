@@ -7,7 +7,13 @@ import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Setter
+@Getter
+@NoArgsConstructor
 @Entity
 public class GameModel extends BaseModel{
     @Column(nullable = false, unique = true)
@@ -22,32 +28,11 @@ public class GameModel extends BaseModel{
     @OneToMany(mappedBy = "game", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<ScoreModel> scoreList = new HashSet<>();
 
-    GameModel(Long id){
-        super();
-    }
-
-    public String getGameTitle() {
-        return gameTitle;
-    }
-    public void setGameTitle(String gameTitle) {
+    public GameModel(Long id, String gameTitle, String gameCode, boolean isHightestScoreBest, Set<ScoreModel> scoreList){
+        super(id);
         this.gameTitle = gameTitle;
-    }
-    public String getGameCode() {
-        return gameCode;
-    }
-    public void setGameCode(String gameCode) {
         this.gameCode = gameCode;
-    }
-    public boolean isHightestScoreBest() {
-        return isHightestScoreBest;
-    }
-    public void setHightestScoreBest(boolean isHightestScoreBest) {
         this.isHightestScoreBest = isHightestScoreBest;
-    }
-    public Set<ScoreModel> getScoreList() {
-        return scoreList;
-    }
-    public void setScoreList(Set<ScoreModel> scoreList) {
         this.scoreList = scoreList;
     }
 }

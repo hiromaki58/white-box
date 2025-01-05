@@ -4,7 +4,13 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
 public class ScoreModel extends BaseModel{
     @ManyToOne
@@ -18,22 +24,9 @@ public class ScoreModel extends BaseModel{
     @Column(nullable = false)
     private int gameScore;
 
-    public GameModel getGame() {
-        return game;
-    }
-    public void setGame(GameModel game) {
+    public ScoreModel(GameModel game, PlayerModel player, int gameScore){
         this.game = game;
-    }
-    public PlayerModel getPlayer() {
-        return player;
-    }
-    public void setPlayer(PlayerModel player) {
         this.player = player;
-    }
-    public int getGameScore() {
-        return gameScore;
-    }
-    public void setGameScore(int gameScore) {
         this.gameScore = gameScore;
     }
 }
