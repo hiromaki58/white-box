@@ -1,4 +1,6 @@
 /Users/hirog/Desktop/white-box/white-box/web_game/src/main/java/com/spring/web_game/WebGameApplication.java
+/Users/hirog/Desktop/white-box/white-box/web_game/src/main/java/com/spring/web_game/config/WebConfig.java
+/Users/hirog/Desktop/white-box/white-box/web_game/src/main/java/com/spring/web_game/controller/PlayerController.java
 /Users/hirog/Desktop/white-box/white-box/web_game/src/main/java/com/spring/web_game/model/BaseModel.java
 /Users/hirog/Desktop/white-box/white-box/web_game/src/main/java/com/spring/web_game/model/GameModel.java
 /Users/hirog/Desktop/white-box/white-box/web_game/src/main/java/com/spring/web_game/model/PlayerModel.java
