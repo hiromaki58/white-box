@@ -246,3 +246,27 @@ public void saveLog(String hostName, String logContent){
     }
 }
 ```
+# Conclusion
+Set up the trigger like below
+```java:LinuxUpdatingApplication.java
+@SpringBootApplication
+public class LinuxUpdatingApplication implements CommandLineRunner{
+    public void run(String... args) throws Exception {
+        if (args.length == 0) {
+            System.out.println("No path is set.");
+            return;
+        }
+        else {
+            System.out.println("Success to have the csv file");
+        }
+
+        List<String> hostNameList = csvReader.getHostNameList(args[0]);
+        List<String> ipAddrList = csvReader.getIpAddrList(args[0]);
+        List<String> distributionList = csvReader.getDistributionList(args[0]);
+    }
+}
+```
+It should work with this command
+```bash:command
+java -jar LinuxUpdating.jar ./path/to/linux/server/list.csv
+```
