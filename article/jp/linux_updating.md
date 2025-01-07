@@ -248,3 +248,27 @@ public void saveLog(String hostName, String logContent){
     }
 }
 ```
+# 最後に
+以下のように設定して
+```java:LinuxUpdatingApplication.java
+@SpringBootApplication
+public class LinuxUpdatingApplication implements CommandLineRunner{
+    public void run(String... args) throws Exception {
+        if (args.length == 0) {
+            System.out.println("No path is set.");
+            return;
+        }
+        else {
+            System.out.println("Success to have the csv file");
+        }
+
+        List<String> hostNameList = csvReader.getHostNameList(args[0]);
+        List<String> ipAddrList = csvReader.getIpAddrList(args[0]);
+        List<String> distributionList = csvReader.getDistributionList(args[0]);
+    }
+}
+```
+次のコマンドを実行すれば動作するはず
+```bash:command
+java -jar LinuxUpdating.jar ./path/to/linux/server/list.csv
+```
