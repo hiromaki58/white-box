@@ -28,7 +28,7 @@ public class PlayerModel extends BaseModel{
     @Column(nullable = true)
     private Blob profileImg;
 
-    @OneToMany(mappedBy = "playerModel", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "player", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<ScoreModel> scoreList = new HashSet<>();
 
     public PlayerModel(Long id, String firstName, String familyName, String emailAddr, String password, Blob profileImg, Set<ScoreModel> scoreList){
