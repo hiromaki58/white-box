@@ -9,7 +9,7 @@
 #### 方針
 作業者への負担を減らすため、jarとCSVファイル・コマンド1行で動作させます。
 そのためSSH接続に必要なユーザーネームと秘密鍵は同一にします。
-また以下の作業に必要なファイルへのパスは常に同じとします。
+また以下の作業に必要なファイルへのパスは常に同じとします。(パスは定数ファイルなどを適宜使用してください)
 - 秘密鍵
 - 公開鍵
 - CSVファイル
@@ -19,11 +19,10 @@
 2, 公開鍵方式によるSSH接続
 3, ディストリビューションに合わせたコマンドの実行
 4, 実行結果をログに書き出す
+5, 最後に
 #### 動作環境
 AWS EC2インスタンスにあるLinuxサーバーを対象にしています。
 製造工数を減らたかったため、すでに作業PCにインストールされていたJava 1.8/spring bootを使っています。しかし1.8ですのでPythonやC#への移植も難しくないと思います。
-# Reference
-https://github.com/hiromaki58/white-box/tree/main/linux_updating
 # CSV読み込み
 アップデートが必要なサーバーリストをCSVの形で作成します。CSVを入力に選択した理由ですが、Excelでの作成が可能で作業対象サーバーが変更になっても修正が簡単です。
 CSVサンプル
@@ -181,6 +180,22 @@ public static List<Command> getUbuntuCommandList(){
     return commandList;
 }
 ```
+コマンドのエンティティは以下です。
+```java:Command.java
+public class Command {
+  private String command;
+  private String alternativeCommand;
+  private boolean isContinuedOrNo;
+  private boolean isAskedToSayYesOrNo;
+
+  public Command(String command, String alternativeCommand, boolean isContinuedOrNo, boolean isAskedToSayYesOrNo){
+    this.command = command;
+    this.alternativeCommand = alternativeCommand;
+    this.isContinuedOrNo = isContinuedOrNo;
+    this.isAskedToSayYesOrNo = isAskedToSayYesOrNo;
+  }
+}
+```
 #### コマンド実行時の確認対応
 コマンドを実行する時にサーバーから確認されることがあります。それへの対応です。
 ```java:SscAccessor.java
@@ -195,13 +210,11 @@ private void sendCommand(ClientSession session, String hostName, Command command
 
         responseString = new String(responseStream.toByteArray());
 
-        // In case of the commmand does not have any response
         if((responseString.contains("command not found") || responseString.contains("コマンドがありません")) && commandSet.getAlternativeCommand() != null){
             sendCommand(session, hostName, commandSet);
             return;
         }
 
-        // Show the response in the terminal and aks to keep going or not
         if(commandSet.getIsContinuedOrNo()){
             Scanner scan = new Scanner(System.in);
             if(terminalHandler.checkOutputAndWaitForEnterKey(commandSet, responseString, scan)){
