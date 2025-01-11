@@ -30,12 +30,12 @@ public class PlayerController {
         Map<String, Object> res = new HashMap<>();
 
         if(isAuthenticated){
-            res.put("success", true);
+            res.put("loginTry", true);
             res.put("msg", "Succeed to login");
             return ResponseEntity.ok(res);
         }
         else{
-            res.put("success", false);
+            res.put("loginTry", false);
             res.put("msg", "Fail to login");
             return ResponseEntity.status(401).body(res);
         }

@@ -12,8 +12,7 @@ import com.spring.web_game.model.PlayerModel;
 import com.spring.web_game.repository.PlayerRepository;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -40,8 +39,8 @@ public class PlayerControllerTest {
         mockMvc.perform(post("/api/player/login")
                 .content("{\"emailAddr\": \"test@example.com\", \"password\": \"password123\"}")
                 .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(content().string("Succeed to login"));
+                .andExpect(jsonPath("$.loginTry").value(true))
+                .andExpect(jsonPath("$.msg").value("Succeed to login"));
     }
 
     @Test
@@ -49,7 +48,7 @@ public class PlayerControllerTest {
         mockMvc.perform(post("/api/player/login")
                 .content("{\"emailAddr\": \"nonexistent@example.com\", \"password\": \"wrongpassword\"}")
                 .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isUnauthorized())
-                .andExpect(content().string("Fail to login"));
+                .andExpect(jsonPath("$.loginTry").value(false))
+                .andExpect(jsonPath("$.msg").value("Fail to login"));
     }
 }
