@@ -4,6 +4,16 @@ target/
 !**/target
 !**/src/main/**/target/
 !**/src/test/**/target/
+*.properties
+
+### extensions ###
+*.csv
+*.xml
+*.class
+*.jar
+*.txt
+*.lst
+*.jar.*
 
 ### STS ###
 .apt_generated
@@ -32,9 +42,7 @@ build/
 
 ### VS Code ###
 .vscode/
+.DS_Store
 
 ### Remote Node Info ###
 /src/main/resources/application.properties
-*.properties
-.DS_Store
-*.csv
