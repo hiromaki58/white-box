@@ -5,10 +5,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.spring.web_game.service.PlayerService;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-
 
 @RestController
 @RequestMapping("api/player")
@@ -20,14 +22,22 @@ public class PlayerController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody String emailAddr, String password) {
+    public ResponseEntity<Map<String, Object>> login(@RequestBody Map<String, String> credentials) {
+        String emailAddr = credentials.get("emailAddr");
+        String password = credentials.get("password");
+
         boolean isAuthenticated = playerService.isAuthenticated(emailAddr, password);
+        Map<String, Object> res = new HashMap<>();
 
         if(isAuthenticated){
-            return ResponseEntity.ok("Succeed to login");
+            res.put("loginTry", true);
+            res.put("msg", "Succeed to login");
+            return ResponseEntity.ok(res);
         }
         else{
-            return ResponseEntity.status(401).body("Fail to login");
+            res.put("loginTry", false);
+            res.put("msg", "Fail to login");
+            return ResponseEntity.status(401).body(res);
         }
     }
 }
