@@ -5,10 +5,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.spring.web_game.service.PlayerService;
 
+import java.util.Map;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-
 
 @RestController
 @RequestMapping("api/player")
@@ -20,7 +21,10 @@ public class PlayerController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody String emailAddr, String password) {
+    public ResponseEntity<String> login(@RequestBody Map<String, String> credentials) {
+        String emailAddr = credentials.get("emailAddr");
+        String password = credentials.get("password");
+
         boolean isAuthenticated = playerService.isAuthenticated(emailAddr, password);
 
         if(isAuthenticated){

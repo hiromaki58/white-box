@@ -8,9 +8,7 @@ import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
-import lombok.NoArgsConstructor;
 
-@NoArgsConstructor
 @Entity
 public class PlayerModel extends BaseModel{
     @Column(nullable = false)
@@ -30,6 +28,9 @@ public class PlayerModel extends BaseModel{
 
     @OneToMany(mappedBy = "player", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<ScoreModel> scoreList = new HashSet<>();
+
+    public PlayerModel(){
+    }
 
     public PlayerModel(Long id, String firstName, String familyName, String emailAddr, String password, Blob profileImg, Set<ScoreModel> scoreList){
         super();
