@@ -8,13 +8,7 @@ import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@Setter
-@Getter
-@NoArgsConstructor
 @Entity
 public class PlayerModel extends BaseModel{
     @Column(nullable = false)
@@ -35,6 +29,9 @@ public class PlayerModel extends BaseModel{
     @OneToMany(mappedBy = "player", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<ScoreModel> scoreList = new HashSet<>();
 
+    public PlayerModel(){
+    }
+
     public PlayerModel(Long id, String firstName, String familyName, String emailAddr, String password, Blob profileImg, Set<ScoreModel> scoreList){
         super();
         this.firstName = firstName;
@@ -42,6 +39,54 @@ public class PlayerModel extends BaseModel{
         this.emailAddr = emailAddr;
         this.password = password;
         this.profileImg = profileImg;
+        this.scoreList = scoreList;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getFamilyName() {
+        return familyName;
+    }
+
+    public void setFamilyName(String familyName) {
+        this.familyName = familyName;
+    }
+
+    public String getEmailAddr() {
+        return emailAddr;
+    }
+
+    public void setEmailAddr(String emailAddr) {
+        this.emailAddr = emailAddr;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Blob getProfileImg() {
+        return profileImg;
+    }
+
+    public void setProfileImg(Blob profileImg) {
+        this.profileImg = profileImg;
+    }
+
+    public Set<ScoreModel> getScoreList() {
+        return scoreList;
+    }
+
+    public void setScoreList(Set<ScoreModel> scoreList) {
         this.scoreList = scoreList;
     }
 }
