@@ -18,7 +18,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
             const result = await response.json();
 
-            if (result.success) {
+            if (result.loginTry) {
                 setIsLoggedIn(true);
                 sessionStorage.setItem("isLoggedIn", "true");
                 sessionStorage.setItem("emailAddr", emailAddr);
