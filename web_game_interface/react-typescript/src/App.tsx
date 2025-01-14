@@ -16,13 +16,11 @@ import UnsubscribePage from "./pages/registration/Unsubscribe";
 import UnsubscribeFailPage from "./pages/registration/UnsubscribeFail";
 import NotFoundPage from "./pages/404Page";
 import GamePage from "./pages/GamePage";
-import Header from "./components/Header";
 
 const App: React.FC = () => {
   return (
     <AuthProvider>
       <Router>
-        <Header />
         <Routes>
           <Route path="/" element={<IndexPage />} />
           <Route path="/login" element={<LoginPage />} />

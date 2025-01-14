@@ -8,7 +8,7 @@ const Header: React.FC = () => {
 
     return (
         <header className="header">
-            <div className="header-in only-sp">
+            <div className="header-in only-pc">
                 <section>
                     <h1 className="header-logo logo-company">
                         <Link to="/"><img src="/img/logo_institution_01.jpg" alt="site logo" /></Link>

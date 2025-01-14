@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, ReactNode } from "react";
+import { API_BASE_URL } from "src/cmn/Constant";
 import { AuthContextType } from "src/model/Auth";
 
 export const AuthContext = createContext<AuthContextType | null>(null);
@@ -9,7 +10,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     // To login
     const login = async (emailAddr: string, password: string) => {
         try {
-            const response = await fetch("/api/player/login", {
+            const response = await fetch(`${API_BASE_URL}/api/player/login`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ emailAddr, password }),
