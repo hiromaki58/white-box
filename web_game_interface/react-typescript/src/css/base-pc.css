@@ -994,32 +994,23 @@ rwd switch
 ========================================================== */
 /* pc
 ---------------------------------------------------------- */
-.only-pc {}
 .only-tb,
 .only-sp,
 .no-pc {
     display: none !important;
 }
-.no-tb {}
-.no-sp {}
 /* sp
 ---------------------------------------------------------- */
 @media screen and (max-width: 1201px) {
     .only-pc,
     .no-sp,
-    .only-tb,
-    img.only-tb {
+    .only-tb {
         display: none !important;
     }
     .only-sp,
     .no-pc,
     .no-tb {
         display: block !important;
-    }
-    img.only-sp,
-    img.no-pc,
-    img.no-tb {
-        display: inline-block !important;
     }
 }
 /* ==========================================================
