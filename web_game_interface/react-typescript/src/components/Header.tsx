@@ -17,7 +17,7 @@ const Header: React.FC = () => {
                         <ul>
                             {isLoggedIn ? (
                                 <>
-                                    <li onClick={logout} ><span className="nav-global-in-first">logout</span></li>
+                                    <li onClick={logout} ><Link to="/"><span className="nav-global-in-first">logout</span></Link></li>
                                     <li><Link to="/profile"><span className="nav-global-in">profile</span></Link></li>
                                 </>
                             ) : (
