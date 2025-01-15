@@ -6,6 +6,7 @@ import "../css/registration.css";
 
 import { ProfileType } from "../model/Api"
 import { Link } from "react-router-dom";
+import { API_BASE_URL } from "../cmn/Constant";
 
 const ProfilePage: React.FC = () => {
     const [msg, setMsg] = useState("");
@@ -15,10 +16,10 @@ const ProfilePage: React.FC = () => {
     useEffect(() => {
         const fetchProfile = async () => {
             try{
-                const profileResponse = await fetch("/api/player/getProfile");
+                const profileResponse = await fetch(`${API_BASE_URL}/api/player/getProfile`);
                 const profileJson = await profileResponse.json();
 
-                const profileImgResponse = await fetch("/api/player/getProfileImg");
+                const profileImgResponse = await fetch(`${API_BASE_URL}/api/player/getProfileImg`);
                 const profileImgBlob = await profileImgResponse.blob();
 
                 setProfileData({

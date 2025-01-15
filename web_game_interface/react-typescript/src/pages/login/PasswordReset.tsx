@@ -4,6 +4,7 @@ import Footer from "../../components/Footer";
 import "../../css/base-pc.css";
 import "../../css/login.css";
 import { useNavigate } from "react-router-dom";
+import { API_BASE_URL } from "src/cmn/Constant";
 
 const PasswordReset: React.FC = () => {
     const navigate = useNavigate();
@@ -28,7 +29,7 @@ const PasswordReset: React.FC = () => {
         }
 
         try{
-            const response = await fetch("/api/player/password-reset", {
+            const response = await fetch(`${API_BASE_URL}/api/player/password-reset`, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 credentials: "include",

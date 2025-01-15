@@ -4,6 +4,7 @@ import Footer from "../../components/Footer";
 import "../../css/base-pc.css";
 import "../../css/registration.css"
 import { useNavigate } from "react-router-dom";
+import { API_BASE_URL } from "../../cmn/Constant";
 
 const Registration: React.FC = () => {
     const navigate = useNavigate();
@@ -16,7 +17,7 @@ const Registration: React.FC = () => {
         e.preventDefault();
 
         try{
-            const response = await fetch("/api/player/registration",{
+            const response = await fetch(`${API_BASE_URL}/api/player/registration`,{
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ firstName, familyName, emailAddr }),

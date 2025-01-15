@@ -4,6 +4,7 @@ import Footer from "../../components/Footer";
 import "../../css/base-pc.css";
 import "../../css/registration.css"
 import { useNavigate, Link } from "react-router-dom";
+import { API_BASE_URL } from "../../cmn/Constant";
 
 const Unsubscribe: React.FC = () => {
     const navigate = useNavigate();
@@ -11,7 +12,7 @@ const Unsubscribe: React.FC = () => {
 
     const handleSubmit = async (e: React.FormEvent) => {
         try{
-            const response = await fetch("/api/player/delete-account", {
+            const response = await fetch(`${API_BASE_URL}/api/player/delete-account`, {
                 method: "DELETE",
                 headers: { "Content-Type": "application/json" },
                 credentials: "include",

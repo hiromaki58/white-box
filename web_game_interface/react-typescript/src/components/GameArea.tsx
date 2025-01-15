@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { API_BASE_URL } from "../cmn/Constant";
 import { startGame } from "../dist/src/game-program/minesweeper";
 import "../css/base-pc.css";
 
@@ -8,7 +9,7 @@ const GameArea: React.FC = () => {
 
     const sendGameScore = async (gameScore) => {
         try{
-            await fetch("/api/player/post/minesweeper-score", {
+            await fetch(`${API_BASE_URL}/api/player/post/minesweeper-score`, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 credentials: "include",
@@ -30,7 +31,7 @@ const GameArea: React.FC = () => {
 
         const fetchGameScore = async () => {
             try{
-                const minsweeperScoreResponse = await fetch("/api/player/get/minesweeper-score");
+                const minsweeperScoreResponse = await fetch(`${API_BASE_URL}/api/player/get/minesweeper-score`);
                 const minsweeperScore = await minsweeperScoreResponse.json();
                 setGameScore(minsweeperScore);
             }
