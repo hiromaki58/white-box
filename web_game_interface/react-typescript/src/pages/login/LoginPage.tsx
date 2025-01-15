@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import "../../css/base-pc.css";
@@ -13,15 +13,17 @@ const LoginPage: React.FC = () => {
     const [emailAddr, setEmailAddr] = useState("");
     const [password, setPassword] = useState("");
 
-    const handleSubmit = async (e: React.FormEvent) => {
+    const handleSubmit = useCallback(async (e: React.FormEvent) => {
+        e.preventDefault();
         try{
             await login(emailAddr, password);
+            console.log("Login successful, navigating to success page");
             navigate("/login/success");
         }
         catch(err){
             navigate("/login/fail");
         }
-    };
+    }, [emailAddr, password, login, navigate]);
 
     return (
         <div className="wrapper">

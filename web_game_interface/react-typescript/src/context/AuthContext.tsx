@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, ReactNode } from "react";
+import React, { createContext, useContext, useState, ReactNode, useCallback } from "react";
 import { API_BASE_URL } from "src/cmn/Constant";
 import { AuthContextType } from "src/model/Auth";
 
@@ -8,7 +8,8 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     // To login
-    const login = async (emailAddr: string, password: string) => {
+    const login = useCallback(async (emailAddr: string, password: string) => {
+        console.log("start login function");
         try {
             const response = await fetch(`${API_BASE_URL}/api/player/login`, {
                 method: "POST",
@@ -29,14 +30,15 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
                 sessionStorage.removeItem("emailAddr");
                 setIsLoggedIn(false);
                 }, 60 * 60 * 1000);
-            } else {
+            }
+            else {
                 throw new Error(result.message || "Login failed");
             }
         }
         catch (err) {
             console.error("Login error:", err);
         }
-    };
+    }, []);
 
     // To logout
     const logout = () => {
