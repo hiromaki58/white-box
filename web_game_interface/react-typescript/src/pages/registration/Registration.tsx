@@ -8,6 +8,7 @@ import { API_BASE_URL } from "../../cmn/Constant";
 
 const Registration: React.FC = () => {
     const navigate = useNavigate();
+    const [msg, setMsg] = useState("");
     const [firstName, setFirstName] = useState("");
     const [familyName, setFamilyName] = useState("");
     const [emailAddr, setEmailAddr] = useState("");
@@ -16,6 +17,11 @@ const Registration: React.FC = () => {
 
     const handleSubmit = useCallback (async (e: React.FormEvent) => {
         e.preventDefault();
+
+        if(newPassword !== newConfirmPassword){
+            setMsg("The password is not matched.");
+            return;
+        }
 
         try{
             await fetch(`${API_BASE_URL}/api/player/registration`,{
@@ -29,7 +35,7 @@ const Registration: React.FC = () => {
         catch(err){
             navigate("/registration/fail");
         }
-    }, [firstName, familyName, emailAddr, navigate]);
+    }, [firstName, familyName, emailAddr, newPassword, newConfirmPassword, navigate]);
 
     return(
         <div className="wrapper">
@@ -75,6 +81,7 @@ const Registration: React.FC = () => {
                             <input className="btb-cmn-positive-01" type="submit" value="registration" />
                         </div>
                     </form>
+                    {msg && <p>{msg}</p>}
                 </div>
             </article>
             <Footer />
