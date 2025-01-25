@@ -47,7 +47,7 @@ public class PlayerController {
         String firstName = registrationInfo.get("firstName");
         String familyName = registrationInfo.get("familyName");
         String emailAddr = registrationInfo.get("emailAddr");
-        String password = registrationInfo.get("password");
+        String password = registrationInfo.get("newPassword");
 
         PlayerModel newPlayer = new PlayerModel();
         newPlayer.setFirstName(firstName);
