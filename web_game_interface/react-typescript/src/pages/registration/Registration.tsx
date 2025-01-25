@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import "../../css/base-pc.css";
@@ -8,34 +8,28 @@ import { API_BASE_URL } from "../../cmn/Constant";
 
 const Registration: React.FC = () => {
     const navigate = useNavigate();
-    const [msg, setMsg] = useState("");
     const [firstName, setFirstName] = useState("");
     const [familyName, setFamilyName] = useState("");
     const [emailAddr, setEmailAddr] = useState("");
     const [newPassword, setNewPassword] = useState("");
     const [newConfirmPassword, setNewConfirmPassword] = useState("");
 
-    const handleSubmit = async (e: React.FormEvent) => {
+    const handleSubmit = useCallback (async (e: React.FormEvent) => {
         e.preventDefault();
 
         try{
-            const response = await fetch(`${API_BASE_URL}/api/player/registration`,{
+            await fetch(`${API_BASE_URL}/api/player/registration`,{
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ firstName, familyName, emailAddr }),
             });
 
-            if(response.ok){
-                navigate("/registration/success");
-            }
-            else{
-                navigate("/registration/fail");
-            }
+            navigate("/registration/success");
         }
         catch(err){
-            setMsg("Please try again later.");
+            navigate("/registration/fail");
         }
-    };
+    }, [firstName, familyName, emailAddr, navigate]);
 
     return(
         <div className="wrapper">
@@ -81,7 +75,6 @@ const Registration: React.FC = () => {
                             <input className="btb-cmn-positive-01" type="submit" value="registration" />
                         </div>
                     </form>
-                    {msg && <p>{msg}</p>}
                 </div>
             </article>
             <Footer />
