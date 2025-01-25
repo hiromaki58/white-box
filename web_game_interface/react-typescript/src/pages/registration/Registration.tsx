@@ -27,7 +27,7 @@ const Registration: React.FC = () => {
             await fetch(`${API_BASE_URL}/api/player/registration`,{
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ firstName, familyName, emailAddr }),
+                body: JSON.stringify({ firstName, familyName, emailAddr, newPassword }),
             });
 
             navigate("/registration/success");
