@@ -10,4 +10,5 @@ import com.spring.web_game.model.PlayerModel;
 @Repository
 public interface PlayerRepository extends JpaRepository<PlayerModel, Long>{
     Optional<PlayerModel> findByEmailAddr(String emailAddr);
+    boolean existsByEmailAddr(String emailAddr);
 }
