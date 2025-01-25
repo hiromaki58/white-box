@@ -12,6 +12,8 @@ const Registration: React.FC = () => {
     const [firstName, setFirstName] = useState("");
     const [familyName, setFamilyName] = useState("");
     const [emailAddr, setEmailAddr] = useState("");
+    const [newPassword, setNewPassword] = useState("");
+    const [newConfirmPassword, setNewConfirmPassword] = useState("");
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -62,6 +64,16 @@ const Registration: React.FC = () => {
                                 <li className="form-cmn-01">
                                     <p className="form-registrtion-ttl-02">E-mail address</p>
                                     <input className="form-registrtion-input-02" type="text" value={emailAddr} onChange={(e) => setEmailAddr(e.target.value)} placeholder="E-mail address" />
+                                </li>
+                            </ul>
+                            <ul className="form-cmn-01-wrap">
+                                <li className="form-cmn-01">
+                                    <p className="form-registrtion-ttl-01">New password</p>
+                                    <input className="form-registrtion-input-01" type="password" value={newPassword} onChange={(e) => setNewPassword(e.target.value)} placeholder="Password" />
+                                </li>
+                                <li className="form-cmn-01">
+                                    <p className="form-registrtion-ttl-01">New password(Re-enter)</p>
+                                    <input className="form-registrtion-input-01" type="password" value={newConfirmPassword} onChange={(e) => setNewConfirmPassword(e.target.value)} placeholder="Password(Re-enter)" />
                                 </li>
                             </ul>
                         </section>
