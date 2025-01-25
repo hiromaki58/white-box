@@ -17,7 +17,6 @@ const LoginPage: React.FC = () => {
         e.preventDefault();
         try{
             await login(emailAddr, password);
-            console.log("Login successful, navigating to success page");
             navigate("/login/success");
         }
         catch(err){

@@ -9,7 +9,6 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
     // To login
     const login = useCallback(async (emailAddr: string, password: string) => {
-        console.log("start login function");
         try {
             const response = await fetch(`${API_BASE_URL}/api/player/login`, {
                 method: "POST",
