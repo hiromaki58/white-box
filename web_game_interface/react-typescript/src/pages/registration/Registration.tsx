@@ -61,7 +61,7 @@ const Registration: React.FC = () => {
                             <ul className="form-cmn-01-wrap">
                                 <li className="form-cmn-01">
                                     <p className="form-registrtion-ttl-02">E-mail address</p>
-                                    <input className="form-registrtion-input-04" type="text" value={emailAddr} onChange={(e) => setEmailAddr(e.target.value)} placeholder="E-mail address" />
+                                    <input className="form-registrtion-input-02" type="text" value={emailAddr} onChange={(e) => setEmailAddr(e.target.value)} placeholder="E-mail address" />
                                 </li>
                             </ul>
                         </section>
