@@ -69,4 +69,11 @@ public class PlayerController {
             return ResponseEntity.status(401).body(res);
         }
     }
+
+    @PostMapping("/password-reset")
+    public ResponseEntity<Map<String, Object>> passwordReset(@RequestBody Map<String, String> passwordResetInfo) {
+
+
+        return null;
+    }
 }
