@@ -16,7 +16,7 @@ public class PasswordResetTokenModel extends BaseModel{
     @Column(nullable = false)
     private LocalDateTime expirationTime;
 
-    PasswordResetTokenModel(){
+    public PasswordResetTokenModel(){
     }
 
     public String getToken() {
