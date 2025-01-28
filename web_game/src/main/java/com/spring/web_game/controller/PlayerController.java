@@ -68,7 +68,7 @@ public class PlayerController {
         }
         else{
             res.put("registrationTry", false);
-            res.put("registrationTry", "Fail to register");
+            res.put("msg", "Fail to register");
             return ResponseEntity.status(401).body(res);
         }
     }
@@ -92,8 +92,19 @@ public class PlayerController {
 
     @PostMapping("/password-reset")
     public ResponseEntity<Map<String, Object>> passwordReset(@RequestBody Map<String, String> passwordResetInfo) {
+        String tokenInfo = passwordResetInfo.get("tokenInfo");
+        String newPassword = passwordResetInfo.get("newPassword");
 
+        boolean isPasswordReset = passwordResetService.resetPassword(tokenInfo, newPassword);
+        Map<String, Object> res = new HashMap<>();
 
-        return null;
+        if(isPasswordReset){
+            res.put("passwordResetTry", true);
+            return ResponseEntity.ok(res);
+        }
+        else{
+            res.put("passwordResetTry", false);
+            return ResponseEntity.status(401).body(res);
+        }
     }
 }
