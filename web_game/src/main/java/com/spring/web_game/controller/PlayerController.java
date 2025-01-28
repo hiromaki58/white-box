@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.spring.web_game.model.PlayerModel;
+import com.spring.web_game.service.PasswordResetService;
 import com.spring.web_game.service.PlayerService;
 
 import java.util.HashMap;
@@ -17,9 +18,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 @RequestMapping("api/player")
 public class PlayerController {
     private final PlayerService playerService;
+    private final PasswordResetService passwordResetService;
 
-    public PlayerController(PlayerService playerService){
+    public PlayerController(PlayerService playerService, PasswordResetService passwordResetService){
         this.playerService = playerService;
+        this.passwordResetService = passwordResetService;
     }
 
     @PostMapping("/login")
@@ -66,6 +69,23 @@ public class PlayerController {
         else{
             res.put("registrationTry", false);
             res.put("registrationTry", "Fail to register");
+            return ResponseEntity.status(401).body(res);
+        }
+    }
+
+    @PostMapping("/password-reset-email-check")
+    public ResponseEntity<Map<String, Object>> passwordResetEmailCheck(@RequestBody Map<String, String> passwordResetCheckInfo) {
+        String targetEmailAddr = passwordResetCheckInfo.get("targetInfo");
+
+        boolean isPasswordResetEmailSent = passwordResetService.sendPasswordResetEmail(targetEmailAddr);
+        Map<String, Object> res = new HashMap<>();
+
+        if(isPasswordResetEmailSent){
+            res.put("passwordResetMailSendTry", true);
+            return ResponseEntity.ok(res);
+        }
+        else{
+            res.put("passwordResetMailSendTry", false);
             return ResponseEntity.status(401).body(res);
         }
     }
