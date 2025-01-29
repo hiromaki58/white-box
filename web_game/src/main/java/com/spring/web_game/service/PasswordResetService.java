@@ -15,10 +15,12 @@ import com.spring.web_game.repository.PlayerRepository;
 public class PasswordResetService {
     private final PasswordResetTokenRepository passwordResetTokenRepository;
     private final PlayerRepository playerRepository;
+    private final EmailService emailService;
 
-    public PasswordResetService(PasswordResetTokenRepository passwordResetTokenRepository, PlayerRepository playerRepository){
+    public PasswordResetService(PasswordResetTokenRepository passwordResetTokenRepository, PlayerRepository playerRepository, EmailService emailService){
         this.passwordResetTokenRepository = passwordResetTokenRepository;
         this.playerRepository = playerRepository;
+        this.emailService = emailService;
     }
 
     /**
@@ -43,6 +45,10 @@ public class PasswordResetService {
         passwordResetTokenRepository.save(passwordResetToken);
 
         String passwordResetUrl = "http://localhost:8080/reset-password?token=" + token;
+        String subject = "Re: Password Reset";
+        String text = "Click the following link to reset your password:\\n" + passwordResetUrl;
+
+        emailService.sendEmail(emailAddr, subject, text);
 
         return true;
     }
