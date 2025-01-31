@@ -33,7 +33,7 @@ public class PasswordResetService {
             return false;
         }
 
-        passwordResetTokenRepository.deleteByEmailAddr(emailAddr);
+        // passwordResetTokenRepository.deleteByEmailAddr(emailAddr);
 
         String token = UUID.randomUUID().toString();
         LocalDateTime expirationTime = LocalDateTime.now().plusMinutes(15);
