@@ -42,19 +42,21 @@ public class PasswordResetServiceTest {
 
     /**
      * Condition
-     *  
+     *  E-mail is in the DB.
+     *  The created token is saved in the DB.
      *
      * Expected result
+     *  Call passwordResetService.sendPasswordResetEmail() and send E-mail
      */
     @Test
-    public void testSendPasswordResetEmail() {
+    public void testSendPasswordResetEmailSuccess() {
         String emailAddr = "test@example.com";
         String passwordResetUrl = "http://localhost:8080/reset-password?token=";
 
-        //
         when(playerRepository.existsByEmailAddr(emailAddr)).thenReturn(true);
         // To avoid "Cannot invoke "com.spring.web_game.repository.PasswordResetTokenRepository.save(Object)" because "this.passwordResetTokenRepository" is null"
         when(passwordResetTokenRepository.save(any())).thenReturn(null);
+
         passwordResetService.sendPasswordResetEmail(emailAddr);
 
         verify(playerRepository, times(1)).existsByEmailAddr(emailAddr);
