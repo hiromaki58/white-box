@@ -1,0 +1,4 @@
+{
+    "java.configuration.maven.userSettings": "~/.m2/settings.xml",
+    "java.configuration.updateBuildConfiguration": "automatic"
+  }
