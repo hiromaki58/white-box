@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.cloudwatch.AppTest" time="0.066" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.cloudwatch.AppTest" time="0.042" tests="1" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="23"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -12,7 +12,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="JP"/>
     <property name="sun.boot.library.path" value="/usr/local/Cellar/openjdk/23.0.1/libexec/openjdk.jdk/Contents/Home/lib"/>
-    <property name="sun.java.command" value="/Users/hirog/Desktop/white-box/white-box/article/cloudwatch-servicenow/target/surefire/surefirebooter-20250209221255126_3.jar /Users/hirog/Desktop/white-box/white-box/article/cloudwatch-servicenow/target/surefire 2025-02-09T22-12-54_884-jvmRun1 surefire-20250209221255126_1tmp surefire_0-20250209221255126_2tmp"/>
+    <property name="sun.java.command" value="/Users/hirog/Desktop/white-box/white-box/article/cloudwatch-servicenow/target/surefire/surefirebooter-20250209224225148_3.jar /Users/hirog/Desktop/white-box/white-box/article/cloudwatch-servicenow/target/surefire 2025-02-09T22-42-25_071-jvmRun1 surefire-20250209224225148_1tmp surefire_0-20250209224225148_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/Users/hirog/Desktop/white-box/white-box/article/cloudwatch-servicenow/target/test-classes:/Users/hirog/Desktop/white-box/white-box/article/cloudwatch-servicenow/target/classes:/Users/hirog/.m2/repository/com/amazonaws/aws-lambda-java-core/1.2.1/aws-lambda-java-core-1.2.1.jar:/Users/hirog/.m2/repository/com/amazonaws/aws-lambda-java-events/3.11.0/aws-lambda-java-events-3.11.0.jar:/Users/hirog/.m2/repository/joda-time/joda-time/2.6/joda-time-2.6.jar:/Users/hirog/.m2/repository/com/squareup/okhttp3/okhttp/4.10.0/okhttp-4.10.0.jar:/Users/hirog/.m2/repository/com/squareup/okio/okio-jvm/3.0.0/okio-jvm-3.0.0.jar:/Users/hirog/.m2/repository/org/jetbrains/kotlin/kotlin-stdlib-jdk8/1.5.31/kotlin-stdlib-jdk8-1.5.31.jar:/Users/hirog/.m2/repository/org/jetbrains/kotlin/kotlin-stdlib-jdk7/1.5.31/kotlin-stdlib-jdk7-1.5.31.jar:/Users/hirog/.m2/repository/org/jetbrains/kotlin/kotlin-stdlib-common/1.5.31/kotlin-stdlib-common-1.5.31.jar:/Users/hirog/.m2/repository/org/jetbrains/kotlin/kotlin-stdlib/1.6.20/kotlin-stdlib-1.6.20.jar:/Users/hirog/.m2/repository/org/jetbrains/annotations/13.0/annotations-13.0.jar:/Users/hirog/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.15.0/jackson-databind-2.15.0.jar:/Users/hirog/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.15.0/jackson-annotations-2.15.0.jar:/Users/hirog/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.15.0/jackson-core-2.15.0.jar:/Users/hirog/.m2/repository/junit/junit/3.8.1/junit-3.8.1.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -28,7 +28,7 @@
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="apple.awt.application.name" value="ForkedBooter"/>
-    <property name="surefire.real.class.path" value="/Users/hirog/Desktop/white-box/white-box/article/cloudwatch-servicenow/target/surefire/surefirebooter-20250209221255126_3.jar"/>
+    <property name="surefire.real.class.path" value="/Users/hirog/Desktop/white-box/white-box/article/cloudwatch-servicenow/target/surefire/surefirebooter-20250209224225148_3.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="23.0.1"/>
     <property name="user.name" value="hirog"/>
@@ -55,5 +55,5 @@
     <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
     <property name="java.class.version" value="67.0"/>
   </properties>
-  <testcase name="testApp" classname="com.cloudwatch.AppTest" time="0.004"/>
+  <testcase name="testApp" classname="com.cloudwatch.AppTest" time="0.002"/>
 </testsuite>

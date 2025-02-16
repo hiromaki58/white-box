@@ -1,1 +1,2 @@
-com/cloudwatch/App.class
+com/cloudwatch/ServiceNowClient.class
+com/cloudwatch/CloudWatchHandler.class
