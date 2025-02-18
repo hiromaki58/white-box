@@ -48,9 +48,7 @@ LambdaコードはJavaを、ServiceNowではJavaScriptを使いました。
 4, Lambda用のコードを作成
 ```java:ServiceNowClient.java
 private static final Logger logger = Logger.getLogger(ServiceNowClient.class.getName());
-
 private String serviceNowUrl;
-
 private final OkHttpClient client;
 
 public ServiceNowClient() {
