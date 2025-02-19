@@ -1,29 +1,30 @@
-# はじめに
-AWSで発生するアラートをServiceNowを使って管理しているのですが、チケット作成を自動化できないかと思ってやってみました。
-#### 全体の動き
-1, CloudWatchで監視する対象とアラートを設定
-2, アラートが発生するとSNSを経由してLambdaを起動
-3, LambdaがServiceNowのAPIをコール
-4, ServiceNowがチケットを作成する
-#### 動作環境
-LambdaコードはJavaを、ServiceNowではJavaScriptを使いました。
-# CloudWatchで監視する対象とアラートを設定
-1, 監視対象を設定
-![01-aws-setTargetMetric.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/521759/2e525637-f611-4500-8eb6-0eb995a5a3eb.png)
-2, SNS用にトピックを設定
-![02-aws-setNotificationType.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com)
-# アラートが発生するとSNSを経由してLambdaを起動
-1, SNSを準備
-![03-aws-setSns.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com)
-2, Labmdaを作成
-![04-aws-setLambdaFunc](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com)
-3, SNSをLambdaのトリガーに設定
-![05-aws-setLambdaTrigger](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com)
-# LambdaがServiceNowのAPIをコール
-1, ServiceNowでAPIを準備
-![06-SN-setScriptedRestApi](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com)
-2, チケットを起票するコードを作成
-![07-SN-setApiScript](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com)
+# Introduction
+I attempted to automate ticket creation using ServiceNow for AWS alerts.
+#### Overall Workflow
+1, Configure CloudWatch for monitoring and alerts.
+2, Trigger a Lambda function via SNS upon an alert.
+3, Lambda calls the ServiceNow API.
+4, ServiceNow creates a ticket.
+#### Environment
+Lambda: Java
+ServiceNow: JavaScript
+# Configuring CloudWatch and Alerts
+1, Set up monitoring targets.
+
+2, Create an SNS topic for alerts.
+
+# Triggering Lambda via SNS
+1, Configure SNS
+
+2, Create the Lambda function
+
+3, Set SNS as a trigger for Lambda.
+
+# Lambda Calls ServiceNow API
+1, Prepare the ServiceNow API
+
+2, Develop the ticket creation logic
+
 ```javascript:ServiceNowCode.js
 (function processRequest(request, response) {
     var requestBody = request.body.data;
@@ -43,9 +44,9 @@ LambdaコードはJavaを、ServiceNowではJavaScriptを使いました。
     response.setBody({ message: "Incident created", sys_id: incident.sys_id });
 })(request, response);
 ```
-3, 作成したServiceNow APIをLambdaのコードに設定
-![08-SN-apiPath](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com)
-4, Lambda用のコードを作成
+3, Integrate the ServiceNow API into the Lambda code
+
+4, Write the Lambda code
 ```java:ServiceNowClient.java
 private static final Logger logger = Logger.getLogger(ServiceNowClient.class.getName());
 private String serviceNowUrl;
@@ -109,10 +110,9 @@ public void handleRequest(SNSEvent event, Context context) {
     });
 }
 ```
-5, 作成したコードをjarとしてLambdaにアップロード
-![09-aws-uploadJarFile](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com)
-6, 作成したコードを呼び出すためのハンドラーを設定
-![10-aws-setHandler](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com)
-# ServiceNowがチケットを作成する
-あとはアラートが発生するとチケットが作成される
-![14-SN-incidentTicket](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com)
+5, Package the code as a JAR and upload it to Lambda
+
+6, Set the handler to execute the uploaded code
+
+# ServiceNow Creates a Ticket
+Once an alert occurs, a ticket is automatically created.
