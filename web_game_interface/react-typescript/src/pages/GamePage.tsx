@@ -4,13 +4,13 @@ import Footer from "../components/Footer";
 import GameArea from "../components/GameArea";
 
 const GamePage: React.FC = () => {
-  return (
-    <div className="wrapper">
-      <Header />
-      <GameArea/>
-      <Footer />
-    </div>
-  );
+    return (
+        <div className="wrapper">
+            <Header />
+            <GameArea />
+            <Footer />
+        </div>
+    );
 };
 
 export default GamePage;
