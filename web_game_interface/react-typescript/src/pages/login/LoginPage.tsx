@@ -4,7 +4,7 @@ import Footer from "../../components/Footer";
 import "../../css/base-pc.css";
 import "../../css/login.css"
 
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuthProvider } from "../../context/AuthContext";
 
 const LoginPage: React.FC = () => {
@@ -44,7 +44,7 @@ const LoginPage: React.FC = () => {
 
                             <input className="form-login-button" type="submit" value="login" />
                         </form>
-                        <a href="./reissue.html">If you forget password</a>
+                        <Link to="/login/password-reset-email-check">If you forget password</Link>
                     </section>
                 </div>
             </article>

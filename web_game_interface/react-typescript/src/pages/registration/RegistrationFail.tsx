@@ -14,7 +14,7 @@ const RegistrationFail: React.FC = () => {
                     <section className="sec-cmn-01">
                         <h1 className="sec-cmn-01-fail-in">Registration Failure</h1>
                         <p className="sec-cmn-01-detail">Please try again later</p>
-                        <Link to="/">Back to login page</Link>
+                        <Link to="/login">Back to login page</Link>
                     </section>
                 </div>
             </article>

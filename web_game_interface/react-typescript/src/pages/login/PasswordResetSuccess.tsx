@@ -20,7 +20,7 @@ const PasswordResetSuccess: React.FC = () => {
                         </div>
 
                         <div className="btn-registration-password">
-                            <Link to="/">
+                            <Link to="/login">
                                 <span className="btn-registration-password-01">To login page</span>
                             </Link>
                         </div>
