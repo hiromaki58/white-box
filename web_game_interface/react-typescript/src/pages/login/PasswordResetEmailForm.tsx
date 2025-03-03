@@ -1,28 +1,32 @@
-import React, { useCallback, useState } from "react";
+import React, { useState } from "react";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import "../../css/base-pc.css";
-import "../../css/login.css"
+import "../../css/login.css";
+import { useNavigate } from "react-router-dom";
+import { API_BASE_URL } from "../../cmn/Constant";
 
-import { Link, useNavigate } from "react-router-dom";
-import { useAuthProvider } from "../../context/AuthContext";
-
-const LoginPage: React.FC = () => {
+const PasswordResetEmailForm: React.FC = () => {
     const navigate = useNavigate();
-    const { login } = useAuthProvider();
+    const [msg, setMsg] = useState("");
     const [emailAddr, setEmailAddr] = useState("");
-    const [password, setPassword] = useState("");
 
-    const handleSubmit = useCallback(async (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+
         try{
-            await login(emailAddr, password);
-            navigate("/login/success");
+            await fetch(`${API_BASE_URL}/api/player/password-reset-email-check`, {
+                method: "PUT",
+                headers: { "Content-Type": "application/json" },
+                credentials: "include",
+                body: JSON.stringify({ emailAddr }),
+            });
+            navigate("/login/password-reset-email-check/completed");
         }
         catch(err){
-            navigate("/login/fail");
+            setMsg("Please try again later.");
         }
-    }, [emailAddr, password, login, navigate]);
+    }
 
     return (
         <div className="wrapper">
@@ -37,14 +41,10 @@ const LoginPage: React.FC = () => {
                                 <input className="form-login-input" type="email" id="email" value={emailAddr} onChange={(e) => setEmailAddr(e.target.value)} required placeholder="E-mail" /><br />
                             </div>
 
-                            <div className="form-login-in">
-                                <div className="form-login-ttl">Password</div>
-                                <input className="form-login-input" type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} required placeholder="password"/><br/>
-                            </div>
-
                             <input className="form-login-button" type="submit" value="login" />
                         </form>
-                        <Link to="/login/password-reset-email-check">If you forget password</Link>
+                        {msg && <p>{msg}</p>}
+                        <a href="./reissue.html">If you forget password</a>
                     </section>
                 </div>
             </article>
@@ -53,4 +53,4 @@ const LoginPage: React.FC = () => {
     );
 };
 
-export default LoginPage;
+export default PasswordResetEmailForm;

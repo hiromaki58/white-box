@@ -4,7 +4,7 @@ import Footer from "../../components/Footer";
 import "../../css/base-pc.css";
 import "../../css/login.css";
 import { useNavigate } from "react-router-dom";
-import { API_BASE_URL } from "src/cmn/Constant";
+import { API_BASE_URL } from "../../cmn/Constant";
 
 const PasswordReset: React.FC = () => {
     const navigate = useNavigate();
