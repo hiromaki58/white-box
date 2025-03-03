@@ -19,31 +19,31 @@ import NotFoundPage from "./pages/404Page";
 import GamePage from "./pages/GamePage";
 
 const App: React.FC = () => {
-  return (
-    <AuthProvider>
-      <Router>
-        <Routes>
-          <Route path="/" element={<IndexPage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/login/success" element={<LoginSuccessPage />} />
-          <Route path="/login/fail" element={<LoginFailPage />} />
-          <Route path="/login/password-reset-email-check" element={<PasswordResetEmailFormPage />} />
-          <Route path="/login/password-reset-email-check/completed" element={<PasswordResetEmailFormPage />} />
-          <Route path="/login/password-reset" element={<PasswordResetPage />} />
-          <Route path="/login/password-reset/success" element={<PasswordResetSuccessPage />} />
-          <Route path="/login/password-reset/fail" element={<PasswordResetFail />} />
-          <Route path="/registration" element={<RegistrationPage />} />
-          <Route path="/registration/success" element={<RegistrationSuccessPage />} />
-          <Route path="/registration/fail" element={<RegistrationFailPage />} />
-          <Route path="/profile" element={<ProfilePage />} />
-          <Route path="/unsubscribe" element={<UnsubscribePage />} />
-          <Route path="/unsubscribe/fail" element={<UnsubscribeFailPage />} />
-          <Route path="/game/minesweeper" element={<GamePage />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
-      </Router>
-    </AuthProvider>
-  );
+	return (
+		<AuthProvider>
+			<Router>
+				<Routes>
+					<Route path="/" element={<IndexPage />} />
+					<Route path="/login" element={<LoginPage />} />
+					<Route path="/login/success" element={<LoginSuccessPage />} />
+					<Route path="/login/fail" element={<LoginFailPage />} />
+					<Route path="/login/password-reset-email-check" element={<PasswordResetEmailFormPage />} />
+					<Route path="/login/password-reset-email-check/completed" element={<PasswordResetEmailFormPage />} />
+					<Route path="/login/password-reset" element={<PasswordResetPage />} />
+					<Route path="/login/password-reset/success" element={<PasswordResetSuccessPage />} />
+					<Route path="/login/password-reset/fail" element={<PasswordResetFail />} />
+					<Route path="/registration" element={<RegistrationPage />} />
+					<Route path="/registration/success" element={<RegistrationSuccessPage />} />
+					<Route path="/registration/fail" element={<RegistrationFailPage />} />
+					<Route path="/profile" element={<ProfilePage />} />
+					<Route path="/unsubscribe" element={<UnsubscribePage />} />
+					<Route path="/unsubscribe/fail" element={<UnsubscribeFailPage />} />
+					<Route path="/game/minesweeper" element={<GamePage />} />
+					<Route path="*" element={<NotFoundPage />} />
+				</Routes>
+			</Router>
+		</AuthProvider>
+	);
 };
 
 export default App;
