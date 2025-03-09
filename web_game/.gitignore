@@ -46,3 +46,9 @@ build/
 
 ### Remote Node Info ###
 /src/main/resources/application.properties
+
+# Ignore Gradle project-specific cache directory
+.gradle
+
+# Ignore Gradle build output directory
+build
