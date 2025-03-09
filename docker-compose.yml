@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+    frontend:
+        build:
+            context: ./web_game_interface/react-typescript
+        ports:
+            - '3000:3000'
+        volumes:
+            - ./web_game_interface/react-typescript:/app
+            - /app/node_modules
+        environment:
+            - NODE_ENV=development
+        stdin_open: true
+        tty: true
+
+    backend:
+        build: ./web_game
+        volumes:
+            - ./web_game:/app
+        ports:
+            - '8080:8080'
+        environment:
+            - SPRING_PROFILES_ACTIVE=development
+        command: ['./mvnw', 'spring-boot:run']
+
+volumes:
+    frontend_node_modules:
+    backend_maven:
