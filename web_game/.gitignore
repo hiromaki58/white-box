@@ -46,6 +46,8 @@ build/
 
 ### Remote Node Info ###
 /src/main/resources/application.properties
+entrypoint.sh
+*.pem
 
 # Ignore Gradle project-specific cache directory
 .gradle

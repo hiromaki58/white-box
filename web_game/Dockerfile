@@ -13,13 +13,27 @@ COPY settings.gradle /home/app
 RUN gradle clean build --no-daemon
 
 # 2. Base image to run the Java JAR file
-FROM openjdk:23
+FROM fedora:latest
+
+# 必要なパッケージをインストール
+RUN dnf update -y
+RUN dnf install -y java-latest-openjdk-devel
+RUN sudo dnf install -y openssh
+RUN sudo dnf install -y openssh-clients
+
+# Set environment variable PATH
+ENV PATH="${PATH}:/usr/bin/ssh"
+
+COPY ../../WebGame.pem /root/.ssh/id_rsa
+RUN chmod 600 /root/.ssh/id_rsa
+
+# SSHトンネルを設定し、その後Javaアプリを起動するスクリプト
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
 
 # Copy the built JAR file from the build stage
 COPY --from=build /home/app/build/libs/*.jar /usr/local/lib/web-game.jar
 
 # Specify the port the application uses
 EXPOSE 8080
-
-# Command to run the application when the container starts
-ENTRYPOINT ["java","-jar","/usr/local/lib/web-game.jar"]
