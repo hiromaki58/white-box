@@ -253,7 +253,7 @@ An outbound rule is also added to the bastion server's security group to allow a
 To set up port forwarding and connect to RDS, the following command was used:
 (Adjust the port number as needed.)
 ```bash
-ssh -i my-key.pem -N -L 33066:<RDSエンドポイント>:3306 ec2-user@<Bastion HostのパブリックIP>
+ssh -i my-key.pem -N -L 33066:<RDS End Point>:3306 ec2-user@<Bastion Host Publis IP Address>
 mysql -h 127.0.0.1 -P 33066 -u admin -p
 ```
 # 8, Build Docker images and start containers
