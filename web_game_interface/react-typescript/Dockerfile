@@ -1,5 +1,5 @@
 # Build stage
-FROM node:16-alpine as builder
+FROM node:16-alpine AS builder
 
 # Set the working directory in the Docker image
 WORKDIR /app

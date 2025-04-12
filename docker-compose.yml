@@ -1,9 +1,9 @@
-version: '3.8'
-
 services:
     frontend:
         build:
             context: ./web_game_interface/react-typescript
+        image:
+            web_game_front:latest
         ports:
             - '3000:3000'
         volumes:
@@ -18,6 +18,8 @@ services:
         build: ./web_game
         volumes:
             - ./web_game:/app
+        image:
+            web_game:latest
         ports:
             - '8080:8080'
         environment:

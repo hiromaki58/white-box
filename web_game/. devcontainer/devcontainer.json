@@ -1,0 +1,9 @@
+{
+    "name": "Web Game Backend",
+    "dockerComposeFile": "../../docker-compose.yml",
+    "service": "backend",
+    "workspaceFolder": "/workspace",
+    "mounts": [
+        "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached"
+    ]
+}
