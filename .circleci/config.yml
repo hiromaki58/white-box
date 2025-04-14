@@ -18,8 +18,8 @@ jobs:
       - run:
           name: Install tools
           command: |
-            dnf update -y 
-            sudo dnf install -y openssh-client netcat
+            apt-get update
+            apt-get install -y openssh-client netcat
 
       - add_ssh_keys:
           fingerprints:
@@ -47,7 +47,7 @@ jobs:
           
       - run:
           name: Run tests
-          command: ./gradlew test -i -Dspring.datasource.url=jdbc:mysql://localhost:33066/yourDatabase
+          command: ./gradlew test -i -Dspring.datasource.url=jdbc:mysql://localhost:33066/WebGames
 
       - store_test_results:
           path: build/test-results
