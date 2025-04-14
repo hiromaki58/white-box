@@ -19,7 +19,7 @@ jobs:
           name: Install tools
           command: |
             apt-get update
-            apt-get install -y openssh-client netcat
+            apt-get install -y openssh-client netcat-openbsd
 
       - add_ssh_keys:
           fingerprints:
