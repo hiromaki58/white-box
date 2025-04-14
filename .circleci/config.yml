@@ -9,7 +9,7 @@ executors:
     working_directory: ~/spring-app
 
 jobs:
-  test:
+  test-java:
     executor: java-executor
     steps:
       - checkout:
@@ -23,7 +23,7 @@ jobs:
 
       - add_ssh_keys:
           fingerprints:
-            - ./web_game/WebGame.pem  # CircleCIに登録した鍵
+            - "SHA256:iT4tPclDaeYtncq3Tu7/Sg6HZskK9BOMPiMxdiCJ11k"
 
       - run:
           name: Start SSH tunnel to AWS RDS via EC2
