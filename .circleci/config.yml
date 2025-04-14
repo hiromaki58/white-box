@@ -21,9 +21,12 @@ jobs:
             apt-get update
             apt-get install -y openssh-client netcat-openbsd
 
-      - add_ssh_keys:
-          fingerprints:
-            - "SHA256:iT4tPclDaeYtncq3Tu7/Sg6HZskK9BOMPiMxdiCJ11k"
+      - run:
+          name: Write SSH Key from Environment Variable
+          command: |
+            mkdir -p ~/.ssh
+            echo "$BASTION_PRIVATE_KEY" > ~/.ssh/id_rsa
+            chmod 600 ~/.ssh/id_rsa
 
       - run:
           name: Start SSH tunnel to AWS RDS via EC2
