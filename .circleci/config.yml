@@ -54,6 +54,8 @@ jobs:
             ./web_game/gradlew test \
             --project-dir ./web_game \
             -i -Dspring.datasource.url=jdbc:mysql://localhost:33066/WebGames
+            -Dspring.datasource.username=admin \
+            -Dspring.datasource.password=XW6QcWCj54OQ1YvXd5HV
 
       - store_test_results:
           path: web_game/build/test-results

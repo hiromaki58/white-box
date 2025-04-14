@@ -13,6 +13,7 @@ import com.spring.web_game.repository.PlayerRepository;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -37,6 +38,7 @@ public class PlayerControllerTest {
     @Test
     public void testLoginSuccess() throws Exception {
         mockMvc.perform(post("/api/player/login")
+                .with(csrf())
                 .content("{\"emailAddr\": \"test@example.com\", \"password\": \"password123\"}")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.loginTry").value(true))
