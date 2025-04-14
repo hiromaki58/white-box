@@ -14,7 +14,7 @@ target/
 *.txt
 *.lst
 *.jar.*
-!**/gradle/wrapper/*.jar
+!**/gradle/wrapper/*
 
 ### STS ###
 .apt_generated
