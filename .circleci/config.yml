@@ -50,7 +50,10 @@ jobs:
           
       - run:
           name: Run tests
-          command: ./web_game/gradlew test -i -Dspring.datasource.url=jdbc:mysql://localhost:33066/WebGames
+          command: |
+            ./web_game/gradlew test \
+            --project-dir ./web_game \
+            -i -Dspring.datasource.url=jdbc:mysql://localhost:33066/WebGames
 
       - store_test_results:
           path: web_game/build/test-results
