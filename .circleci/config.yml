@@ -1,84 +1,46 @@
 # This config was automatically generated from your source code
 # Stacks detected: deps:java:web_game,deps:node:web_game_interface/react-typescript,tool:gradle:
 version: 2.1
-orbs:
-  node: circleci/node@5
+
+executors:
+  java-executor:
+    docker:
+      - image: cimg/openjdk:21.0
+    working_directory: ~/spring-app
+
 jobs:
-  test-node:
-    # Install node dependencies and run tests
-    executor: node/default
-    working_directory: ~/project/web_game_interface/react-typescript
+  test:
+    executor: java-executor
     steps:
-      - checkout:
-          path: ~/project
-      - node/install-packages:
-          pkg-manager: npm
+      - checkout
+
       - run:
-          name: Run tests
-          command: npm test --passWithNoTests
-  build-node:
-    # Build node project
-    executor: node/default
-    working_directory: ~/project/web_game_interface/react-typescript
-    steps:
-      - checkout:
-          path: ~/project
-      - node/install-packages:
-          pkg-manager: npm
+          name: Install SSH client
+          command: |
+            sudo apt-get update
+            sudo apt-get install -y openssh-client
+
+      - add_ssh_keys:
+          fingerprints:
+            - ./web_game/WebGame.pem  # CircleCIに登録した鍵
+
       - run:
-          command: npm run build
+          name: Start SSH tunnel to AWS RDS via EC2
+          background: true
+          command: |
+            ssh -o StrictHostKeyChecking=no -i ./web_game/WebGame.pem -N -L 33066:webgamedb.cn7ns9r6pwgg.us-east-1.rds.amazonaws.com:3306 ec2-user@3.236.27.148
+
       - run:
-          name: Create the ~/artifacts directory if it doesn't exist
-          command: mkdir -p ~/artifacts
-      # Copy output to artifacts dir
+          name: Wait for tunnel
+          command: |
+            for i in {1..10}; do
+              nc -z localhost 33066 && echo "Tunnel ready" && exit 0
+              echo "Waiting for tunnel..."
+              sleep 3
+            done
+            echo "Tunnel failed" && exit 1
+
       - run:
-          name: Copy artifacts
-          command: cp -R build dist public .output .next .docusaurus ~/artifacts 2>/dev/null || true
-      - store_artifacts:
-          path: ~/artifacts
-          destination: node-build
-  test-java:
-    docker:
-      - image: cimg/openjdk:17.0
-    working_directory: ~/project/web_game
-    steps:
-      - checkout:
-          path: ~/project
-      - run:
-          name: Calculate cache key
-          command: |-
-            find . -name 'pom.xml' -o -name 'gradlew*' -o -name '*.gradle*' | \
-                    sort | xargs cat > /tmp/CIRCLECI_CACHE_KEY
-      - restore_cache:
-          key: cache-{{ checksum "/tmp/CIRCLECI_CACHE_KEY" }}
-      - run:
-          command: ./gradlew check
-      - store_test_results:
-          path: build/test-results
-      - save_cache:
-          key: cache-{{ checksum "/tmp/CIRCLECI_CACHE_KEY" }}
-          paths:
-            - ~/.gradle/caches
-      - store_artifacts:
-          path: build/reports
-  deploy:
-    # This is an example deploy job, not actually used by the workflow
-    docker:
-      - image: cimg/base:stable
-    steps:
-      # Replace this with steps to deploy to users
-      - run:
-          name: deploy
-          command: '#e.g. ./deploy.sh'
-workflows:
-  build-and-test:
-    jobs:
-      - test-node
-      - build-node:
-          requires:
-            - test-node
-            - test-java
-      - test-java
-    # - deploy:
-    #     requires:
-    #       - build-node
+          name: Run Spring Boot tests
+          command: |
+            ./gradlew test -i
