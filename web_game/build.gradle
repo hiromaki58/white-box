@@ -30,7 +30,7 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
 
     // MySQL Connector
-    runtimeOnly 'com.mysql:mysql-connector-j'
+    // runtimeOnly 'com.mysql:mysql-connector-j'
     implementation 'mysql:mysql-connector-java:8.0.30'
 
     // Development Tools
