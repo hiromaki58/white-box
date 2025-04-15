@@ -32,7 +32,7 @@ jobs:
           name: Start SSH tunnel to AWS RDS via EC2
           background: true
           command:
-            ssh -i WebGame.pem -N -L 33066:webgamedb.cn7ns9r6pwgg.us-east-1.rds.amazonaws.com:3306 ec2-user@3.236.27.148
+            ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa -N -L 127.0.0.1:33066:webgamedb.cn7ns9r6pwgg.us-east-1.rds.amazonaws.com:3306 ec2-user@3.236.27.148
 
       - run:
           name: Wait for tunnel
