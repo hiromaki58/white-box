@@ -30,13 +30,14 @@ jobs:
           name: Start SSH tunnel to AWS RDS via EC2
           background: true
           command: |
-            ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa -N -L 127.0.0.1:33066:webgamedb.cn7ns9r6pwgg.us-east-1.rds.amazonaws.com:3306 ec2-user@3.236.27.148
+            ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa \
+              -N -L 127.0.0.1:33066:webgamedb.cn7ns9r6pwgg.us-east-1.rds.amazonaws.com:3306 ec2-user@3.236.27.148
 
       - run:
           name: Wait for tunnel
           command: |
             for i in {1..20}; do
-              nc -z localhost 33066 && echo "Tunnel ready" && exit 0
+              nc -z 127.0.0.1 33066 && echo "Tunnel ready" && exit 0
               echo "Waiting for tunnel..."
               sleep 5
             done
@@ -45,21 +46,18 @@ jobs:
       - run:
           name: Make gradlew executable
           command: chmod +x ./web_game/gradlew
-          
+
       - run:
           name: Run tests
           command: |
             ./web_game/gradlew test \
-            --project-dir ./web_game \
-            -i \
-            -Dspring.datasource.url=jdbc:mysql://localhost:33066/WebGame \
-            -Dspring.datasource.username=admin \
-            -Dspring.datasource.password=XW6QcWCj54OQ1YvXd5HV \
-            -Dspring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver \
-            -Dspring.profiles.active=test
+              --project-dir ./web_game \
+              -i \
+              -Dspring.profiles.active=test
 
       - store_test_results:
           path: web_game/build/test-results
+
       - store_artifacts:
           path: web_game/build/reports
 
