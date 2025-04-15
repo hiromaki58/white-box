@@ -3,7 +3,7 @@ version: 2.1
 executors:
   java-executor:
     docker:
-      - image: gradle:8.13-jdk23
+      - image: gradle:8.1-jdk8
     working_directory: ~/project
 
 jobs:
@@ -52,16 +52,15 @@ jobs:
 
       - run:
           name: Run tests
-    command: |
-      ./web_game/gradlew test \
-        --project-dir ./web_game \
-        -i \
-        -Dspring.profiles.active=test \
-        -Dspring.datasource.url=jdbc:mysql://localhost:33066/WebGame \
-        -Dspring.datasource.username=admin \
-        -Dspring.datasource.password=${DB_PASSWORD} \
-        -Dspring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
-
+          command: |
+            ./web_game/gradlew test \
+              --project-dir ./web_game \
+              -i \
+              -Dspring.profiles.active=test \
+              -Dspring.datasource.url=jdbc:mysql://localhost:33066/WebGame \
+              -Dspring.datasource.username=admin \
+              -Dspring.datasource.password=${DB_PASSWORD} \
+              -Dspring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 
       - store_test_results:
           path: web_game/build/test-results
