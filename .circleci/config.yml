@@ -3,7 +3,7 @@ version: 2.1
 executors:
   java-executor:
     docker:
-      - image: gradle:8.1-jdk8
+      - image: gradle:8.13-jdk23
     working_directory: ~/project
 
 jobs:
