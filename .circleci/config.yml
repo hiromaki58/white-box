@@ -56,6 +56,7 @@ jobs:
             -i -Dspring.datasource.url=jdbc:mysql://localhost:33066/WebGame
             -Dspring.datasource.username=admin \
             -Dspring.datasource.password=XW6QcWCj54OQ1YvXd5HV
+            -Dspring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 
       - store_test_results:
           path: web_game/build/test-results
