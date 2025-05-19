@@ -13,5 +13,4 @@ class WebGameApplicationTests {
 	@Test
 	void contextLoads() {
 	}
-
 }
