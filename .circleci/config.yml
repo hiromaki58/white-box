@@ -1,0 +1,36 @@
+version: 2.1
+
+executors:
+  java-executor:
+    docker:
+      - image: gradle:8.13-jdk23
+    working_directory: ~/project
+
+jobs:
+  test-java:
+    executor: java-executor
+    steps:
+      - checkout:
+          path: ~/project
+
+      - run:
+          name: Make gradlew executable
+          command: chmod +x ./web_game/gradlew
+
+      - run:
+          name: Run tests
+          command: |
+            ./web_game/gradlew test \
+              --project-dir ./web_game \
+              -i \
+
+      - store_test_results:
+          path: web_game/build/test-results
+
+      - store_artifacts:
+          path: web_game/build/reports
+
+workflows:
+  build-and-test:
+    jobs:
+      - test-java
