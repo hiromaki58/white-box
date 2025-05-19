@@ -27,8 +27,6 @@ public class PlayerControllerTest {
     private MockMvc mockMvc;
     @Autowired
     private PlayerRepository playerRepository;
-    @MockitoBean
-    private JavaMailSender javaMailSender;
 
     @BeforeEach
     public void setUp() {
