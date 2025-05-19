@@ -9,6 +9,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 
 import com.spring.web_game.model.PlayerModel;
@@ -26,7 +27,7 @@ public class PlayerControllerTest {
     private MockMvc mockMvc;
     @Autowired
     private PlayerRepository playerRepository;
-    @MockBean
+    @MockitoBean
     private JavaMailSender javaMailSender;
 
     @BeforeEach
