@@ -48,21 +48,21 @@ public class PasswordResetServiceTest {
      * Expected result
      *  Call passwordResetService.sendPasswordResetEmail() and send E-mail
      */
-    // @Test
-    // public void testSendPasswordResetEmailSuccess() {
-    //     String emailAddr = "test@example.com";
-    //     String passwordResetUrl = "http://localhost:8080/reset-password?token=";
+    @Test
+    public void testSendPasswordResetEmailSuccess() {
+        String emailAddr = "test@example.com";
+        String passwordResetUrl = "http://localhost:8080/reset-password?token=";
 
-    //     when(playerRepository.existsByEmailAddr(emailAddr)).thenReturn(true);
-    //     // To avoid "Cannot invoke "com.spring.web_game.repository.PasswordResetTokenRepository.save(Object)" because "this.passwordResetTokenRepository" is null"
-    //     when(passwordResetTokenRepository.save(any())).thenReturn(null);
+        when(playerRepository.existsByEmailAddr(emailAddr)).thenReturn(true);
+        // To avoid "Cannot invoke "com.spring.web_game.repository.PasswordResetTokenRepository.save(Object)" because "this.passwordResetTokenRepository" is null"
+        when(passwordResetTokenRepository.save(any())).thenReturn(null);
 
-    //     passwordResetService.sendPasswordResetEmail(emailAddr);
+        passwordResetService.sendPasswordResetEmail(emailAddr);
 
-    //     verify(playerRepository, times(1)).existsByEmailAddr(emailAddr);
-    //     verify(passwordResetTokenRepository, times(1)).save(any());
-    //     verify(emailService, times(1)).sendEmail(eq(emailAddr), anyString(), contains(passwordResetUrl));
-    // }
+        verify(playerRepository, times(1)).existsByEmailAddr(emailAddr);
+        verify(passwordResetTokenRepository, times(1)).save(any());
+        verify(emailService, times(1)).sendEmail(eq(emailAddr), anyString(), contains(passwordResetUrl));
+    }
 
     /**
      * Condition
@@ -74,32 +74,32 @@ public class PasswordResetServiceTest {
      *  Call playerRepository.save() and update the player password
      *  Call passwordResetTokenRepository.deleteByEmailAddr() and delete the used token
      */
-    // @Test
-    // public void testResetPasswordSuccess() {
-    //     String token = "testToken";
-    //     String emailAddr = "testEmailAddr";
-    //     String newPassword = "newTestPassword";
+    @Test
+    public void testResetPasswordSuccess() {
+        String token = "testToken";
+        String emailAddr = "testEmailAddr";
+        String newPassword = "newTestPassword";
 
-    //     PasswordResetTokenModel testPasswordResetToken = new PasswordResetTokenModel();
-    //     testPasswordResetToken.setToken(token);
-    //     testPasswordResetToken.setEmailAddr(emailAddr);
-    //     testPasswordResetToken.setExpirationTime(LocalDateTime.now().plusMinutes(10));
+        PasswordResetTokenModel testPasswordResetToken = new PasswordResetTokenModel();
+        testPasswordResetToken.setToken(token);
+        testPasswordResetToken.setEmailAddr(emailAddr);
+        testPasswordResetToken.setExpirationTime(LocalDateTime.now().plusMinutes(10));
 
-    //     PlayerModel testPlayer = new PlayerModel();
-    //     testPlayer.setEmailAddr(emailAddr);
-    //     testPlayer.setPassword("oldPassword");
+        PlayerModel testPlayer = new PlayerModel();
+        testPlayer.setEmailAddr(emailAddr);
+        testPlayer.setPassword("oldPassword");
 
-    //     when(passwordResetTokenRepository.findByToken(token)).thenReturn(Optional.of(testPasswordResetToken));
-    //     when(playerRepository.findByEmailAddr(emailAddr)).thenReturn(Optional.of(testPlayer));
+        when(passwordResetTokenRepository.findByToken(token)).thenReturn(Optional.of(testPasswordResetToken));
+        when(playerRepository.findByEmailAddr(emailAddr)).thenReturn(Optional.of(testPlayer));
 
-    //     boolean result = passwordResetService.resetPassword(token, newPassword);
+        boolean result = passwordResetService.resetPassword(token, newPassword);
 
-    //     assertTrue(result);
-    //     assertEquals(newPassword, testPlayer.getPassword());
+        assertTrue(result);
+        assertEquals(newPassword, testPlayer.getPassword());
 
-    //     verify(passwordResetTokenRepository, times(1)).findByToken(token);
-    //     verify(playerRepository, times(1)).findByEmailAddr(emailAddr);
-    //     verify(playerRepository, times(1)).save(testPlayer);
-    //     verify(passwordResetTokenRepository, times(1)).deleteByEmailAddr(emailAddr);
-    // }
+        verify(passwordResetTokenRepository, times(1)).findByToken(token);
+        verify(playerRepository, times(1)).findByEmailAddr(emailAddr);
+        verify(playerRepository, times(1)).save(testPlayer);
+        verify(passwordResetTokenRepository, times(1)).deleteByEmailAddr(emailAddr);
+    }
 }
