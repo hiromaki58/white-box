@@ -4,6 +4,18 @@ executors:
   java-executor:
     docker:
       - image: gradle:8.13-jdk23
+        environment:
+          SPRING_PROFILES_ACTIVE: test
+          DB_NAME: webgame
+          DB_USER: root
+          DB_PASS: ""
+      - image: mysql:8.0
+        environment:
+          MYSQL_DATABASE: webgame
+          MYSQL_ROOT_PASSWORD: ""
+        command: >-
+          mysqld --character-set-server=utf8mb4
+                 --collation-server=utf8mb4_unicode_ci
     working_directory: ~/project
 
 jobs:
@@ -12,6 +24,15 @@ jobs:
     steps:
       - checkout:
           path: ~/project
+          
+      - run:
+          name: Wait for MySQL
+          command: |
+            for i in `seq 1 20`; do
+              mysql -h 127.0.0.1 -P 3306 -u root -e "SELECT 1" && break
+              echo "Waiting for MySQL..."
+              sleep 3
+            done
 
       - run:
           name: Make gradlew executable
