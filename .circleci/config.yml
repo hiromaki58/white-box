@@ -23,7 +23,7 @@ jobs:
     executor: java-executor
     steps:
       - checkout:
-          path: ~/project
+      	  path: ~/project
           
       - run:
           name: Wait for MySQL
@@ -51,7 +51,39 @@ jobs:
       - store_artifacts:
           path: web_game/build/reports
 
+  build-and-deploy:
+    docker:
+      - image: cimg/base:stable
+    environment:
+      AWS_REGION: us-east-1
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: Build Docker Images
+          command: |
+            docker build -t $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/web_game:latest ./web_game
+            docker build -t $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/web_game_front:latest ./web_game_interface/react-typescript
+      - run:
+          name: Push to Amazon ECR
+          command: |
+            aws --version
+            aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com
+            docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/web_game:latest
+            docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/web_game_front:latest
+      - run:
+          name: Deploy to ECS
+          command: |
+            aws ecs update-service \
+              --cluster your-cluster-name \
+              --service your-service-name \
+              --force-new-deployment \
+              --region $AWS_REGION
+
 workflows:
-  build-and-test:
+  ci-cd-workflow:
     jobs:
       - test-java
+      - build-and-deploy:
+          requires:
+            - test-java
