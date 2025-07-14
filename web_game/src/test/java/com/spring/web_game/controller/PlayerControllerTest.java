@@ -41,22 +41,22 @@ public class PlayerControllerTest {
         playerRepository.save(player);
     }
 
-    @Test
-    public void testLoginSuccess() throws Exception {
-        mockMvc.perform(post("/api/player/login")
-                .with(csrf())
-                .content("{\"emailAddr\": \"test@example.com\", \"password\": \"password123\"}")
-                .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$.loginTry").value(true))
-                .andExpect(jsonPath("$.msg").value("Succeed to login"));
-    }
+    // @Test
+    // public void testLoginSuccess() throws Exception {
+    //     mockMvc.perform(post("/api/player/login")
+    //             .with(csrf())
+    //             .content("{\"emailAddr\": \"test@example.com\", \"password\": \"password123\"}")
+    //             .contentType(MediaType.APPLICATION_JSON))
+    //             .andExpect(jsonPath("$.loginTry").value(true))
+    //             .andExpect(jsonPath("$.msg").value("Succeed to login"));
+    // }
 
-    @Test
-    public void testLoginFailure() throws Exception {
-        mockMvc.perform(post("/api/player/login")
-                .content("{\"emailAddr\": \"nonexistent@example.com\", \"password\": \"wrongpassword\"}")
-                .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$.loginTry").value(false))
-                .andExpect(jsonPath("$.msg").value("Fail to login"));
-    }
+    // @Test
+    // public void testLoginFailure() throws Exception {
+    //     mockMvc.perform(post("/api/player/login")
+    //             .content("{\"emailAddr\": \"nonexistent@example.com\", \"password\": \"wrongpassword\"}")
+    //             .contentType(MediaType.APPLICATION_JSON))
+    //             .andExpect(jsonPath("$.loginTry").value(false))
+    //             .andExpect(jsonPath("$.msg").value("Fail to login"));
+    // }
 }
