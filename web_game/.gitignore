@@ -6,7 +6,11 @@ target/
 !**/src/test/**/target/
 *.properties
 .env
+
+# CI/CD
 *.aws.yml
+docker-compose.yml
+task-definition.json
 
 # extensions
 *.csv

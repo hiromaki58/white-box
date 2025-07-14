@@ -75,8 +75,8 @@ jobs:
           name: Deploy to ECS
           command: |
             aws ecs update-service \
-              --cluster your-cluster-name \
-              --service your-service-name \
+              --cluster web_game \
+              --service web-game-service \
               --force-new-deployment \
               --region $AWS_REGION
 
