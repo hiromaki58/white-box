@@ -23,7 +23,7 @@ jobs:
     executor: java-executor
     steps:
       - checkout:
-      	  path: ~/project
+          path: ~/project
           
       - run:
           name: Wait for MySQL
