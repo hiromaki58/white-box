@@ -11,6 +11,8 @@ target/
 *.aws.yml
 docker-compose.yml
 task-definition.json
+.circleci/config.yml
+.circleci/oldConfig.yml
 
 # extensions
 *.csv
