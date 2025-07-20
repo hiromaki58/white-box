@@ -1,40 +1,40 @@
-# はじめに
-[前回]("https://medium.com/@hiromaki58/use-aws-spot-instances-without-interruptions-2-set-up-ci-cd-pipeline-feb646d2198b" 2, Set up CI)はCI/CDパイプラインのCI側を構築しました。
-今回はCI/CDパイプラインのCD側を作成したいと思います。
-# この記事で実施する内容
-まずはCI/CD全体の具体的な流れは以下になります。
-①GitHubにpush
-   ↓
-②CircleCIがテストを実行（CI）
-   ↓
-③ Dockerイメージをビルド
-   ↓
-④ ECRにpush（ECR login + docker push）
-   ↓
-⑤ EC2にSSH接続し、最新イメージpull + 再起動（docker-compose down/up or restart）
-この記事ではそのうちの③から⑤を説明していきます。
-#### 作業全体の流れ
-1, AWS CLIが便利なのでローカル環境でも使えるようにします
-2, CircleCI で Docker イメージを自動ビルドするために.circleci/config.ymlファイルを変更
-3, Docker をインストール
-4, イメージをビルドしたい EC2 に ECS エージェントをインストール
-5, ローカルCLIから ECR レポジトリを作成
-6, ECS クラスターとサービスの作成
-7, CircleCI からデプロイ
-#### 動作環境
-今回はCircle CIとAWSのみです。
-# 1, AWS CLIが便利なのでローカル環境でも使えるようにします
-いきなりですが、ローカル環境での設定を説明すると記事が長くなってしまうので、別記事を作成したいとおもいます。
-(IAMユーザーの設定もありますしね。)
-# 2, CircleCI で Docker イメージを自動ビルドするために.circleci/config.ymlファイルを変更
-config ファイルにはパスワードなど機微な情報が含まれています。
-それらは Circle Ci の環境変数で指定しています。
-こちらも記事が冗長になるのを防ぐため、別の記事で紹介したいとおもいます。
+# Introduction
+In the [previous article](("https://medium.com/@hiromaki58/use-aws-spot-instances-without-interruptions-2-set-up-ci-cd-pipeline-feb646d2198b" 2, Set up CI)), we built the CI portion of the CI/CD pipeline.
+In this article, we will focus on creating the CD (Continuous Deployment) part of the pipeline.
+# What This Article Covers
+Here’s the overall flow of the CI/CD pipeline:
+1, Push to GitHub
+↓
+2, CircleCI runs tests (CI)
+↓
+3, Docker image is built
+↓
+4, Image is pushed to ECR (ECR login + docker push)
+↓
+5, SSH into EC2, pull the latest image, and restart (via docker-compose down/up or restart)
+This article will cover steps 3 to 5.
+#### Overall Workflow
+1, Set up AWS CLI on the local environment for convenience
+2, Modify the .circleci/config.yml file to automate Docker image builds with CircleCI
+3, Install Docker
+4, Install the ECS agent on the EC2 instance where the image will be run
+5, Create an ECR repository using the local CLI
+6, Create an ECS cluster and service
+7, Deploy from CircleCI
+#### Environment
+We’ll be using only CircleCI and AWS in this setup.
+# 1, Set up AWS CLI on the local environment for convenience
+To get straight to the point — explaining the local environment setup would make this article too long, so I plan to cover that in a separate post.
+(This includes IAM user configuration as well.)
+# 2, Modify the .circleci/config.yml file to automate Docker image builds with CircleCI
+The config file contains sensitive information such as passwords.
+These values are specified using CircleCI environment variables.
+To keep this article concise, I’ll also cover that setup in a separate post.
 
-設定ファイルの中身は以下になります。
-フロントとバックエンドを分けてイメージを作成するので、長くなってしまっています。
+Below is the content of the config file.
+Since we’re creating separate Docker images for the frontend and backend, the file is a bit lengthy.
 
-内容としてはテストに成功したらイメージを作成して、AWSに送ってね、になっています。
+In essence, the configuration says: "If the tests pass, build the image and push it to AWS."
 ```.circleci/config.yml
 version: 2.1
 
@@ -136,43 +136,43 @@ workflows:
           requires:
             - test-java
 ```
-# 3, Docker をインストール
-EC2に Docker がないと動かないですからね。
+# 3, Install Docker
+You won’t be able to run anything if Docker isn’t installed on the EC2 instance.
 ```bash
 sudo yum update -y
 sudo yum install docker -y
 sudo service docker start
 sudo usermod -aG docker ec2-user
 ```
-# 4, イメージをビルドしたい EC2 に ECS エージェントをインストール
-まず最初に ECS用 IAM ロールを作成し EC2 にアタッチします。
-しかしこれも別の記事でIAM関連はまとめて紹介したいと思います。
+# 4, Install the ECS agent on the EC2 instance where the image will be run
+First, we need to create an IAM role for ECS and attach it to the EC2 instance.
+However, since IAM-related topics can be quite extensive, I plan to cover them in a separate article.
 
-次にEC2にCLIでアクセスしてエージェントをインストールします。
-Amazon Linuxを使っている場合は以下のコマンドを使用してください。
+Next, access the EC2 instance via CLI and install the ECS agent.
+If you’re using Amazon Linux, you can use the following command:
 ```bash
 sudo amazon-linux-extras install ecs -y
 sudo systemctl enable --now ecs
 ```
-そして、これから作成することを想定している、あるいは既存のECSのクラスターを指定します。
+Then, specify the ECS cluster you plan to create, or an existing one if you already have it.
 ```bash
 echo "ECS_CLUSTER=web_game" | sudo tee -a /etc/ecs/ecs.config
 sudo systemctl restart ecs
 ```
-実行した時に以下のエラーが発生したことがあります。
+Sometimes, you might encounter the following error when running the command.
 ```bash
 tee: /etc/ecs/ecs.config: No such file or directory
 ```
-この場合はクラスター名を設定ファイルに保存するために、ディレクトリを作ってあげましょう。
-# 5, ローカルCLIから ECR レポジトリを作成
-次に Docker イメージを格納する ECR レポジトリを作成します。
+In that case, it’s likely because the directory to store the cluster name in the config file doesn’t exist — so just create it manually.
+# 5, Create an ECR repository using the local CLI
+Next, create an ECR repository to store your Docker images.
 ```bash
 aws ecr create-repository \
   --repository-name web_game \
   --image-scanning-configuration scanOnPush=true \
   --region us-east-1
 ```
-成功するとこんな json が返ってくるはずです。
+If successful, you should receive a JSON response like this.
 ```json
 {
   "repository": {
@@ -182,15 +182,14 @@ aws ecr create-repository \
       "repositoryUri": "123456789012.dkr.ecr.ap-northeast-1.amazonaws.com/web-game"
   }
 }
-```
-# 6, ECS クラスターとサービスの作成
+# 6, Create an ECS cluster and service
 6-1
-まずはクラスターを作りましょう。
-本当はインスタンスをいくつ立ち上げるかなど、細かく設定できますが、一旦省略します。
+Let’s start by creating a cluster.
+In reality, you can configure details such as how many instances to launch, but we’ll skip those for now.
 ```bash
 aws ecs create-cluster --cluster-name web_game
 ```
-成功するとこんな json が返ってくるはずです。
+If successful, you should receive a JSON response like this.
 ```json
 {
     "cluster": {
@@ -215,10 +214,10 @@ aws ecs create-cluster --cluster-name web_game
 }
 ```
 6-2
-次にタスク定義をします。
-タスク定義は ECS で起動するコンテナの設計図です。
-どの Docker イメージを使うか・環境変数・ポート・ログ設定などをまとめます。
-フロントとバックエンドのコンテナを2つ定義しているので長くなりました。
+Next, we’ll define a task definition.
+A task definition is essentially a blueprint for the containers that ECS will run.
+It includes information such as which Docker images to use, environment variables, ports, and log settings.
+Since we’re defining 2 containers — one for the frontend and one for the backend — the configuration ended up being quite long.
 ```json:task-definition.json
 {
     "taskDefinition": {
@@ -295,8 +294,8 @@ aws ecs create-cluster --cluster-name web_game
 }
 ```
 6-3
-次にサービスを定義します。
-このサービスはタスクを継続的に起動・維持・監視 する仕組みです。
+Next, define a service.
+A service is responsible for continuously running, maintaining, and monitoring tasks.
 ```bash
 aws ecs create-service \
   --cluster web_game \
@@ -306,6 +305,7 @@ aws ecs create-service \
   --launch-type EC2 \
   --network-configuration "awsvpcConfiguration={subnets=[subnet-abc123,subnet-def456],securityGroups=[sg-xxxxxx],assignPublicIp=ENABLED}"
 ```
-# 7, CircleCI からデプロイ
-私の場合は、Circle CIの設定でmainブランチがプッシュされた時をトリガーにして、
-.circlci/config.ymlに"-force-new-deployment"を設定しているので、CI/CDしてるんじゃないかな。
+# 7, Deploy from CircleCI
+In my case, I’ve configured CircleCI to trigger a deployment whenever there’s a push to the main branch,
+and I’ve set --force-new-deployment in the .circleci/config.yml file.
+So I believe this setup effectively enables CI/CD.
