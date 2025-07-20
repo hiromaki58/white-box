@@ -1,0 +1,32 @@
+{
+  "family": "web-game-task",
+  "networkMode": "awsvpc",
+  "executionRoleArn": "arn:aws:iam::724775511010:role/ecsTaskExecutionRole",
+  "containerDefinitions": [
+    {
+      "name": "frontend",
+      "image": "724775511010.dkr.ecr.us-east-1.amazonaws.com/web_game_front:latest",
+      "essential": true,
+      "portMappings": [
+        {
+          "containerPort": 3000,
+          "protocol": "tcp"
+        }
+      ]
+    },
+    {
+      "name": "backend",
+      "image": "724775511010.dkr.ecr.us-east-1.amazonaws.com/web_game:latest",
+      "essential": true,
+      "portMappings": [
+        {
+          "containerPort": 8080,
+          "protocol": "tcp"
+        }
+      ]
+    }
+  ],
+  "requiresCompatibilities": ["EC2"],
+  "cpu": "512",
+  "memory": "1024"
+}
