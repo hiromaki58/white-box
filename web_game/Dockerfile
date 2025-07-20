@@ -22,18 +22,14 @@ RUN sudo dnf install -y openssh
 RUN sudo dnf install -y openssh-clients
 
 # Set environment variable PATH
-ENV PATH="${PATH}:/usr/bin/ssh"
-
-COPY ../../WebGame.pem /root/.ssh/id_rsa
-RUN chmod 600 /root/.ssh/id_rsa
-
-# SSHトンネルを設定し、その後Javaアプリを起動するスクリプト
-COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
-ENTRYPOINT ["/entrypoint.sh"]
+# ENV PATH="${PATH}:/usr/bin/ssh"
+WORKDIR /app
 
 # Copy the built JAR file from the build stage
 COPY --from=build /home/app/build/libs/*.jar /usr/local/lib/web-game.jar
 
 # Specify the port the application uses
 EXPOSE 8080
+
+# Java アプリケーションを実行
+ENTRYPOINT ["java", "-jar", "/app/web-game.jar"]

@@ -5,8 +5,14 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 *.properties
+.env
 
-### extensions ###
+# CI/CD
+*.aws.yml
+docker-compose.yml
+task-definition.json
+
+# extensions
 *.csv
 *.xml
 *.class
@@ -16,7 +22,7 @@ target/
 *.jar.*
 !**/gradle/wrapper/*
 
-### STS ###
+# STS
 .apt_generated
 .classpath
 .factorypath
@@ -25,28 +31,11 @@ target/
 .springBeans
 .sts4-cache
 
-### IntelliJ IDEA ###
-.idea
-*.iws
-*.iml
-*.ipr
-
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
-build/
-!**/src/main/**/build/
-!**/src/test/**/build/
-
-### VS Code ###
+# VS Code
 .vscode/
 .DS_Store
 
-### Remote Node Info ###
-/src/main/resources/application.properties
+# Remote Node Info
 entrypoint.sh
 *.pem
 

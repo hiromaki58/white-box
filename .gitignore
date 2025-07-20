@@ -1,56 +1,46 @@
-*.gem
-*.rbc
-/.config
-/coverage/
-/InstalledFiles
-/pkg/
-/spec/reports/
-/spec/examples.txt
-/test/tmp/
-/test/version_tmp/
-/tmp/
+HELP.md
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/target
+!**/src/main/**/target/
+!**/src/test/**/target/
+*.properties
+.env
 
-# Used by dotenv library to load environment variables.
-# .env
+# CI/CD
+*.aws.yml
+docker-compose.yml
+task-definition.json
 
-# Ignore Byebug command history file.
-.byebug_history
+# extensions
+*.csv
+*.xml
+*.class
+*.jar
+*.txt
+*.lst
+*.jar.*
+!**/gradle/wrapper/*
 
-## Specific to RubyMotion:
-.dat*
-.repl_history
-build/
-*.bridgesupport
-build-iPhoneOS/
-build-iPhoneSimulator/
+# STS
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
 
-## Specific to RubyMotion (use of CocoaPods):
-#
-# We recommend against adding the Pods directory to your .gitignore. However
-# you should judge for yourself, the pros and cons are mentioned at:
-# https://guides.cocoapods.org/using/using-cocoapods.html#should-i-check-the-pods-directory-into-source-control
-#
-# vendor/Pods/
+# VS Code
+.vscode/
+.DS_Store
 
-## Documentation cache and generated files:
-/.yardoc/
-/_yardoc/
-/doc/
-/rdoc/
+# Remote Node Info
+entrypoint.sh
+*.pem
 
-## Environment normalization:
-/.bundle/
-/vendor/bundle
-/lib/bundler/man/
+# Ignore Gradle project-specific cache directory
+.gradle
 
-# for a library or gem, you might want to ignore these files since the code is
-# intended to run in multiple environments; otherwise, check them in:
-# Gemfile.lock
-# .ruby-version
-# .ruby-gemset
-
-# unless supporting rvm < 1.11.0 or doing something fancy, ignore this:
-.rvmrc
-
-# Used by RuboCop. Remote config files pulled in from inherit_from directive.
-# .rubocop-https?--*
+# Ignore Gradle build output directory
+build
