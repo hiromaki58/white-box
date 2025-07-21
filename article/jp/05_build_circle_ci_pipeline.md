@@ -24,6 +24,8 @@ GitHubリポジトリ一覧が表示されたら、対象リポジトリの右�
 config ファイルにはパスワードなど機微な情報が含まれています。
 それらは Circle Ci の環境変数で指定しています。
 こちらは記事が冗長になるのを防ぐため、別の記事で紹介したいとおもいます。
+
+設定ファイルの中身は以下になります。
 ```properties:application-test.properties
 spring.datasource.url=jdbc:mysql://127.0.0.1:3306/${DB_NAME}?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
 spring.datasource.username=${DB_USER}

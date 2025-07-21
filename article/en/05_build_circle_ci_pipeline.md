@@ -1,5 +1,5 @@
 # Introduction
-In the [previous article](("https://medium.com/p/5bc8e6e3b551" 1, Set up the development environment using Docker.)), we set up a development environment using Docker.
+In the [previous article](("https://medium.com/@hiromaki58/use-aws-spot-instances-without-interruptions-1-set-up-the-development-environment-using-docker-5bc8e6e3b551" 1, Set up the development environment using Docker.)), we set up a development environment using Docker.
 As a continuation of the environment setup, this time we will build a CI/CD pipeline using CircleCI.
 # What This Article Covers
 - Modifying the application-test.properties file for Spring Boot
@@ -22,15 +22,17 @@ First, go to the CircleCI dashboard and click on “Projects” from the left-ha
 Once your list of GitHub repositories is displayed, click “Set Up Project” next to the repository you want to integrate.
 Select the language and build configuration template, then add and push the .circleci/config.yml file to your repository.
 # 2, Modify the application-test.properties file for Spring Boot
-```properties:application-test.properties
-spring.datasource.url=jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
-spring.datasource.driver-class-name=org.h2.Driver
-spring.datasource.username=sa
-spring.datasource.password=
+The config file contains sensitive information such as passwords.
+These values are specified using CircleCI environment variables.
+To keep this article concise, I’ll also cover that setup in a separate post.
 
+Below is the content of the config file.
+```properties:application-test.properties
+spring.datasource.url=jdbc:mysql://127.0.0.1:3306/${DB_NAME}?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+spring.datasource.username=${DB_USER}
+spring.datasource.password=${DB_PASS}
 spring.jpa.hibernate.ddl-auto=create-drop
-spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
-spring.h2.console.enabled=true
+spring.jpa.database-platform=org.hibernate.dialect.MySQL8Dialect
 ```
 # 3, Create the .circleci/config.yml file
 ```yml:config.yml
@@ -40,6 +42,18 @@ executors:
   java-executor:
     docker:
       - image: gradle:8.13-jdk23
+        environment:
+          SPRING_PROFILES_ACTIVE: test
+          DB_NAME: webgame
+          DB_USER: $LOCAL_DB_USER
+          DB_PASS: $LOCAL_DB_PASSWORD
+      - image: mysql:8.0
+        environment:
+          MYSQL_DATABASE: webgame
+          MYSQL_ROOT_PASSWORD: $LOCAL_DB_PASSWORD
+        command: >-
+          mysqld --character-set-server=utf8mb4
+                 --collation-server=utf8mb4_unicode_ci
     working_directory: ~/project
 
 jobs:
@@ -48,6 +62,15 @@ jobs:
     steps:
       - checkout:
           path: ~/project
+
+      - run:
+          name: Wait for MySQL
+          command: |
+            for i in `seq 1 20`; do
+              mysql -h 127.0.0.1 -P 3306 -u root -e "SELECT 1" && break
+              echo "Waiting for MySQL..."
+              sleep 3
+            done
 
       - run:
           name: Make gradlew executable
@@ -74,14 +97,14 @@ workflows:
 # 4, Add necessary configurations to build.gradle
 ```gradle:build.gradle
 dependencies {
-    // Spring Boot Dependencies
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.boot:spring-boot-starter-mail'
+  // Spring Boot Dependencies
+  implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+  implementation 'org.springframework.boot:spring-boot-starter-web'
+  implementation 'org.springframework.boot:spring-boot-starter-mail'
 
-    // Testing Dependencies
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testImplementation 'com.h2database:h2'
+  // Testing Dependencies
+  testImplementation 'org.springframework.boot:spring-boot-starter-test'
+  testImplementation 'com.h2database:h2'
 }
 ```
 # 5, Add test code
@@ -99,7 +122,7 @@ public class PlayerControllerTest {
 
     @BeforeEach
     public void setUp() {
-        playerRepository.deleteAll(); // clear the existing data
+        playerRepository.deleteAll();
 
         PlayerModel player = new PlayerModel();
         player.setFirstName("John");
