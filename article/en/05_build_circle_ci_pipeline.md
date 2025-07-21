@@ -1,6 +1,6 @@
 # Introduction
 In the [previous article](("https://medium.com/@hiromaki58/use-aws-spot-instances-without-interruptions-1-set-up-the-development-environment-using-docker-5bc8e6e3b551" 1, Set up the development environment using Docker.)), we set up a development environment using Docker.
-As a continuation of the environment setup, this time we will build a CI/CD pipeline using CircleCI.
+As part of the environment setup, I would like to build the CI portion of the CI/CD pipeline again — specifically, running tests on GitHub push using CircleCI.
 # What This Article Covers
 - Modifying the application-test.properties file for Spring Boot
 - Connecting CircleCI with GitHub
@@ -14,7 +14,7 @@ As a continuation of the environment setup, this time we will build a CI/CD pipe
 6, Conclusion
 #### Environment
 - Backend: Spring Boot
-- Databases: AWS RDS for production, H2 (in-memory) for CI tests
+- Databases: MySQL on CircleCI
 - CI Tool: CircleCI
 - Build Tool: Gradle
 # 1, Connect CircleCI with GitHub
