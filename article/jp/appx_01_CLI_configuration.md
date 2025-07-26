@@ -58,7 +58,23 @@ We recommend that you create IAM users only if you need to enable programmatic a
 ```
 "I want to create an IAM user"を選択してください。
 # 3, アクセスキーの取得
+次に作成したユーザーからアクセスキーとシークレットアクセスキーを取得します。
 
+CLI を選択して、適当なタグを設定すれば、アクセスキーが作成されます。
+シークレットアクセスキーはこの時にしか表示されないので、注意してください。
 # 4, ローカルでの設定
-
+次にアクセスキーの内容をローカル環境に設定します。
+```bash
+aws configure
+```
+```bash
+AWS Access Key ID [None]: xxxxxxxxxxxxxxxx
+AWS Secret Access Key [None]: abcdefghijklmnopqrstuvwxyz1234567890
+Default region name [None]: us-east-1
+Default output format [None]: json
+```
 # 5, CLI から AWS に接続
+```bash
+aws ec2 describe-instances
+```
+上記のようなコマンドを使ってみて接続を確認してください。
