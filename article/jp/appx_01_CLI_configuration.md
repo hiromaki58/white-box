@@ -33,7 +33,30 @@ aws --version
 ```
 # 2, IAM ユーザーの作成
 ローカルから AWS 環境に接続するためにはアクセスキーとシークレットアクセスキーをローカル環境に設定してあげなければなりません。
+もし使えるユーザーがまだ設定されていなければ、作成してあげましょう。
+AWS IAM ページに遷移して、Create User ボタンを押下。
+適当な名前を設定し、次のページへ。
 
+Set permissions では開発用なのでAttach policies directly から AdministratorAccess を選択します。
+タグはあってもなくてもかまいませんが、プロジェクトごとに統一したタグを各 AWS サービスに設定して置くと、あとあと管理が簡単になります。
+終了したプロジェクトに関係したサービスを停止する時に便利です。
+
+作成時に以下のようなメッセージが表示されることがあります。
+```
+Provide user access to the AWS Management Console - optional
+If you're providing console access to a person, it's a best practice to manage their access in IAM Identity Center.
+```
+これはブラウザからのアクセスのみに限定するため、今回はチェックを外してください。
+
+また以下のようなメッセージが表示された場合は
+```
+Specify a user in Identity Center - Recommended
+We recommend that you use Identity Center to provide console access to a person. With Identity Center, you can centrally manage user access to their AWS accounts and cloud applications.
+
+I want to create an IAM user
+We recommend that you create IAM users only if you need to enable programmatic access through access keys, service-specific credentials for AWS CodeCommit or Amazon Keyspaces, or a backup credential for emergency account access.
+```
+"I want to create an IAM user"を選択してください。
 # 3, アクセスキーの取得
 
 # 4, ローカルでの設定
