@@ -1,13 +1,13 @@
-package com.minikube.mysql_minikube;
+package com.spring.web_game;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MysqlMinikubeApplication {
+public class WebGameApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MysqlMinikubeApplication.class, args);
+		SpringApplication.run(WebGameApplication.class, args);
 	}
 
 }
