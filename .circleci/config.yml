@@ -44,7 +44,7 @@ jobs:
           name: Run backend tests
           command: |
             cd infra/minikube/mysql-minikube-backend
-            ./gradlew test
+            ./gradlew test --test
 
 workflows:
   ci:
