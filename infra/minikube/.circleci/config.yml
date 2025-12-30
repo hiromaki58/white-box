@@ -1,0 +1,52 @@
+version: 2.1
+
+executors:
+  java-executor:
+    docker:
+      # Main container（Gradle + Java）
+      - image: gradle:7.6-jdk11
+        environment:
+          SPRING_PROFILES_ACTIVE: test
+          DB_NAME: webgame
+          DB_USER: ${LOCAL_DB_USER}
+          DB_PASS: ${LOCAL_DB_PASSWORD}
+
+      # Service container（MySQL）
+      - image: mysql:8.0
+        environment:
+          MYSQL_DATABASE: webgame
+          MYSQL_ROOT_PASSWORD: password
+        command: >
+          mysqld
+          --character-set-server=utf8mb4
+          --collation-server=utf8mb4_unicode_ci
+
+    working_directory: ~/project
+
+jobs:
+  test-backend:
+    executor: java-executor
+    steps:
+      - checkout
+
+      # Waiting for MySQL
+      - run:
+          name: Wait for MySQL
+          command: |
+            for i in `seq 1 20`; do
+              mysql -h 127.0.0.1 -P 3306 -u root -ppassword -e "SELECT 1" && break
+              echo "Waiting for MySQL..."
+              sleep 3
+            done
+
+      # Move to backend directory
+      - run:
+          name: Run backend tests
+          command: |
+            cd backend
+            ./gradlew test
+
+workflows:
+  ci:
+    jobs:
+      - test-backend
