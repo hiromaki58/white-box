@@ -46,3 +46,6 @@ entrypoint.sh
 
 # Ignore Gradle build output directory
 build
+
+# Secrets
+**/k8s/secrets/*.yaml
