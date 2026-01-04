@@ -48,4 +48,5 @@ entrypoint.sh
 build
 
 # Secrets
-**/k8s/secrets/*.yaml
+**/k8s/**/secrets/*.yaml
+**/eks/**/secrets/*.yaml

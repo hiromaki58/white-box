@@ -1,0 +1,49 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: webgame-cluster
+  region: us-east-1
+  version: "1.29"
+
+# Activate OIDC
+iam:
+  withOIDC: true
+
+# use existing VPC / Subnet
+vpc:
+  id: ${VPC_ID}
+  subnets:
+    # EKS nodes are only in private subnet
+    private:
+      us-east-1b:
+        id: ${PRIVATE_SUBNET_1b}
+      us-east-1a:
+        id: ${PRIVATE_SUBNET_1a}
+    # Public Subnet is for NAT Gateway and ALB
+    public:
+      us-east-1b:
+        id: ${PUBLIC_SUBNET_1b}
+      us-east-1a:
+        id: ${PUBLIC_SUBNET_1a}
+
+# EKS node（Spot Instance）
+managedNodeGroups:
+  - name: spot-ng
+    instanceTypes:
+      - t3.small
+    desiredCapacity: 1
+    minSize: 1
+    maxSize: 2
+
+    # To create the EKS nodes in the private subnet
+    privateNetworking: true
+    # Spot Instance
+    spot: true
+
+    iam:
+      instanceRoleARN: ${INSTANCE_ROLE_ARN}
+
+    labels:
+      role: worker
+      lifecycle: spot
