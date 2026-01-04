@@ -44,7 +44,7 @@ jobs:
           name: Run backend tests
           command: |
             cd infra/minikube/mysql-minikube-backend
-            ./gradlew test --info
+            ./gradlew test -Dspring.profiles.active=test
   build-and-deploy:
     docker:
       - image: cimg/base:stable
