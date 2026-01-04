@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: springboot-config
+  namespace: default
+data:
+  # Spring Profile
+  SPRING_PROFILES_ACTIVE: prod
+
+  # Target RDS
+  SPRING_DATASOURCE_URL: jdbc:mysql://webgamedb.cn7ns9r6pwgg.us-east-1.rds.amazonaws.com:3306/webgamedb?useSSL=false&serverTimezone=UTC
