@@ -14,13 +14,6 @@ iam:
 vpc:
   id: ${VPC_ID}
   subnets:
-    # EKS nodes are only in private subnet
-    private:
-      us-east-1b:
-        id: ${PRIVATE_SUBNET_1b}
-      us-east-1a:
-        id: ${PRIVATE_SUBNET_1a}
-    # Public Subnet is for NAT Gateway and ALB
     public:
       us-east-1b:
         id: ${PUBLIC_SUBNET_1b}
@@ -29,17 +22,17 @@ vpc:
 
 # EKS node（Spot Instance）
 managedNodeGroups:
-  - name: spot-ng
+  - name: public-spot-ng
     instanceTypes:
-      - t3.small
+      - t3.medium
     desiredCapacity: 1
     minSize: 1
     maxSize: 2
 
-    # To create the EKS nodes in the private subnet
-    privateNetworking: true
+    # Not to create the EKS nodes in the private subnet
+    privateNetworking: false
     # Spot Instance
-    spot: true
+    # spot: true
 
     iam:
       instanceRoleARN: ${INSTANCE_ROLE_ARN}
