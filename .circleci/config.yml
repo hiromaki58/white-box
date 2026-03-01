@@ -31,11 +31,11 @@ jobs:
     steps:
       - checkout
       - run:
-        name: Debug Spring Profile
-        command: |
-          echo "SPRING_PROFILES_ACTIVE=$SPRING_PROFILES_ACTIVE"
-          echo "SPRING_DATASOURCE_URL=$SPRING_DATASOURCE_URL"
-          env | grep SPRING
+          name: Debug Spring Profile
+          command: |
+            echo "SPRING_PROFILES_ACTIVE=$SPRING_PROFILES_ACTIVE"
+            echo "SPRING_DATASOURCE_URL=$SPRING_DATASOURCE_URL"
+            env | grep SPRING
       # Waiting for MySQL
       - run:
           name: Wait for MySQL
