@@ -84,5 +84,44 @@ ip-172-31-107-149.ec2.internal   Ready    <none>   4m43s   v1.29.15-eks-ecaa3a6
 今回のデモでは、private subnet に RDS を配置し、public subnet に配置した
 キーとなるアイデアは
 - EKS 上の Pod だけが RDS に接続できる
-- IP アドレスに依存しない（Pod / Node が変わっても壊れない）
+- IP アドレスに依存しない（Pod / Node が変わっても接続できる）
 -「0.0.0.0/0」は使わない
+
+具体的には RDS に設定されている SG のインバウンドルールに、 EKS のクラスターに紐づいている EC2 インスタンスに紐づいている SG を追加します。
+
+以下の方法で RDS へインスタンスから接続ができるかを確認できます。
+1, テスト用Podを作る
+kubectl run test \
+--image=public.ecr.aws/amazonlinux/amazonlinux:2 \
+--restart=Never \
+--command -- sleep 3600
+pod/test created
+2, Pod の動作確認
+% kubectl get pod test -o wide
+NAME   READY   STATUS    RESTARTS   AGE   IP              NODE                           NOMINATED NODE   READINESS GATES
+test   1/1     Running   0          20s   172.31.10.245   ip-172-31-5-126.ec2.internal   <none>           <none>
+3, Pod にアクセス
+kubectl exec -it test -- bash
+(この test というのが Pod の名前になります。)
+4, Podの中で MySQL クライアントを入れて接続
+yum install -y mariadb
+(Amazon linux は MySQL パッケージを持たないため、同じプロトコルを持つ mariadb で代用)
+mysql -h <RDS-ENDPOINT> -u <user> -p
+
+bash-4.2# mysql -h <RDS-ENDPOINT> -u <user> -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MySQL connection id is 250
+Server version: 8.0.42 Source distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MySQL [(none)]>
+MySQL [(none)]>
+MySQL [(none)]>
+5, 最後にテスト用の Pod を削除
+exit
+kubectl delete pod test
+
