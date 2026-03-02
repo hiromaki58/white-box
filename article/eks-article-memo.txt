@@ -120,6 +120,21 @@ test   0/1     Pending   0          55s   <none>   <none>   <none>           <no
 解決策
 インスタンスサイズを変更する
 
+失敗⑤　eksctl create cluster -f cluster.yamlコマンド実行時にエラー
+原因
+cluster.yaml ファイルでは変数を指定して secret から値を取得することができない
+解決策
+cluster.yaml ファイルに値を直書きする
+
+失敗⑥　secret が反映されない
+原因
+新しい Pod が作られた時にのみ環境変数が再注入されるため、作成後に secret を変更しても反映されない
+解決策
+再度 Pod を作成する
+kubectl apply -f secret.yaml
+kubectl rollout restart deployment backend
+
+
 
 ③ RDS 接続用の Security Group 設計
 目的（何を守りたいか）
@@ -178,7 +193,10 @@ kubectl delete pod test
 
 
 ④ Spring Boot 用 Secret / ConfigMap
-configmap と secret の作成
+CircleCI ではテスト用DB
+EKS では本番RDS
+
+configmap と secret の作成 <- pring Boot に RDS の接続情報を安全に渡すため
 
 - secret.yaml
 
@@ -191,8 +209,42 @@ CircleCI には「CircleCI で実行するテストに必要な DB 情報」だ�
 kubectl apply -f k8s/eks/secrets/secret.yaml
 を実行して適用する。
 
+今の段階でやる具体的作業
+1) Spring Boot が環境変数参照になっているか確認
+2) secret.yaml を作る
+- backend-deployment.yaml
+- backend-service.yaml
+- frontend-deployment.yaml
+- frontend-service.yaml
+
+適用する順番
+kubectl apply -f secret.yaml
+kubectl apply -f backend-deployment.yaml
+kubectl apply -f backend-service.yaml
+kubectl apply -f frontend-deployment.yaml
+kubectl apply -f frontend-service.yaml
+
+通信の流れ
+Browser
+  ↓
+LoadBalancer (frontend-service)
+  ↓
+Frontend Pod
+  ↓
+http://backend-service:8080
+  ↓
+Backend Pod
+  ↓
+RDS
+
+3) configmap.yaml を作る
+secret.yaml ファイルにRDSへのアクセス情報を格納したたため、今回は不要
+
+4) deployment.yaml を修正
+5) 各ファイルを「kubectl apply -f xxx」コマンドを使って、YAML の内容を Kubernetes API Server に送信して。クラスタの「望ましい状態」を更新する
+
 実行結果
-hirog@mac eks % kubectl apply -f ../minikube/k8s/eks/secrets/secret.yaml 
+hirog@mac eks % kubectl apply -f ./secrets/secret.yaml 
 secret/springboot-db-secret created
 hirog@mac eks % 
 hirog@mac eks % kubectl get secret springboot-db-secret
