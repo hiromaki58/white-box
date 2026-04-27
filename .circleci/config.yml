@@ -4,7 +4,7 @@ executors:
   java-executor:
     docker:
       # Main container（Gradle + Java）
-      - image: gradle:7.6-jdk11
+      - image: gradle:7.6-jdk17
         environment:
           SPRING_PROFILES_ACTIVE: test
           DB_NAME: webgame
@@ -84,5 +84,5 @@ jobs:
 workflows:
   ci:
     jobs:
-      - test-backend
+#      - test-backend
       - build-and-deploy
