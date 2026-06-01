@@ -6,6 +6,7 @@
 3, RDS 接続用の Security Group 設計
 4, Spring Boot 用 Secret / ConfigMap
 5, deployment ファイルの作成と適用
+6, アプリケーションが実際に使えるか確認
 6, k8s マニフェストを EKS 用に調整
 7, kubectl apply
 8, Service / Ingress で外部公開
@@ -190,7 +191,7 @@ kubectl apply -f ./frontend/frontend-service.yaml
 kubectl get pods コマンドで反映されていることを確認します。
 Status が Running であればOK。
 ```bash
-% kubectl get pods                                    
+% kubectl get pods
 NAME                        READY   STATUS    RESTARTS      AGE
 backend-8db6d49fd-9skv5     1/1     Running   3 (38s ago)   81s
 frontend-65d6f8487f-b7qrp   1/1     Running   0             70s
@@ -201,6 +202,7 @@ frontend-65d6f8487f-b7qrp   1/1     Running   0             70s
 kubectl logs <backend-pod>
 ```
 
+# 6,アプリケーションが実際に使えるか確認 
 
 費用が高いため、不要になった場合 EKS クラスターを削除します。
 ```bash

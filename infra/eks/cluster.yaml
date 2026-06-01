@@ -4,7 +4,7 @@ kind: ClusterConfig
 metadata:
   name: webgame-cluster
   region: us-east-1
-  version: "1.29"
+  version: "1.30"
 
 # Activate OIDC
 iam:

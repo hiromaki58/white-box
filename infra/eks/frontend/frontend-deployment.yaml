@@ -16,4 +16,4 @@ spec:
         - name: frontend
           image: ${FRONT_IMAGE_ID}
           ports:
-            - containerPort: 3000
+            - containerPort: 80
