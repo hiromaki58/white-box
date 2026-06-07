@@ -83,7 +83,7 @@ Private Subnet の Node / Pod は：
 解決策
 NAT gateway を public subnet に配置、type は public で elastic IP アドレスの設定を行います。
 
-失敗③ Instances failed to join the kubernetes cluster,
+失敗③ Instances failed to join the kubernetes cluster
 原因
 解決策
 Node instance role を明示的に作り、Node Group に使わせる
@@ -133,6 +133,81 @@ cluster.yaml ファイルに値を直書きする
 再度 Pod を作成する
 kubectl apply -f secret.yaml
 kubectl rollout restart deployment backend
+
+失敗⑦
+パスワードがPodに反映されずDBに接続できない
+Access denied for user 'root' ... (using password: NO)
+状況確認
+テスト用 Pod から RDS へは接続できた。
+mysql -h webgamedb.cn7ns9r6pwgg.us-east-1.rds.amazonaws.com -P 3306 -u admin -p
+
+RDSパスワード
+admin
+XW6QcWCj54OQ1YvXd5HV
+
+原因
+secret を確認する
+kubectl get secret spring-db-secret -o yaml 
+表示されるパスワードと ID が echo <password> | base64 --decode コマンドの実行結果と合致するかを確認する。
+
+kubectl rollout restart deployment backend
+kubectl get pods
+kubectl logs backend-7d64ffc856-f6mvs
+
+
+失敗⑧
+AWS RDS にあるデータベースが認識されず接続できない
+Unknown database 'webgame'
+テスト用のPodを作成しDB名を確認する。
+MySQL [(none)]> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| WebGame            |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0.03 sec)
+
+kubectl get secret spring-db-secret -o jsonpath='{.data.SPRING_DATASOURCE_URL}' | base64 --decode
+rds.amazonaws.com:3306/webgame?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC%
+一致していなことが分かったので、secret を変更します。
+
+その後、以下のコマンドを実行して secret と AWS RDS にあるデータベースの名称を一致させます。
+kubectl apply -f ./secrets/secret.yaml 
+kubectl rollout restart deployment backend
+
+失敗⑨
+curl http://localhost:8080 でアクセスできない
+
+% curl -v http://localhost:8080　で確認
+HTTP/1.1 403 
+% kubectl get endpoints backend-service
+NAME              ENDPOINTS          AGE
+backend-service   172.31.24.6:8080   79m
+
+AWSコンソールで以下の内容が表示される。
+Status
+0 of 1 instance in service
+
+kubectl exec -it frontend-5994677c4f-v6wfw -- sh
+netstat -tulpn
+0.0.0.0:80
+
+原因
+enginx が port 80 で待機しているため
+
+frontend-deployment.yaml
+- containerPort: 80
+frontend-service.yaml
+targetPort: 80
+に変更する
+kubectl apply -f ./frontend/frontend-deployment.yaml
+kubectl apply -f ./frontend/frontend-service.yaml
+kubectl rollout restart deployment frontend
+コマンドを再度実行する
 
 
 
@@ -192,11 +267,11 @@ exit
 kubectl delete pod test
 
 
-④ Spring Boot 用 Secret / ConfigMap
+④ Spring Boot 用 Secret
 CircleCI ではテスト用DB
 EKS では本番RDS
 
-configmap と secret の作成 <- pring Boot に RDS の接続情報を安全に渡すため
+configmap と secret の作成 <- Spring Boot に RDS の接続情報を安全に渡すため
 
 - secret.yaml
 
@@ -237,12 +312,6 @@ Backend Pod
   ↓
 RDS
 
-3) configmap.yaml を作る
-secret.yaml ファイルにRDSへのアクセス情報を格納したたため、今回は不要
-
-4) deployment.yaml を修正
-5) 各ファイルを「kubectl apply -f xxx」コマンドを使って、YAML の内容を Kubernetes API Server に送信して。クラスタの「望ましい状態」を更新する
-
 実行結果
 hirog@mac eks % kubectl apply -f ./secrets/secret.yaml 
 secret/springboot-db-secret created
@@ -265,22 +334,6 @@ DB_PASS:  20 bytes
 DB_USER:  5 bytes
 
 
-- configmap.yaml
-
-kubectl apply -f ../minikube/k8s/eks/base/configmap.yaml 
-を実行して適用する
-
-実行結果
-% kubectl apply -f ../minikube/k8s/eks/base/configmap.yaml 
-configmap/springboot-config created
-% kubectl get configmap springboot-config
-NAME                DATA   AGE
-springboot-config   2      57s
-% kubectl describe configmap springboot-config
-Name:         springboot-config
-Namespace:    default
-Labels:       <none>
-Annotations:  <none>
 
 Data
 ====
@@ -299,9 +352,22 @@ Events:  <none>
 
 
 
-⑤ k8s マニフェストを EKS 用に調整
-⑥ kubectl apply
-⑦ Service / Ingress で外部公開
+1, Backendの中身チェック
+kubectl logs <backend-pod>
+2, Serviceの確認
+kubectl get svc
+3, Pod間通信確認（内部テスト）
+kubectl exec -it <frontend-pod> -- curl http://backend-service:8080
+4, 外部アクセス（最終ゴール）
+kubectl get svc frontend-service
+出力例: EXTERNAL-IP: a1b2c3.amazonaws.com
+5, ブラウザでアクセス
+http://<EXTERNAL-IP>
+
+
+⑥ k8s マニフェストを EKS 用に調整
+⑦ kubectl apply
+⑧ Service / Ingress で外部公開
 
 
 
