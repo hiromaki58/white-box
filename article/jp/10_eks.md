@@ -3,8 +3,8 @@
 # この記事で実施する内容
 1, .circleci/config.yml ファイルを変更してイメージを ECR に push する。
 2, Spring Boot 用 Secret 作成
-3, RDS 接続用の Security Group 設計
-4, EKS クラスター作成
+3, EKS クラスター作成
+4, RDS 接続用の Security Group 作成
 5, RDS 接続用の Security Group の動作確認
 6, deployment ファイルの作成と適用
 7, アプリケーションをブラウザで表示する
@@ -55,16 +55,7 @@ spring.datasource.password=${DB_PASS}
 kubectl apply -f ./secrets/secret.yaml
 ```
 
-# 3, RDS 接続用の Security Group 設計
-今回のデモでは、private subnet に RDS を配置し、public subnet に配置した
-キーとなるアイデアは
-- EKS 上の Pod だけが RDS に接続できる
-- IP アドレスに依存しない（Pod / Node が変わっても接続できる）
-  -「0.0.0.0/0」は使わない
-
-具体的には RDS に設定されている Security Group のインバウンドルールに、 EKS のクラスターに紐づいている EC2 インスタンスに紐づいている Security Group を追加します。
-
-# 4, EKS クラスター作成
+# 3, EKS クラスター作成
 ### 環境
 次にAWSでの環境の構築を行います。
 このステップではクラスターの作成ですので、あくまで「アプリ」を投入する「箱」を作るだけです。
@@ -175,8 +166,17 @@ ip-172-31-107-149.ec2.internal   Ready    <none>   4m43s   v1.30.14-eks-f69f56f
 5, 自分を Node として登録（join）する。
 6, 状態が Ready になる。
 
+# 4, RDS 接続用の Security Group 作成
+今回のデモでは、private subnet に RDS を配置し、public subnet に配置しています。
+キーとなるアイデアは
+- EKS 上の Pod だけが RDS に接続できる
+- IP アドレスに依存しない（Pod / Node が変わっても接続できる）
+  -「0.0.0.0/0」は使わない
+
+具体的にはEKS クラスターにある Pod (EC2 インスタンス)に紐づいている Security Group を RDS インバウンドルールに追加します。
+
 # 5, RDS 接続用の Security Group の動作確認
-すでに設定した Security Group が正しく動作するかを確認します。
+次に設定した Security Group が正しく動作するかを確認します。
 ### 1, テスト用 Pod を作る
 ```shell
 % kubectl run test --image=public.ecr.aws/amazonlinux/amazonlinux:2 --restart=Never --command -- sleep 3600 pod/test created
