@@ -50,3 +50,6 @@ build
 # Secrets
 **/k8s/**/secrets/*.yaml
 **/eks/**/secrets/*.yaml
+
+# Article draft files
+.txt

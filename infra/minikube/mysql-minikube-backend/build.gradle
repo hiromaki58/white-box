@@ -11,7 +11,8 @@ plugins {
 group = 'com.spring'
 version = '0.0.1-SNAPSHOT'
 description = 'minikube backend'
-sourceCompatibility = '11'
+sourceCompatibility = '17'
+targetCompatibility = '17'
 
 repositories {
     mavenCentral()

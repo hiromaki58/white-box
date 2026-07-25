@@ -1,7 +1,7 @@
 # =====================================
 # 1) Build Stage (Gradle + JDK11)
 # =====================================
-FROM gradle:7.6-jdk11 AS build
+FROM gradle:7.6-jdk17 AS build
 
 WORKDIR /home/app
 
@@ -13,9 +13,9 @@ RUN gradle clean build -x test --no-daemon
 
 
 # =====================================
-# 2) Runtime Stage (JRE11 slim)
+# 2) Runtime Stage (JRE17)
 # =====================================
-FROM eclipse-temurin:11-jre
+FROM eclipse-temurin:17-jre
 
 WORKDIR /app
 
