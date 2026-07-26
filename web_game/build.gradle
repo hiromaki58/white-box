@@ -10,7 +10,7 @@ plugins {
 
 group = 'com.spring'
 version = '0.0.1-SNAPSHOT'
-description = 'minikube backend'
+description = 'backend'
 sourceCompatibility = '17'
 targetCompatibility = '17'
 
@@ -31,10 +31,7 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
 
     // MySQL Connector
-     implementation 'com.mysql:mysql-connector-j'
-
-    // h2
-    implementation 'com.h2database:h2'
+    runtimeOnly 'com.mysql:mysql-connector-j'
 
     // Development Tools
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
@@ -42,7 +39,7 @@ dependencies {
     // Testing Dependencies
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test'
-    testImplementation 'com.h2database:h2'
+    testRuntimeOnly 'com.h2database:h2'
 }
 
 tasks.named('test') {
