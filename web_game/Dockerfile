@@ -1,35 +1,29 @@
-# 1. Base image to build Java application using Maven
-FROM gradle:8.13-jdk23 AS build
+# =====================================
+# 1) Build Stage (Gradle + JDK11)
+# =====================================
+FROM gradle:7.6-jdk17 AS build
 
-# Set the working directory in the Docker image
 WORKDIR /home/app
 
-# Copy application source code into the working directory in the Docker image
-COPY src /home/app/src
-COPY build.gradle /home/app
-COPY settings.gradle /home/app
+COPY build.gradle settings.gradle ./
+COPY src ./src
 
-# Use Gradle to build the project
-RUN gradle clean build --no-daemon
+# Build Spring Boot JAR
+RUN gradle clean build -x test --no-daemon
 
-# 2. Base image to run the Java JAR file
-FROM fedora:latest
 
-# 必要なパッケージをインストール
-RUN dnf update -y
-RUN dnf install -y java-latest-openjdk-devel
-RUN sudo dnf install -y openssh
-RUN sudo dnf install -y openssh-clients
+# =====================================
+# 2) Runtime Stage (JRE17)
+# =====================================
+FROM eclipse-temurin:17-jre
 
-# Set environment variable PATH
-# ENV PATH="${PATH}:/usr/bin/ssh"
 WORKDIR /app
 
-# Copy the built JAR file from the build stage
-COPY --from=build /home/app/build/libs/*.jar /usr/local/lib/web-game.jar
+# Copy the JAR from build stage
+COPY --from=build /home/app/build/libs/*.jar app.jar
 
-# Specify the port the application uses
+# Expose backend port
 EXPOSE 8080
 
-# Java アプリケーションを実行
-ENTRYPOINT ["java", "-jar", "/app/web-game.jar"]
+# Run the Spring Boot application
+ENTRYPOINT ["java", "-jar", "/app/app.jar"]
