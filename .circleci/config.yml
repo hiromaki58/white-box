@@ -6,7 +6,7 @@ executors:
       # Main container（Gradle + Java）
       - image: gradle:7.6-jdk17
         environment:
-          SPRING_PROFILES_ACTIVE: test
+          SPRING_PROFILES_ACTIVE: ci
           DB_NAME: webgame
           DB_USER: ${LOCAL_DB_USER}
           DB_PASS: ${LOCAL_DB_PASSWORD}

@@ -7,7 +7,7 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.mail.javamail.JavaMailSender;
 
 @SpringBootTest
-@ActiveProfiles("test")
+//@ActiveProfiles("test")
 class WebGameApplicationTests {
 	@MockBean
     private JavaMailSender javaMailSender;

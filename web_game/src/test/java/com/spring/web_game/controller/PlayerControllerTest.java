@@ -18,7 +18,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 
-@ActiveProfiles("test")
+//@ActiveProfiles("test")
 @SpringBootTest
 @AutoConfigureMockMvc
 public class PlayerControllerTest {
