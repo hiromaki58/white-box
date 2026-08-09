@@ -45,7 +45,9 @@ jobs:
                     name: Run backend tests
                     command: |
                         cd web_game
-                        ./gradlew test -Dspring.profiles.active=test
+                        ./gradlew test
+            - store_test_results:
+                  path: build/test-results/test
     build-and-deploy:
         docker:
             -   image: cimg/base:stable
