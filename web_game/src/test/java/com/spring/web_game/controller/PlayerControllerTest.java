@@ -26,6 +26,8 @@ public class PlayerControllerTest {
     private MockMvc mockMvc;
     @Autowired
     private PlayerRepository playerRepository;
+    @Autowired
+    private Environment environment;
     @MockBean
     private JavaMailSender javaMailSender;
 
@@ -39,6 +41,13 @@ public class PlayerControllerTest {
         player.setEmailAddr("test@example.com");
         player.setPassword("password123");
         playerRepository.save(player);
+    }
+
+    @Test
+    void checkProfile() {
+        System.out.println(
+                Arrays.toString(environment.getActiveProfiles())
+        );
     }
 
      @Test
