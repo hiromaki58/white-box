@@ -13,8 +13,9 @@ import java.util.Optional;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.mockito.MockitoAnnotations;
 
 import com.spring.web_game.model.PasswordResetTokenModel;
@@ -22,17 +23,18 @@ import com.spring.web_game.model.PlayerModel;
 import com.spring.web_game.repository.PasswordResetTokenRepository;
 import com.spring.web_game.repository.PlayerRepository;
 
+@SpringBootTest
 public class PasswordResetServiceTest {
-    @Mock
+    @MockBean
     EmailService emailService;
 
-    @Mock
+    @MockBean
     PlayerRepository playerRepository;
 
-    @Mock
+    @MockBean
     PasswordResetTokenRepository passwordResetTokenRepository;
 
-    @InjectMocks
+    @Autowired
     PasswordResetService passwordResetService;
 
     @BeforeEach

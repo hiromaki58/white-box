@@ -2,8 +2,8 @@ package com.spring.web_game.model;
 
 import java.time.LocalDateTime;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
+import javax.persistence.Column;
+import javax.persistence.Entity;
 
 @Entity
 public class PasswordResetTokenModel extends BaseModel{

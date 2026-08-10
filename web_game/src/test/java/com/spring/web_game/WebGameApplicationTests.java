@@ -2,12 +2,14 @@ package com.spring.web_game;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.test.context.bean.override.mockito.MockitoBean;
 
 @SpringBootTest
+//@ActiveProfiles("test")
 class WebGameApplicationTests {
-	@MockitoBean
+	@MockBean
     private JavaMailSender javaMailSender;
 
 	@Test
