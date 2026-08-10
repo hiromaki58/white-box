@@ -7,10 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 
 import com.spring.web_game.model.PlayerModel;
@@ -20,7 +17,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 
-//@ActiveProfiles("test")
 @SpringBootTest
 @AutoConfigureMockMvc
 public class PlayerControllerTest {
@@ -30,8 +26,6 @@ public class PlayerControllerTest {
     private PlayerRepository playerRepository;
     @Autowired
     private Environment environment;
-    @MockBean
-    private JavaMailSender javaMailSender;
 
     @BeforeEach
     public void setUp() {
