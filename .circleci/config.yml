@@ -49,8 +49,9 @@ jobs:
             - store_test_results:
                   path: build/test-results/test
             -   store_artifacts:
-                    path: build/reports/tests/test
+                    path: web_game/build/reports/tests/test
                     destination: test-report
+                    when: always
     build-and-deploy:
         docker:
             -   image: cimg/base:stable
