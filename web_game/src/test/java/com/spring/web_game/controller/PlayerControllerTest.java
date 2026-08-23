@@ -22,8 +22,10 @@ import static org.springframework.security.test.web.servlet.request.SecurityMock
 public class PlayerControllerTest {
     @Autowired
     private MockMvc mockMvc;
+
     @Autowired
     private PlayerRepository playerRepository;
+
     @Autowired
     private Environment environment;
 
@@ -42,7 +44,7 @@ public class PlayerControllerTest {
     @Test
     void checkProfile() {
         System.out.println(
-                Arrays.toString(environment.getActiveProfiles())
+            Arrays.toString(environment.getActiveProfiles())
         );
     }
 
