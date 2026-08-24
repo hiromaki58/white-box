@@ -1,4 +1,6 @@
 package com.spring.web_game.controller;
+import com.spring.web_game.service.EmailService;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.core.env.Environment;
 import java.util.Arrays;
 
@@ -28,6 +30,9 @@ public class PlayerControllerTest {
 
     @Autowired
     private Environment environment;
+
+    @MockBean
+    EmailService emailService;
 
     @BeforeEach
     public void setUp() {
