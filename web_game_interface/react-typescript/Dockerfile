@@ -1,5 +1,7 @@
-# Build stage
-FROM node:16-alpine AS builder
+# ===========================
+# 1. Build Stage
+# ===========================
+FROM node:18-alpine AS builder
 
 # Set the working directory in the Docker image
 WORKDIR /app
@@ -16,7 +18,9 @@ COPY . .
 # Build the application
 RUN npm run build
 
-# Production stage
+# ===========================
+# 2. Production Stage
+# ===========================
 FROM nginx:alpine
 
 # Set the working directory to nginx asset directory

@@ -1,4 +1,8 @@
 package com.spring.web_game.controller;
+import com.spring.web_game.service.EmailService;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.core.env.Environment;
+import java.util.Arrays;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -6,9 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 
 import com.spring.web_game.model.PlayerModel;
@@ -18,16 +19,20 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 
-@ActiveProfiles("test")
 @SpringBootTest
 @AutoConfigureMockMvc
 public class PlayerControllerTest {
     @Autowired
     private MockMvc mockMvc;
+
     @Autowired
     private PlayerRepository playerRepository;
-    @MockitoBean
-    private JavaMailSender javaMailSender;
+
+    @Autowired
+    private Environment environment;
+
+    @MockBean
+    EmailService emailService;
 
     @BeforeEach
     public void setUp() {
@@ -41,22 +46,29 @@ public class PlayerControllerTest {
         playerRepository.save(player);
     }
 
-    // @Test
-    // public void testLoginSuccess() throws Exception {
-    //     mockMvc.perform(post("/api/player/login")
-    //             .with(csrf())
-    //             .content("{\"emailAddr\": \"test@example.com\", \"password\": \"password123\"}")
-    //             .contentType(MediaType.APPLICATION_JSON))
-    //             .andExpect(jsonPath("$.loginTry").value(true))
-    //             .andExpect(jsonPath("$.msg").value("Succeed to login"));
-    // }
+    @Test
+    void checkProfile() {
+        System.out.println(
+            Arrays.toString(environment.getActiveProfiles())
+        );
+    }
 
-    // @Test
-    // public void testLoginFailure() throws Exception {
-    //     mockMvc.perform(post("/api/player/login")
-    //             .content("{\"emailAddr\": \"nonexistent@example.com\", \"password\": \"wrongpassword\"}")
-    //             .contentType(MediaType.APPLICATION_JSON))
-    //             .andExpect(jsonPath("$.loginTry").value(false))
-    //             .andExpect(jsonPath("$.msg").value("Fail to login"));
-    // }
+     @Test
+     public void testLoginSuccess() throws Exception {
+         mockMvc.perform(post("/api/player/login")
+                 .with(csrf())
+                 .content("{\"emailAddr\": \"test@example.com\", \"password\": \"password123\"}")
+                 .contentType(MediaType.APPLICATION_JSON))
+                 .andExpect(jsonPath("$.loginTry").value(true))
+                 .andExpect(jsonPath("$.msg").value("Succeed to login"));
+     }
+
+     @Test
+     public void testLoginFailure() throws Exception {
+         mockMvc.perform(post("/api/player/login")
+                 .content("{\"emailAddr\": \"nonexistent@example.com\", \"password\": \"wrongpassword\"}")
+                 .contentType(MediaType.APPLICATION_JSON))
+                 .andExpect(jsonPath("$.loginTry").value(false))
+                 .andExpect(jsonPath("$.msg").value("Fail to login"));
+     }
 }
